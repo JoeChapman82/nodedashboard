@@ -90,16 +90,16 @@ app.get('/', function(req, res) {
 
 app.listen(PORT, function() {
   console.log('Server listening on port:' + PORT);
-  browserSync({
-  proxy: 'localhost:' + (PORT),
-  port: 3000,
-  ui: false,
-  files: ['public/**/*.*', 'app/public/**/*.*'],
-  ghostmode: false,
-  open: false,
-  notify: true,
-  logLevel: 'error'
-});
+//   browserSync({
+//   proxy: 'localhost:' + (PORT),
+//   port: 3000,
+//   ui: false,
+//   files: ['public/**/*.*', 'app/public/**/*.*'],
+//   ghostmode: false,
+//   open: false,
+//   notify: true,
+//   logLevel: 'error'
+// });
 });
 
 module.exports = app;
