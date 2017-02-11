@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 var bodyParser = require('body-parser');
 var request = require('request');
 
-// var calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
+var calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
 var xkcdCall = require(__dirname + '/app/data-calls/xkcd/xkcd');
 
 var weatherCall = require(__dirname + '/app/data-calls/open-weather/open-weather');
