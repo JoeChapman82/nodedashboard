@@ -1,0 +1,16 @@
+.widget-progress-meter {
+  background-color: darken($widget-light-blue, 7%);
+}
+
+#progressMeterDisplay {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0; }
+
+.progress-meter-heading {
+  color: $white-softer;
+  font-size: $font-xxlarge;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}

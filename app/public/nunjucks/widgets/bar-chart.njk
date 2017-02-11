@@ -1,0 +1,14 @@
+{% macro barChart(x, y, main, title) %}
+<table id="dataChart" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-double-width widget-bar-chart">
+  <div id="barChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="barChartDisplay" class="bar-chart-display" width="610" height="350"></canvas>
+</div>
+{% endmacro %}

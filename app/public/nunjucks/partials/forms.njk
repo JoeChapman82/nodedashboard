@@ -1,0 +1,5 @@
+{% macro input(id, name, value, type, text, classLab, classInput) %}
+<label class="{{ classLab }}" for="{{ id }}">
+<input id="{{ id }}" class="{{ classInput }}" type="{{ type }}" name="{{ name }}" value="{{ value }}" data-target="{{ value }}-preview">{{ text }}
+</label>
+{% endmacro %}

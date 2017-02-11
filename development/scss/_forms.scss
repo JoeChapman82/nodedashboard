@@ -1,0 +1,51 @@
+fieldset {
+  box-sizing: border-box;
+  margin: 10px 40%;
+  padding: 20px;
+}
+
+input {
+  border: 2px solid $form-field-border-colour;
+  display: block;
+  border-radius: 2px;
+  font-size: $font-large;
+  margin: 5px auto 20px;
+  padding: 8px;
+  outline: none;
+  box-shadow: 2px 2px 2px 0px $shadow-colour;
+}
+
+label {
+  display: block;
+  font-size: $font-large;
+  text-align: center;
+}
+
+input[type="submit"] {
+  font-size: $font-large;
+  padding: 10px 50px;
+  margin-top: 30px;
+}
+
+input:focus,
+ textarea:focus {
+  border-color: $color-focus;
+}
+
+input[type=submit]:hover {
+  background-color: $color-hover;
+}
+
+input[type=submit]:focus {
+  border-color: $color-focus;
+}
+
+.login-form {
+  background-color: $background-soft-grey;
+  border: 3px solid $grey-border;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 50px 37%;
+  padding: 20px 50px;
+}

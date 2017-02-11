@@ -1,0 +1,169 @@
+.flex-wrapper-regular {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  height: 95vh;
+  max-width: 100%;
+  margin: 0px 80px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.hidden {
+  display: none;
+}
+
+.flex-wrapper-preview,
+.flex-wrapper-preview-two {
+  background-color: grey;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-flex;
+  height: 220px;
+  flex-wrap: wrap;
+  margin: 5px auto;
+
+}
+
+.mobile-wrapper {
+  max-width: 10%;
+  width: 10%;
+}
+
+.pc-wrapper {
+  max-width: 40%;
+  width: 40%;
+}
+
+.tv-wrapper {
+  max-width: 49%;
+  width: 49%;
+}
+
+.flex-wrapper-preview-two.hidden {
+  display: none;
+}
+
+.flex-widget-preview {
+  box-sizing: border-box;
+  background-color: rgba(48, 95, 92, 1);
+  height: 100px;
+  max-height: 100%;
+  margin: 5px;
+  width: 24%;
+  text-align: center;
+  position: relative;
+}
+
+.flex-widget-preview-double-width {
+  box-sizing: border-box;
+  background-color: rgba(48, 95, 92, 1);
+  height: 100px;
+  max-height: 100%;
+  margin: 5px;
+  width: 48%;
+  text-align: center;
+  position: relative;
+}
+
+.mobile-widget {
+  width: 99%;
+}
+
+.pc-widget {
+  width: 23.2%;
+}
+
+.pc-widget-double-width {
+  width: 48%;
+}
+
+.tv-widget {
+  width: 18.55%;
+}
+
+.tv-widget-double-width {
+  width: 38.5%;
+}
+
+@media only screen and (max-width:600px) {
+  .flex-widget, {
+    width: 100%;
+  }
+  .flex-widget-double-width {
+    width: 98%;
+  }
+}
+
+.flex-widget-pc {
+  box-sizing: border-box;
+  background-color: $widget-green-dark;
+  height: 46vh;
+  max-height: 100%;
+  width: 24%;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.flex-widget-pc-double-width {
+  box-sizing: border-box;
+  background-color: $widget-light-blue;
+  height: 46vh;
+  width: 48.8%;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.flex-widget-tv {
+  box-sizing: border-box;
+  background-color: $widget-green-dark;
+  height: 46vh;
+  max-height: 100%;
+  width: 19%;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.flex-widget-tv-double-width {
+  box-sizing: border-box;
+  background-color: $widget-light-blue;
+  height: 46vh;
+  width: 39%;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.flex-widget-double-height {
+  box-sizing: border-box;
+  height: 95vh;
+  width: 24%;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.icon-background {
+  color: $white;
+  width: 100%;
+  position: absolute;
+  opacity: 0.1;
+  font-size: 275px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.icon-background-alt {
+  color: $white;
+  width: 100%;
+  position: absolute;
+  opacity: 0.5;
+  font-size: 225px;
+  text-align: center;
+  margin-top: 100px;
+}

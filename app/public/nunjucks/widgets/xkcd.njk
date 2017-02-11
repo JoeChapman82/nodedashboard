@@ -1,0 +1,8 @@
+{% macro xkcd(number, title, img) %}
+<div class="flex-widget-double-width widget-xkcd">
+  <p class="xkcd-heading">XKCD: {{ number }}<br>
+  {{ title }}</p>
+  <br>
+  <img class="xkcd-comic" src="{{ img }}" alt="Todays XKCD">
+</div>
+{% endmacro %}

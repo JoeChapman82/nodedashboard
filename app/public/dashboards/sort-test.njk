@@ -1,0 +1,36 @@
+{% extends "nunjucks/templates/layout.njk" %}
+{% import "nunjucks/widgets/weather.njk" as weatherWidget %}
+{% import "nunjucks/widgets/map.njk" as mapWidget %}
+{% import "nunjucks/widgets/analogue-clock.njk" as analogueClockWidget %}
+{% import "nunjucks/widgets/notices.njk" as noticesWidget %}
+{% import "nunjucks/widgets/countdown.njk" as countdownWidget %}
+{% import "nunjucks/widgets/jenkins-jobs.njk" as jenkinsJobsWidget %}
+{% import "nunjucks/widgets/calendar-events.njk" as calendarEventsWidget %}
+{% import "nunjucks/widgets/digital-clock.njk" as digitalClockWidget %}
+
+
+{% block page_title %}PYI - Sort Test{% endblock %}
+
+{% block body %}
+
+<div class="flex-wrapper-regular" id="sortable">
+
+    {{ weatherWidget.weather(weatherType,weatherDescription,weatherCity,weatherTemp,weatherIcon) }}
+    {{ mapWidget.map() }}
+    {{ analogueClockWidget.analogueClock() }}
+    {{ countdownWidget.countdown('COUNTDOWN TO DINNER','29-Mar-2017 19:00:00') }}
+    {{ noticesWidget.notices('PYI Dashboard','Made by DWP Digital') }}
+    {{ jenkinsJobsWidget.jenkinsJobs() }}
+    {{ digitalClockWidget.digitalClock() }}
+    {{ calendarEventsWidget.calendarEvents(calendar) }}
+</div>
+
+{% endblock %}
+
+{% block widgetScripts %}
+<script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
+<script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
+<script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
+
+
+{% endblock %}

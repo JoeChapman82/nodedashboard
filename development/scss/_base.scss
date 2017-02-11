@@ -1,0 +1,63 @@
+html {
+  font-family: $main-font-family;
+  font-size: 1em;
+  margin: none;
+  padding: none;
+}
+
+body {
+  background-color: $main-background-colour;
+  font-size: 1rem;
+  margin: none;
+  padding: none;
+  max-width: 100%;
+}
+
+.alt-body-background {
+  background: #A7A9AC;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(.34, rgba(230,237,241,.05)), color-stop(.67, rgba(230,237,241,0)));
+  background-size: 5px 5px;
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+iframe {
+  width: 99%;
+  height: 80%;
+}
+
+i {
+  max-width: 100%;
+}
+
+.data-table {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.displayed {
+  display: block;
+}
+
+.faded {
+  opacity: 0.8;
+}
+
+#loadingMessage {
+  color: $white;
+  padding-top: 45vh;
+  text-align: center;
+}

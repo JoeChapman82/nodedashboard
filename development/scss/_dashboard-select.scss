@@ -1,0 +1,86 @@
+.select-heading {
+  color: $white-soft;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.select-fieldset {
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  text-align: center;
+  width: 75%;
+}
+
+.select-legend {
+  color: $white-soft;
+  font-size: $font-xlarge;
+  margin-bottom: -20px;
+}
+
+input[type=radio]:hover {
+  background-color: $color-hover;
+  border: 5px solid yellow;
+}
+
+.select-label {
+  background-color: $white-soft;
+  border: 3px solid $grey-border;
+  box-shadow: 2px 2px 1px #696969;
+  width: 150px;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  padding: 0 10px 10px;
+}
+
+.select-checkbox,
+ .select-radio {
+  // display: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.checked {
+  // background-color: $color-focus;
+  // border-color: rgba(6, 111, 154, 1);
+  // font-size: 50px;
+}
+
+.select-label.hovered {
+  background-color: $color-hover;
+  border-color: $color-focus;
+}
+
+.select-label.selected {
+  background-color: $widget-light-blue;
+  border-color: $widget-medium-blue;
+  box-shadow: 1px 1px 1px #666;
+  transform: translate(1px, 2px);
+}
+
+.select-label.focused {
+  border-color: $color-focus;
+}
+
+@media only screen and (max-width:600px) {
+  .select-label {
+    display: block;
+    padding: 10px 0;
+   }
+}
+
+@media only screen and (max-width:600px) {
+  .select-checkbox,
+   .select-radio {
+    padding: 10px 0;
+    margin: 0;
+   }
+   .select-fieldset {
+     padding: 0;
+     margin: 0;
+}
+}

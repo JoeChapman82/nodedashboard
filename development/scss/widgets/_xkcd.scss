@@ -1,0 +1,16 @@
+.widget-xkcd {
+  background-color: $white-soft;
+}
+
+// $widget-green-dark;
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%;
+}
+
+.xkcd-heading {
+  font-size: $font-large;
+  color: $main-background-colour;
+  margin: 0 auto -20px;
+}

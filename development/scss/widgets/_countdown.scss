@@ -1,0 +1,29 @@
+.widget-countdown {
+  background-color: rgba(220, 89, 69, 1);
+}
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $font-xxlarge;
+  font-weight: bold;
+  margin-top: 70px;
+}
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: $font-xxxlarge;
+}
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px;
+}
+
+.countdown-timer-time {
+  margin-bottom: 0px;
+}
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9);
+}

@@ -1,0 +1,209 @@
+{% macro aClock(display) %}
+<div class="flex-widget-{{ display }} widget-analogue-clock">
+    <canvas id="clock" width="250" height="300">
+      Please upgrade your browser.
+</canvas>
+</div>
+{% endmacro %}
+
+{% macro dClock(display) %}
+<div class="flex-widget-{{ display }} widget-digital-clock">
+  <div class="icon-background">
+    <i class="fa fa-clock-o"></i>
+  </div>
+  <p id="digitalDate" class="digital-date"></p>
+  <p id="digitalTime" class="digital-time"></p>
+</div>
+{% endmacro %}
+
+{% macro jenkins(display) %}
+<div class="flex-widget-{{ display }} jenkins-jobs-widget">
+  <div class="icon-background-alt">
+    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+  </div>
+  <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">All jenkins builds are successful</p>
+</div>
+{% endmacro %}
+
+{% macro map(display) %}
+<div class="flex-widget-{{ display }} widget-map">
+  <h2>My House</h2>
+  <iframe id="mapWidgetFrame" src="//www.google.com/maps/embed/v1/place?q=15 Wharfedale Avenue Leeds&zoom=17&key=AIzaSyCjCwOg99rHP3xGtJyM7LpPdnayHEz4Bxg"></iframe>
+</div>
+{% endmacro %}
+
+{% macro calendar(display, calendar) %}
+<div class="flex-widget-{{ display }} widget-calendar-events">
+  <div class="center-wrapper">
+    <div class="icon-background-calendar">
+      <i class="fa fa-calendar"></i>
+    </div>
+  <p class="calender-heading">Todays Events</p>
+  {% if calendar.length < 1 %}
+  <p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>
+    No events today</p>
+ {% else %}
+{% for event in calendar %}
+<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>{{ event.start }}
+<br>{{ event.summary }}</p>
+{% endfor %}
+{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro countdown(display, event,dueDate) %}
+<div class="flex-widget-{{ display }} widget-countdown">
+<p class="countdown-event">{{ event }}</p>
+<p id="countdownTimerDays" class="countdown-timer-days"><br></p>
+<p id="countdownTimerTime" class="countdown-timer-time"></p>
+<p id="countdownDueDate" class="countdown-due-date">Due date:<br> {{ dueDate }}</p>
+</div>
+{% endmacro %}
+
+{% macro notices(display, heading, comment) %}
+<div class="flex-widget-{{ display }} widget-notices">
+<h2>{{ heading }}</h2>
+<p>{{ comment }}</p>
+</div>
+{% endmacro %}
+
+
+{% macro progress(display, data) %}
+<div class="flex-widget-{{ display }} widget-progress-meter">
+  <p class="progress-meter-heading">Sprint Progress</p>
+<div id="progressMeterData" data-percent="{{ data }}"></div>
+<canvas id="progressMeterDisplay" class="progress-meter-canvas" width="200" height="200"></canvas>
+<span>Some text here</span>
+<br>
+<span>Last updated at { time }</span>
+</div>
+{% endmacro %}
+
+
+{% macro weather(display, type, city, temp, icon) %}
+<div class="flex-widget-{{ display }} widget-weather">
+  <div class="icon-background-weather">
+    {% if icon === '01d' %}
+    <i class="wi wi-day-sunny"></i>
+    {% elseif icon === '02d'%}
+    <i class="wi wi-day-cloudy"></i>
+    {% elseif icon === '03d'%}
+    <i class="wi wi-day-cloudy-high"></i>
+    {% elseif icon === '04d'%}
+    <i class="wi wi-cloudy"></i>
+    {% elseif icon === '09d'%}
+    <i class="wi wi-rain-mix"></i>
+    {% elseif icon === '10d'%}
+    <i class="wi wi-day-showers"></i>
+    {% elseif icon === '11d'%}
+    <i class="wi wi-thunderstorm"></i>
+    {% elseif icon === '13d'%}
+    <i class="wi wi-snow"></i>
+    {% elseif icon === '50d'%}
+    <i class="wi wi-fog"></i>
+    {% elseif icon === '01n'%}
+    <i class="wi wi-night-clear"></i>
+    {% elseif icon === '02n'%}
+    <i class="wi wi-night-alt-cloudy"></i>
+    {% elseif icon === '03n'%}
+    <i class="wi wi-cloud"></i>
+    {% elseif icon === '04n'%}
+    <i class="wi wi-night-cloudy-high"></i>
+    {% elseif icon === '09n'%}
+    <i class="wi wi-night-rain-mix"></i>
+    {% elseif icon === '10n'%}
+    <i class="wi wi-night-rain"></i>
+    {% elseif icon === '11n'%}
+    <i class="wi wi-thunderstorm"></i>
+    {% elseif icon === '13n'%}
+    <i class="wi wi-night-snow"></i>
+    {% elseif icon === '50n'%}
+    <i class="wi wi-fog"></i>
+    {% else %}
+    <i class="wi wi-thermometer"></i>
+    {% endif %}
+  </div>
+<p class="weather-city">{{ city }} Weather</p>
+<p class="weather-type">{{ type }}</p>
+<p class="weather-temp">{{ temp }}°C</p>
+</div>
+{% endmacro %}
+
+{% macro xkcd(display, number, title, img) %}
+<div class="flex-widget-{{ display }}-double-width widget-xkcd">
+  <p class="xkcd-heading">XKCD: {{ number }}<br>
+  {{ title }}</p>
+  <br>
+  <img class="xkcd-comic" src="{{ img }}" alt="Todays XKCD">
+</div>
+{% endmacro %}
+
+{# CHARTS
+CHARTS
+CHARTS
+CHARTS
+CHARTS
+CHARTS
+CHARTS
+#}
+
+{% macro barChart(display, x, y, main, title) %}
+<table id="dataChart" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ display }}-double-width widget-bar-chart">
+  <div id="barChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="barChartDisplay" class="bar-chart-display" width="610" height="350"></canvas>
+</div>
+{% endmacro %}
+
+{% macro doughnutChart(display, x, y, main, title) %}
+<table id="dataChartDoughnut" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ display }} widget-doughnut-chart">
+  <div id="doughnutChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="doughnutChartDisplay" class="doughnut-chart-display" width="275" height="360"></canvas>
+</div>
+{% endmacro %}
+
+{% macro pieChart(display, x, y, main, title) %}
+<table id="dataChartPie" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ display }} widget-pie-chart">
+  <div id="pieChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="pieChartDisplay" class="pie-chart-display" width="275" height="360"></canvas>
+</div>
+{% endmacro %}
+
+{% macro scatterChart(display, x, y, main, title) %}
+<table id="dataChartScatter" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ display }} widget-scatter-chart">
+  <div id="scatterChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="scatterChartDisplay" class="scatter-chart-display" width="300" height="360"></canvas>
+</div>
+{% endmacro %}

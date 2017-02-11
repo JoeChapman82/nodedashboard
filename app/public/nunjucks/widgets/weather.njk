@@ -1,0 +1,48 @@
+{% macro weather(type,desc,city,temp,icon) %}
+<div class="flex-widget widget-weather">
+  <div class="icon-background-weather">
+    {% if icon === '01d' %}
+    <i class="wi wi-day-sunny"></i>
+    {% elseif icon === '02d'%}
+    <i class="wi wi-day-cloudy"></i>
+    {% elseif icon === '03d'%}
+    <i class="wi wi-day-cloudy-high"></i>
+    {% elseif icon === '04d'%}
+    <i class="wi wi-cloudy"></i>
+    {% elseif icon === '09d'%}
+    <i class="wi wi-rain-mix"></i>
+    {% elseif icon === '10d'%}
+    <i class="wi wi-day-showers"></i>
+    {% elseif icon === '11d'%}
+    <i class="wi wi-thunderstorm"></i>
+    {% elseif icon === '13d'%}
+    <i class="wi wi-snow"></i>
+    {% elseif icon === '50d'%}
+    <i class="wi wi-fog"></i>
+    {% elseif icon === '01n'%}
+    <i class="wi wi-night-clear"></i>
+    {% elseif icon === '02n'%}
+    <i class="wi wi-night-alt-cloudy"></i>
+    {% elseif icon === '03n'%}
+    <i class="wi wi-cloud"></i>
+    {% elseif icon === '04n'%}
+    <i class="wi-night-cloudy-high"></i>
+    {% elseif icon === '09n'%}
+    <i class="wi wi-night-rain-mix"></i>
+    {% elseif icon === '10n'%}
+    <i class="wi wi-night-rain"></i>
+    {% elseif icon === '11n'%}
+    <i class="wi wi-thunderstorm"></i>
+    {% elseif icon === '13n'%}
+    <i class="wi wi-night-snow"></i>
+    {% elseif icon === '50n'%}
+    <i class="wi wi-fog"></i>
+    {% else %}
+    <i class="wi wi-thermometer"></i>
+    {% endif %}
+  </div>
+<p class="weather-city">{{ city }} Weather</p>
+<p class="weather-type">{{ type }}</p>
+<p class="weather-temp">{{ temp }}°C</p>
+</div>
+{% endmacro %}

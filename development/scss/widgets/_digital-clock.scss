@@ -1,0 +1,16 @@
+.widget-digital-clock {
+  background-color: $widget-red;
+}
+
+.digital-date {
+  font-size: $font-xxlarge;
+  color: $white;
+  margin-top: 80px;
+}
+
+.digital-time {
+  font-size: $font-super;
+  color: $white;
+  font-weight: bold;
+  margin: 0;
+}

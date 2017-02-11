@@ -1,0 +1,75 @@
+{% extends "nunjucks/templates/layout.njk" %}
+
+{% block page_title %}PYI - Dashboard Select{% endblock %}
+{% import "nunjucks/partials/forms.njk" as forms %}
+
+{% block body %}
+<div id="dashboard-settings">
+<h1 class="select-heading">Select your dashboards</h1>
+<form class="select-form" action="dashboard-select" method="post">
+
+<fieldset class="select-fieldset">
+  <legend class="select-legend">Screen Size</legend>
+  {{ forms.input('pc-select', 'display', 'pc', 'radio', 'PC / Laptop', 'select-label', 'select-radio') }}
+  {{ forms.input('tv-select', 'display', 'tv', 'radio', '1080p TV', 'select-label', 'select-radio') }}
+</fieldset>
+
+<fieldset id="widget-select" class="select-fieldset hidden">
+  <legend class="select-legend">Select your widgets</legend>
+{{ forms.input('weather-select', 'widget', 'weather', 'checkbox', 'Weather', 'select-label', 'select-checkbox') }}
+{{ forms.input('map-select', 'widget', 'map', 'checkbox', 'Google Map', 'select-label', 'select-checkbox') }}
+{{ forms.input('aclock-select', 'widget', 'aClock', 'checkbox', 'Analogue Clock', 'select-label', 'select-checkbox') }}
+{{ forms.input('notices-select', 'widget', 'notices', 'checkbox', 'Notices', 'select-label', 'select-checkbox') }}
+{{ forms.input('countdown-select', 'widget', 'countdown', 'checkbox', 'Countdown', 'select-label', 'select-checkbox') }}
+{{ forms.input('jenkins-select', 'widget', 'jenkins', 'checkbox', 'Jenkins Jobs', 'select-label', 'select-checkbox') }}
+{{ forms.input('calender-select', 'widget', 'calendar', 'checkbox', 'Google Calender', 'select-label', 'select-checkbox') }}
+{{ forms.input('dclock-select', 'widget', 'dClock', 'checkbox', 'Digital Clock', 'select-label', 'select-checkbox') }}
+{{ forms.input('xkcd-select', 'widget', 'xkcd', 'checkbox', 'Random XKCD', 'select-label', 'select-checkbox') }}
+{{ forms.input('progress-select', 'widget', 'progress', 'checkbox', 'Progress Meter', 'select-label', 'select-checkbox') }}
+{{ forms.input('pie-select', 'widget', 'pieChart', 'checkbox', 'Pie Chart', 'select-label', 'select-checkbox') }}
+{{ forms.input('scatter-select', 'widget', 'scatterChart', 'checkbox', 'Scatter Chart', 'select-label', 'select-checkbox') }}
+{{ forms.input('bar-select', 'widget', 'barChart', 'checkbox', 'Bar Chart', 'select-label', 'select-checkbox') }}
+{{ forms.input('doughnut-select', 'widget', 'doughnutChart', 'checkbox', 'Doughnut Chart', 'select-label', 'select-checkbox') }}
+</fieldset>
+<div id="previewPane" class="faded hidden">
+  <h3 class="select-heading">Preview</h2>
+<div class="flex">
+
+  <div class="flex-wrapper-preview">
+    <div class="hidden"></div>
+  </div>
+
+    <hr id="preview-breaker" class="hidden">
+
+  <div class="flex-wrapper-preview-two hidden">
+    <div class="hidden"></div>
+  </div>
+
+</div>
+</div>
+
+  <!-- All Widgets go here - placed into preview pane in main.js -->
+    <div id="weather-preview" class="flex-widget-preview widget-weather hidden">Weather</div>
+    <div id="map-preview" class="flex-widget-preview widget-map hidden">Map</div>
+    <div id="aClock-preview" class="flex-widget-preview widget-analogue-clock hidden">Analogue clock</div>
+    <div id="notices-preview" class="flex-widget-preview widget-notices hidden">Notices</div>
+    <div id="countdown-preview" class="flex-widget-preview widget-countdown hidden">Countdown</div>
+    <div id="jenkins-preview" class="flex-widget-preview widget-jenkins-jobs hidden">Jenkins Jobs</div>
+    <div id="calendar-preview" class="flex-widget-preview widget-calendar hidden">Calender</div>
+    <div id="dClock-preview" class="flex-widget-preview widget-digital-clock hidden">Digital Clock</div>
+    <div id="xkcd-preview" class="flex-widget-preview-double-width widget-xkcd hidden">Random XKCD</div>
+    <div id="progress-preview" class="flex-widget-preview widget-progress hidden">Progress Meter</div>
+    <div id="pieChart-preview" class="flex-widget-preview widget-pie-chart hidden">Pie Chart</div>
+    <div id="scatterChart-preview" class="flex-widget-preview widget-scatter-chart hidden">Scatter Chart</div>
+    <div id="barChart-preview" class="flex-widget-preview-double-width widget-bar-chart hidden">Bar Chart</div>
+    <div id="doughnutChart-preview" class="flex-widget-preview widget-doughnut-chart hidden">Doughnut Chart</div>
+
+
+<input id="preview-submit" class="hidden" type="submit" name="" value="Go, Go, Go!">
+
+</form>
+</div>
+<div id="loadingMessages" class="hidden">
+<h1 id="loadingMessage"></h1>
+</div>
+{% endblock %}

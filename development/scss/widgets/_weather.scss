@@ -1,0 +1,32 @@
+.widget-weather {
+  background-color: $widget-light-blue;
+}
+
+.weather-city {
+  font-size: $font-xlarge;
+  color: $white;
+  opacity: 0.5;
+}
+
+.weather-temp {
+  font-size: $font-super;
+  font-weight: bold;
+  color: $white;
+  opacity: 0.8;
+}
+
+.weather-type {
+  font-size: $font-xlarge;
+  color: $white;
+  opacity: 0.8;
+}
+
+.icon-background-weather {
+  color: $white;
+  width: 100%;
+  position: absolute;
+  opacity: 0.1;
+  font-size: 200px;
+  text-align: center;
+  margin-top: 90px;
+}
