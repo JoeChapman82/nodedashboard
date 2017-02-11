@@ -50,7 +50,7 @@ app.post('/', function(req, res) {
 
 app.post('/dashboard-select', [
 //  calendarCall,
-  weatherCall,
+//  weatherCall,
   xkcdCall,
   function(req, res) {
     res.locals.dummyData = dummyData;
