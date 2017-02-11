@@ -3,7 +3,7 @@ require('dotenv').config();
 var express = require('express');
 var helmet = require('helmet');
 var app = express();
-var PORT = process.env.NODE_PORT || 3000;
+var PORT = process.env.PORT || 3000;
 var nunjucks = require('nunjucks');
 var expressNunjucks = require('express-nunjucks');
 var browserSync = require('browser-sync');
