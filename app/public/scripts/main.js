@@ -88,6 +88,6 @@ function switchBoards() {
   $('#secondBoard').toggleClass('hidden');
 }
 
-if ($('#secondBoard')) {
-  setInterval(switchBoards, 5000);
-}
+// if ($('#secondBoard')) {
+//   setInterval(switchBoards, 60000);
+// }

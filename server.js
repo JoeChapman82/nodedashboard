@@ -41,7 +41,6 @@ console.log(string + " encoding to base64 is " + toBase64);
 
 // Routes
 app.get('/', function(req, res) {
-  console.log(process.env.OPEN_WEATHER_API);
   res.render('index');
 });
 
@@ -50,7 +49,7 @@ app.post('/', function(req, res) {
 });
 
 app.post('/dashboard-select', [
-//  calendarCall,
+  calendarCall,
   weatherCall,
   xkcdCall,
   function(req, res) {
