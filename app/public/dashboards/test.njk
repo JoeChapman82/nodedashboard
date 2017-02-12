@@ -1,0 +1,64 @@
+{% extends "nunjucks/templates/layout.njk" %}
+{% block page_title %}PYI - Test Space{% endblock %}
+
+{% block body %}
+<h1>13:18 started</h1>
+<table id="dataChart" class="data-table">
+    <tr>
+    <td>apple</td>
+    <td>34</td>
+    </tr>
+    <tr>
+    <td>pear</td>
+    <td>58</td>
+    </tr>
+    <tr>
+    <td>plum</td>
+    <td>99</td>
+    </tr>
+    <tr>
+    <td>peach</td>
+    <td>23</td>
+    </tr>
+    <tr>
+    <td>Banana</td>
+    <td>01</td>
+    </tr>
+    <tr>
+    <td>grape</td>
+    <td>40</td>
+    </tr>
+    <tr>
+    <td>pineapple</td>
+    <td>62</td>
+    </tr>
+    <tr>
+    <td>peanut</td>
+    <td>50</td>
+    </tr>
+    <tr>
+    <td>pommegranite</td>
+    <td>72</td>
+    </tr>
+</table>
+<div class="flex-widget-double-width widget-bar-chart">
+  <div id="barChartData" data-x="my x label" data-y="my y label" data-title="my title"></div>
+  <canvas id="barChartDisplay" class="bar-chart-display" width="610" height="350"></canvas>
+
+  <div class="flex-widget-double-width widget-bar-chart">
+    <div id="barChartData2" data-x="my x label" data-y="my y label" data-title="I'm also a title"></div>
+    <canvas id="barChartDisplay2" class="bar-chart-display" width="610" height="350"></canvas>
+
+    <div class="flex-widget-double-width widget-bar-chart">
+      <div id="barChartData3" data-x="my x label" data-y="my y label" data-title="Me Too"></div>
+      <canvas id="barChartDisplay3" class="bar-chart-display" width="610" height="350"></canvas>
+
+      <div class="flex-widget-double-width widget-bar-chart">
+        <div id="barChartData4" data-x="my x label" data-y="my y label" data-title="And me"></div>
+        <canvas id="barChartDisplay4" class="bar-chart-display" width="610" height="350"></canvas>
+{% endblock %}
+
+
+
+{% block widgetScripts %}
+{% endblock %}

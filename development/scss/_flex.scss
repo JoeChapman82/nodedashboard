@@ -88,11 +88,11 @@
   width: 38.5%;
 }
 
-@media only screen and (max-width:600px) {
-  .flex-widget, {
+@media only screen and (max-width:800px) {
+  .flex-widget-pc, {
     width: 100%;
   }
-  .flex-widget-double-width {
+  .flex-widget-pc-double-width {
     width: 98%;
   }
 }

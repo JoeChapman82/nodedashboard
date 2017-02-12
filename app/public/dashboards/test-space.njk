@@ -3,22 +3,22 @@
 {% import "nunjucks/widgets/master-widgets.njk" as widget %}
 
 {% block body %}
-<div class="flex-wrapper-regular" id="sortable">
+<div class="flex-wrapper-regular switcher" id="sortable">
   {% for item in widgets %}
     {% if item === 'weather' %}
       {{ widget.weather(display, weatherType, weatherCity, weatherTemp, weatherIcon) }}
-    {% elif item === 'pie' %}
-      {{ widget.pie(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
+    {% elif item === 'pieChart' %}
+      {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
     {% elif item === 'xkcd' %}
       {{ widget.xkcd(display, xkcd.num, xkcd.title, xkcd.img) }}
-    {% elif item === 'scatter' %}
-      {{ widget.scatter(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
+    {% elif item === 'scatterChart' %}
+      {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
     {% elif item === 'progress' %}
       {{ widget.progress(display, '85') }}
-    {% elif item === 'bar' %}
-      {{ widget.bar(display, 'Something', 'Something else', dummyData, 'Something to do with fruit') }}
-    {% elif item === 'doughnut' %}
-      {{ widget.doughnut(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
+    {% elif item === 'barChart' %}
+      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Something to do with fruit') }}
+    {% elif item === 'doughnutChart' %}
+      {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
     {% elif item === 'map' %}
       {{ widget.map(display) }}
     {% elif item === 'aClock' %}
@@ -36,16 +36,83 @@
     {% endif %}
   {% endfor %}
 </div>
+
 <div id="secondBoard" class="hidden">
-  <h1 style="color: white; text-align: center; padding-top:45vh;">Why Hello There</h1>
+  <div class="flex-wrapper-regular" id="sortable2">
+    {% for item in widgetsTwo %}
+      {% if item === 'weather' %}
+        {{ widget.weather(display, weatherType, weatherCity, weatherTemp, weatherIcon) }}
+      {% elif item === 'pieChart' %}
+        {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
+      {% elif item === 'xkcd' %}
+        {{ widget.xkcd(display, xkcd.num, xkcd.title, xkcd.img) }}
+      {% elif item === 'scatterChart' %}
+        {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
+      {% elif item === 'progress' %}
+        {{ widget.progress(display, '85') }}
+      {% elif item === 'barChart' %}
+        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Something to do with fruit') }}
+      {% elif item === 'doughnutChart' %}
+        {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
+      {% elif item === 'map' %}
+        {{ widget.map(display) }}
+      {% elif item === 'aClock' %}
+        {{ widget.aClock(display) }}
+      {% elif item === 'countdown' %}
+        {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00') }}
+      {% elif item === 'notices' %}
+        {{ widget.notices(display, 'PYI Dashboard','Made by DWP Digital') }}
+      {% elif item === 'jenkins' %}
+        {{ widget.jenkins(display) }}
+      {% elif item === 'dClock' %}
+        {{ widget.dClock(display) }}
+      {% elif item === 'calendar' %}
+        {{ widget.calendar(display, calendar) }}
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
 
-      {# {{ widget[item]('hello', 'hello') }} #}
-
 {% block widgetScripts %}
-<script type="text/javascript" src="../../scripts/widgets/progress-meter.js"></script>
-<script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
-<script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
-<script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
+{% for item in widgets %}
+  {% if item === 'progress' %}
+    <script type="text/javascript" src="../../scripts/widgets/progress-meter.js"></script>
+  {% elif item === 'aClock' %}
+    <script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
+  {% elif item === 'dClock' %}
+    <script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
+  {% elif item === 'countdown' %}
+    <script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
+  {% elif item === 'barChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/bar-chart.js"></script>
+  {% elif item === 'doughnutChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/doughnut-chart.js"></script>
+  {% elif item === 'scatterChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/scatter-chart.js"></script>
+  {% elif item === 'pieChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/pie-chart.js"></script>
+  {% endif %}
+{% endfor %}
+
+{% for item in widgetsTwo %}
+  {% if item === 'progress' %}
+    <script type="text/javascript" src="../../scripts/widgets/progress-meter.js"></script>
+  {% elif item === 'aClock' %}
+    <script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
+  {% elif item === 'dClock' %}
+    <script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
+  {% elif item === 'countdown' %}
+    <script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
+  {% elif item === 'barChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/bar-chart.js"></script>
+  {% elif item === 'doughnutChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/doughnut-chart.js"></script>
+  {% elif item === 'scatterChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/scatter-chart.js"></script>
+  {% elif item === 'pieChart' %}
+    <script type="text/javascript" src="../../scripts/widgets/pie-chart.js"></script>
+  {% endif %}
+{% endfor %}
+
 {% endblock %}

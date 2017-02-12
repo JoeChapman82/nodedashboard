@@ -53,7 +53,7 @@
 {% endmacro %}
 
 {% macro countdown(display, event,dueDate) %}
-<div class="flex-widget-{{ display }} widget-countdown">
+<div class="flex-widget-{{ display }} canvas-display widget-countdown">
 <p class="countdown-event">{{ event }}</p>
 <p id="countdownTimerDays" class="countdown-timer-days"><br></p>
 <p id="countdownTimerTime" class="countdown-timer-time"></p>
@@ -148,8 +148,8 @@ CHARTS
 CHARTS
 #}
 
-{% macro barChart(display, x, y, main, title) %}
-<table id="dataChart" class="data-table">
+{% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title) %}
+<table id="{{ tableID }}" class="data-table">
     {% for item in main %}
     <tr>
     <td>{{ item[0] }}</td>
@@ -158,8 +158,8 @@ CHARTS
     {% endfor %}
 </table>
 <div class="flex-widget-{{ display }}-double-width widget-bar-chart">
-  <div id="barChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
-  <canvas id="barChartDisplay" class="bar-chart-display" width="610" height="350"></canvas>
+  <div id="{{ dataID }}" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="{{ CanvasID }}" class="bar-chart-display" width="610" height="350"></canvas>
 </div>
 {% endmacro %}
 

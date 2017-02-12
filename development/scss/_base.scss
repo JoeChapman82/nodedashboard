@@ -1,6 +1,6 @@
 html {
   font-family: $main-font-family;
-  font-size: 1em;
+  font-size: 16px;
   margin: none;
   padding: none;
 }
@@ -61,3 +61,11 @@ i {
   padding-top: 45vh;
   text-align: center;
 }
+
+.canvas-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }

@@ -82,12 +82,23 @@ $('#preview-submit').click(function() {
 });
 
 
-// Dashboard page
+// Dashboard page switch methods
 function switchBoards() {
-  $(".flex-wrapper-regular").toggle('slide');
+  $(".switcher").toggle('slide', function() {
   $('#secondBoard').toggleClass('hidden');
+  });
 }
 
 // if ($('#secondBoard')) {
-//   setInterval(switchBoards, 60000);
+//   setInterval(switchBoards, 5000);
 // }
+
+function fadeBoards() {
+  $(".switcher").fadeToggle('slow', function() {
+  $('#secondBoard').fadeToggle('slow').toggleClass('hidden');
+});
+}
+
+if (($('#sortable2').children().length) > 0) {
+  setInterval(fadeBoards, 5000);
+}

@@ -1,6 +1,6 @@
 html {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: 16px;
   margin: none;
   padding: none; }
 
@@ -48,6 +48,13 @@ i {
   color: #FFFFFF;
   padding-top: 45vh;
   text-align: center; }
+
+.canvas-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
 
 fieldset {
   box-sizing: border-box;
@@ -170,10 +177,10 @@ input[type=submit]:focus {
 .tv-widget-double-width {
   width: 38.5%; }
 
-@media only screen and (max-width: 600px) {
-  .flex-widget {
+@media only screen and (max-width: 800px) {
+  .flex-widget-pc {
     width: 100%; }
-  .flex-widget-double-width {
+  .flex-widget-pc-double-width {
     width: 98%; } }
 
 .flex-widget-pc {
@@ -358,8 +365,11 @@ input[type=radio]:hover {
   background-color: rgba(71, 187, 179, 0.4); }
 
 #clock {
-  max-width: 100%;
-  padding-top: 50px; }
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 7vh 0 2vh; }
 
 .widget-notices {
   background-color: #47bbb3; }
@@ -371,7 +381,7 @@ input[type=radio]:hover {
   color: rgba(255, 255, 255, 0.9);
   font-size: 195%;
   font-weight: bold;
-  margin-top: 70px; }
+  margin-top: 9vh; }
 
 .countdown-timer-days,
 .countdown-timer-time {
@@ -443,13 +453,14 @@ input[type=radio]:hover {
 #progressMeterDisplay {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  max-height: 98%;
+  max-width: 99%;
   padding: 0; }
 
 .progress-meter-heading {
   color: rgba(255, 255, 255, 0.6);
   font-size: 195%;
-  margin-top: 50px;
+  margin-top: 5vh;
   margin-bottom: 10px; }
 
 .widget-bar-chart {

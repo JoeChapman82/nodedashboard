@@ -53,11 +53,16 @@ app.post('/dashboard-select', [
   weatherCall,
   xkcdCall,
   function(req, res) {
+    if (req.body.widget.length > 8) {
+    res.locals.widgetsTwo = req.body.widget.splice(8, req.body.widget.length - 8);
+  }
     res.locals.dummyData = dummyData;
     res.locals.dummyDataScatter = dummyDataScatter;
     res.locals.pieData = pieData;
     res.locals.widgets = req.body.widget;
     res.locals.display = req.body.display;
+    console.log(res.locals.widgets);
+    console.log(res.locals.widgetsTwo);
     if (req.body.display === 'pc') {
     res.render('dashboards/test-space');
   } else if (req.body.display === 'tv'){
@@ -78,14 +83,10 @@ app.get('/dashboards/test-space', function(req, res) {
   res.render('/dashboards/test-space');
 });
 
-app.get('/', function(req, res) {
-  res.render('/dashboards/main-dash-tv');
+app.get('/dashboards/test', function(req, res) {
+  res.locals.data = dummyData;
+  res.render('dashboards/test.njk');
 });
-
-app.get('/', function(req, res) {
-  res.render('/dashboards/sort-test');
-});
-
 
 
 app.listen(PORT, function() {
@@ -96,7 +97,7 @@ app.listen(PORT, function() {
 //   ui: false,
 //   files: ['public/**/*.*', 'app/public/**/*.*'],
 //   ghostmode: false,
-//   open: false,
+//   open: true,
 //   notify: true,
 //   logLevel: 'error'
 // });
