@@ -1,9 +1,9 @@
 $main-font-family: Arial, Helvetica, sans-serif;
 
-$font-small: 80%;
-$font-regular: 100%;
-$font-large: 120%;
-$font-xlarge: 170%;
-$font-xxlarge: 195%;
-$font-xxxlarge: 46px;
-$font-super: 450%;
+$font-small: calc(12px + .1vw);
+$font-regular: calc(14px + .1vw);
+$font-large: calc(17px + .1vw);
+$font-xlarge: 1.7vw;
+$font-xxlarge: 2.3vw;
+$font-xxxlarge: 3vw;
+$font-super: 4vw;

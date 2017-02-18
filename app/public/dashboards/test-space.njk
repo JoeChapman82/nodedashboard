@@ -3,6 +3,9 @@
 {% import "nunjucks/widgets/master-widgets.njk" as widget %}
 
 {% block body %}
+
+{{ 'aTest' }}
+
 <div class="flex-wrapper-regular switcher" id="sortable">
   {% for item in widgets %}
     {% if item === 'weather' %}
@@ -20,7 +23,7 @@
     {% elif item === 'doughnutChart' %}
       {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
     {% elif item === 'map' %}
-      {{ widget.map(display) }}
+      {{ widget.map(display, 'New York', 'Empire State Building') }}
     {% elif item === 'aClock' %}
       {{ widget.aClock(display) }}
     {% elif item === 'countdown' %}

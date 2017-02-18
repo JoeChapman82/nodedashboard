@@ -3,8 +3,8 @@
   display: flex;
   flex-wrap: wrap;
   height: 95vh;
+  margin: 0 80px;
   max-width: 100%;
-  margin: 0px 80px;
 }
 
 .flex {
@@ -21,8 +21,8 @@
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-flex;
-  height: 220px;
   flex-wrap: wrap;
+  height: 220px;
   margin: 5px auto;
 
 }
@@ -47,25 +47,25 @@
 }
 
 .flex-widget-preview {
+  background-color: $dark-grey;
   box-sizing: border-box;
-  background-color: rgba(48, 95, 92, 1);
   height: 100px;
-  max-height: 100%;
   margin: 5px;
-  width: 24%;
-  text-align: center;
+  max-height: 100%;
   position: relative;
+  text-align: center;
+  width: 24%;
 }
 
 .flex-widget-preview-double-width {
+  background-color: $dark-grey;
   box-sizing: border-box;
-  background-color: rgba(48, 95, 92, 1);
   height: 100px;
-  max-height: 100%;
   margin: 5px;
-  width: 48%;
-  text-align: center;
+  max-height: 100%;
   position: relative;
+  text-align: center;
+  width: 48%;
 }
 
 .mobile-widget {
@@ -90,39 +90,40 @@
 
 @media only screen and (max-width:800px) {
   .flex-widget-pc, {
-    width: 100%;
+    flex-basis: 100%;
   }
+
   .flex-widget-pc-double-width {
     width: 98%;
   }
 }
 
 .flex-widget-pc {
-  box-sizing: border-box;
   background-color: $widget-green-dark;
+  box-sizing: border-box;
+  flex-basis: 24%;
   height: 46vh;
-  max-height: 100%;
-  width: 24%;
   margin: 5px;
-  text-align: center;
+  max-height: 100%;
   position: relative;
+  text-align: center;
 }
 
 .flex-widget-pc-double-width {
-  box-sizing: border-box;
   background-color: $widget-light-blue;
+  box-sizing: border-box;
   height: 46vh;
-  width: 48.8%;
   margin: 5px;
-  text-align: center;
   position: relative;
+  text-align: center;
+  width: 48.8%;
 }
 
 .flex-widget-tv {
-  box-sizing: border-box;
   background-color: $widget-green-dark;
+  box-sizing: border-box;
   height: 46vh;
-  max-height: 100%;
+  max-height: 100vh;
   width: 19%;
   margin: 5px;
   text-align: center;
@@ -130,40 +131,40 @@
 }
 
 .flex-widget-tv-double-width {
-  box-sizing: border-box;
   background-color: $widget-light-blue;
+  box-sizing: border-box;
   height: 46vh;
-  width: 39%;
   margin: 5px;
-  text-align: center;
   position: relative;
+  text-align: center;
+  width: 38.6%;
 }
 
 .flex-widget-double-height {
   box-sizing: border-box;
   height: 95vh;
-  width: 24%;
   margin: 5px;
-  text-align: center;
   position: relative;
+  text-align: center;
+  width: 24%;
 }
 
 .icon-background {
   color: $white;
-  width: 100%;
-  position: absolute;
-  opacity: 0.1;
-  font-size: 275px;
-  text-align: center;
+  font-size: 19vw;
   margin-top: 40px;
+  opacity: .1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .icon-background-alt {
   color: $white;
-  width: 100%;
-  position: absolute;
-  opacity: 0.5;
-  font-size: 225px;
-  text-align: center;
+  font-size: 16vw;
   margin-top: 100px;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }

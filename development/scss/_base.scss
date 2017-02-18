@@ -32,8 +32,9 @@ body {
 }
 
 iframe {
-  width: 99%;
-  height: 80%;
+  width: 98%;
+  height: 85%;
+  margin-top: -10px;
 }
 
 i {
@@ -68,4 +69,8 @@ i {
   max-height: 98%;
   max-width: 99%;
   padding: 0;
+ }
+
+.align-wrapper {
+  text-align: center;
  }

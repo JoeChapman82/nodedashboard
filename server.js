@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 var bodyParser = require('body-parser');
 var request = require('request');
 
-// var calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
+var calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
 var xkcdCall = require(__dirname + '/app/data-calls/xkcd/xkcd');
 
 var weatherCall = require(__dirname + '/app/data-calls/open-weather/open-weather');
@@ -49,20 +49,23 @@ app.post('/', function(req, res) {
 });
 
 app.post('/dashboard-select', [
-//  calendarCall,
+  calendarCall,
   weatherCall,
   xkcdCall,
   function(req, res) {
-    if (req.body.widget.length > 8) {
+    if (typeof req.body.widget === 'object') {
+    if (req.body.widget.length > 8 && req.body.display === 'pc') {
     res.locals.widgetsTwo = req.body.widget.splice(8, req.body.widget.length - 8);
   }
+  if (req.body.widget.length > 9 && req.body.display === 'tv') {
+  res.locals.widgetsTwo = req.body.widget.splice(9, req.body.widget.length - 9);
+}
+}
     res.locals.dummyData = dummyData;
     res.locals.dummyDataScatter = dummyDataScatter;
     res.locals.pieData = pieData;
     res.locals.widgets = req.body.widget;
     res.locals.display = req.body.display;
-    console.log(res.locals.widgets);
-    console.log(res.locals.widgetsTwo);
     if (req.body.display === 'pc') {
     res.render('dashboards/test-space');
   } else if (req.body.display === 'tv'){
@@ -91,16 +94,16 @@ app.get('/dashboards/test', function(req, res) {
 
 app.listen(PORT, function() {
   console.log('Server listening on port:' + PORT);
-//   browserSync({
-//   proxy: 'localhost:' + (PORT),
-//   port: 3000,
-//   ui: false,
-//   files: ['public/**/*.*', 'app/public/**/*.*'],
-//   ghostmode: false,
-//   open: true,
-//   notify: true,
-//   logLevel: 'error'
-// });
+  browserSync({
+  proxy: 'localhost:' + (PORT),
+  port: 3000,
+  ui: false,
+  files: ['public/**/*.*', 'app/public/**/*.*'],
+  ghostmode: false,
+  open: false,
+  notify: true,
+  logLevel: 'error'
+});
 });
 
 module.exports = app;
