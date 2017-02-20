@@ -1,25 +1,24 @@
+/*jshint esversion: 6 */
+
 require('dotenv').config();
 
-var express = require('express');
-var helmet = require('helmet');
-var app = express();
-var PORT = process.env.PORT || 3000;
-var nunjucks = require('nunjucks');
-var expressNunjucks = require('express-nunjucks');
-var browserSync = require('browser-sync');
-var bodyParser = require('body-parser');
-var request = require('request');
+const express = require('express');
+const helmet = require('helmet');
+const app = express();
+const PORT = process.env.PORT || 3000;
+const nunjucks = require('nunjucks');
+const expressNunjucks = require('express-nunjucks');
+const browserSync = require('browser-sync');
+const bodyParser = require('body-parser');
+const request = require('request');
 
-var calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
-var xkcdCall = require(__dirname + '/app/data-calls/xkcd/xkcd');
+// const calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
+const xkcdCall = require(__dirname + '/app/data-calls/xkcd');
+const weatherCall = require(__dirname + '/app/data-calls/open-weather');
+const genData = require(__dirname + '/app/data-calls/example-data-generator');
 
-var weatherCall = require(__dirname + '/app/data-calls/open-weather/open-weather');
-
-var dummyData = [['apple', 34],['pear', 58], ['plum', 99], ['peach', 23], ['banana', 01], ['grape', 40], ['pineapple', 62], ['peanut', 50],['pommegranite', 72]];
-var dummyDataScatter = [[12000, 12], [34752, 76], [9876, 54], [47234, 98], [23395, 7], [17834, 23], [28234, 34], [234, 69], [0,0], [49999, 99],
-[12365, 56], [89234, 34], [78234, 34], [99999, 99], [67234, 45], [61456, 40], [91234, 74], [12934, 21]];
-var pieData = [['Coding', 5], ['Eating', 2], ['Sleeping', 8], ['Working', 8], ['Traveling', 1], ['Other', 5], ['Things', 7], ['Here', 6]];
-
+const dashboardOrder = require(__dirname + '/app/services/dashboard-order');
+const favMan = require(__dirname + '/app/services/favourites-manager');
 
 app.use(helmet());
 app.use(express.static(__dirname + '/app/public'));
@@ -49,61 +48,56 @@ app.post('/', function(req, res) {
 });
 
 app.post('/dashboard-select', [
-  calendarCall,
+//  calendarCall,
   weatherCall,
   xkcdCall,
+  genData,
+  dashboardOrder,
   function(req, res) {
-    if (typeof req.body.widget === 'object') {
-    if (req.body.widget.length > 8 && req.body.display === 'pc') {
-    res.locals.widgetsTwo = req.body.widget.splice(8, req.body.widget.length - 8);
-  }
-  if (req.body.widget.length > 9 && req.body.display === 'tv') {
-  res.locals.widgetsTwo = req.body.widget.splice(9, req.body.widget.length - 9);
-}
-}
-    res.locals.dummyData = dummyData;
-    res.locals.dummyDataScatter = dummyDataScatter;
-    res.locals.pieData = pieData;
-    res.locals.widgets = req.body.widget;
     res.locals.display = req.body.display;
-    if (req.body.display === 'pc') {
-    res.render('dashboards/test-space');
-  } else if (req.body.display === 'tv'){
-    res.render('dashboards/test-space');
-  } else if (req.body.display === 'mobile') {
-    res.render('dashboards/main-dash');
-  } else {
-    res.render('index');
-  }
+    res.render('dashboards/dashboard');
   }
 ]);
 
-app.get('/dashboards/main-dash', function(req, res) {
-  res.render('/dashboards/main-dash');
-});
+// Routes for ajax calls
 
-app.get('/dashboards/test-space', function(req, res) {
-  res.render('/dashboards/test-space');
-});
+app.post('/xkcd',[xkcdCall, function(req, res) {
+  res.json(res.locals.xkcd);
+}]);
 
-app.get('/dashboards/test', function(req, res) {
-  res.locals.data = dummyData;
-  res.render('dashboards/test.njk');
+app.post('/weather',[weatherCall, function(req, res) {
+  res.send([res.locals.weatherType, res.locals.weatherCity, res.locals.weatherTemp, res.locals.weatherIcon]);
+}]);
+
+// app.post('/calendar',[calendarCall, function(req, res) {
+//   res.send(res.locals.calendar);
+// }]);
+
+// Routes for saving and recovering favourites
+app.post('/save-fave', favMan.saveFile);
+
+app.post('/retrieve-fave', favMan.readFile);
+
+//re route any other requests to index;
+app.get('*', function(req, res) {
+  res.render('index');
 });
 
 
 app.listen(PORT, function() {
   console.log('Server listening on port:' + PORT);
+  if (!process.env.PORT) {
   browserSync({
   proxy: 'localhost:' + (PORT),
-  port: 3000,
+  reloadDelay: 1000,
   ui: false,
-  files: ['public/**/*.*', 'app/public/**/*.*'],
+  files: ['app/public/**/*.*'],
   ghostmode: false,
   open: false,
   notify: true,
   logLevel: 'error'
 });
+}
 });
 
 module.exports = app;

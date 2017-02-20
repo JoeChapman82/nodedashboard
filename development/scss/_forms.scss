@@ -49,3 +49,18 @@ input[type=submit]:focus {
   margin: 20vh 0;
   padding: 20px 50px;
 }
+
+#settingsMenu {
+  text-align: center;
+  margin: 2rem;
+}
+
+.settings-form {
+  background-color: $background-soft-grey;
+  border: 3px solid $grey-border;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 10vh auto;
+  padding: 20px 50px;
+}

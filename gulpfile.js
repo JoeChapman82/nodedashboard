@@ -6,6 +6,8 @@ var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 var concat = require('gulp-concat');
+// var browserSync = require('browser-sync').create();
+
 
 gulp.task('sass', function(){
   return gulp.src(__dirname + '/development/scss/**/*.scss')
@@ -15,8 +17,8 @@ gulp.task('sass', function(){
 
 gulp.task('watch', ['sass'], function(){
   gulp.watch(__dirname + '/development/scss/**/*.scss', ['sass']);
-  gulp.watch(__dirname + '/app/public/nunjucks/**/*.njk');
-  gulp.watch(__dirname + '/app/public/scripts/**/*.js');
+  gulp.watch(__dirname + '/app/public/nunjucks/**/*.njk', ['concat-njk-widgets']);
+  gulp.watch(__dirname + '/development/scripts/**/*.js', ['uglyjs']);
 });
 
 gulp.task('uglyjs', function (cb) {
@@ -29,10 +31,10 @@ gulp.task('uglyjs', function (cb) {
 );
 });
 
-gulp.task('concat', function() {
-  return gulp.src(__dirname + '/public/nunjucks/widgets/*.njk')
-    .pipe(concat('all.njk'))
-    .pipe(gulp.dest(__dirname + '/public/testFolder'));
+gulp.task('concat-njk-widgets', function() {
+  return gulp.src(__dirname + '/development/nunjucks/widgets/*.njk')
+    .pipe(concat('master-widgets.njk'))
+    .pipe(gulp.dest(__dirname + '/app/public/nunjucks/widgets'));
 });
 
 gulp.task('server', function () {
@@ -44,7 +46,6 @@ gulp.task('server', function () {
   });
 });
 
-
 gulp.task('default', function (done) {
-  runSequence('watch', 'sass', 'uglyjs', 'concat', 'server', done);
+  runSequence('watch', 'sass', 'uglyjs', 'concat-njk-widgets', 'server', done);
 });

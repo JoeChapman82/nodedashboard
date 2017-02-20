@@ -11,7 +11,7 @@ function Chart(canvas, labels, data) {
 
 // amend the height attached to canvas element for tv displays (to account for dufferent aspect ratio)
   if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-double-width')) {
-    document.getElementById(canvas).setAttribute('height', '430')
+    document.getElementById(canvas).setAttribute('height', '430');
   }
 
   this.canvas = {
@@ -21,9 +21,6 @@ function Chart(canvas, labels, data) {
     margin: document.getElementById(canvas).width / 10,
     padding: document.getElementById(canvas).width / 120,
   };
-
-console.log(this.canvas.height);
-
   this.labels = {
     title: document.getElementById(labels).getAttribute('data-title'),
     x: document.getElementById(labels).getAttribute('data-x'),
@@ -158,7 +155,6 @@ Chart.prototype.drawBarChart = function() {
 };
 
   Chart.prototype.mainBarChartDraw = function() {
-    console.log('running')
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawTitle();
     this.drawBarChart();

@@ -1,5 +1,5 @@
-{% macro xkcd(number, title, img) %}
-<div class="flex-widget-double-width widget-xkcd">
+{% macro xkcd(display, id, number, title, img) %}
+<div id="{{ id }}" class="flex-widget-{{ display }}-double-width widget-xkcd">
   <p class="xkcd-heading">XKCD: {{ number }}<br>
   {{ title }}</p>
   <br>

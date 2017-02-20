@@ -4,16 +4,14 @@
 
 {% block body %}
 
-{{ 'aTest' }}
-
 <div class="flex-wrapper-regular switcher" id="sortable">
   {% for item in widgets %}
     {% if item === 'weather' %}
-      {{ widget.weather(display, weatherType, weatherCity, weatherTemp, weatherIcon) }}
+      {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon) }}
     {% elif item === 'pieChart' %}
       {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
     {% elif item === 'xkcd' %}
-      {{ widget.xkcd(display, xkcd.num, xkcd.title, xkcd.img) }}
+      {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img) }}
     {% elif item === 'scatterChart' %}
       {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
     {% elif item === 'progress' %}
@@ -44,11 +42,11 @@
   <div class="flex-wrapper-regular" id="sortable2">
     {% for item in widgetsTwo %}
       {% if item === 'weather' %}
-        {{ widget.weather(display, weatherType, weatherCity, weatherTemp, weatherIcon) }}
+        {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon) }}
       {% elif item === 'pieChart' %}
         {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
       {% elif item === 'xkcd' %}
-        {{ widget.xkcd(display, xkcd.num, xkcd.title, xkcd.img) }}
+        {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img) }}
       {% elif item === 'scatterChart' %}
         {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
       {% elif item === 'progress' %}
@@ -58,7 +56,7 @@
       {% elif item === 'doughnutChart' %}
         {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
       {% elif item === 'map' %}
-        {{ widget.map(display) }}
+        {{ widget.map(display, 'New York', 'Empire State Building') }}
       {% elif item === 'aClock' %}
         {{ widget.aClock(display) }}
       {% elif item === 'countdown' %}

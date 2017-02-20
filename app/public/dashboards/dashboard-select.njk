@@ -4,6 +4,21 @@
 {% import "nunjucks/partials/forms.njk" as forms %}
 
 {% block body %}
+<div class="settings-wrapper">
+  <button id="settingsButton" class="settings-button switcher-button" type="button" name="button"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
+</div>
+
+<div id="settingsMenu" class="hidden">
+  <button class="settings-button return-button" type="button" name="button"><i class="fa fa-angle-left" aria-hidden="true"></i> Return</button>
+  <h1 class="select-heading">Settings</h1>
+  <div class="settings-form">
+    <label for="">checkbox</label>
+    <input type="checkbox" name="" value="">
+    <label for="refresh">Data call frequency (minutes)</label>
+    <input type="number" name="refresh" value="">
+  </div>
+</div>
+
 <div id="dashboard-settings">
 <h1 class="select-heading">Select your dashboards</h1>
 <form class="select-form" action="dashboard-select" method="post">
@@ -65,7 +80,8 @@
     <div id="doughnutChart-preview" class="flex-widget-preview widget-doughnut-chart hidden">Doughnut Chart</div>
 
 
-<input id="preview-submit" class="hidden" type="submit" name="" value="Go, Go, Go!">
+<input id="preview-submit" class="hidden" type="submit" name="" value="Load dashboard">
+<input id="hiddenOrdering" type="hidden" name="ordering" value="">
 
 </form>
 </div>

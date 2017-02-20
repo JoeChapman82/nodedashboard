@@ -119,7 +119,7 @@ function listEvents(auth) {
     }
     var events = response.items;
     var returnedArray = [];
-    if (events.length == 0) {
+    if (events.length === 0) {
       resolve(returnedArray);
     } else {
       for (var i = 0; i < events.length; i++) {

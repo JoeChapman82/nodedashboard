@@ -1,0 +1,21 @@
+button {
+  background-color: $white-soft;
+  border: 2px solid $form-field-border-colour;
+  display: inline;
+  border-radius: 5px;
+  font-size: $font-large;
+  margin: .5rem;
+  padding: .5rem 1rem .5rem .5rem;
+  outline: none;
+  box-shadow: 2px 2px 2px 0px $shadow-colour;
+}
+
+.settings-wrapper {
+  position: relative;
+}
+
+.settings-button {
+  position: absolute;
+  top: 2vh;
+  left: 88vw;
+}

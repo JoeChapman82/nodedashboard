@@ -104,6 +104,19 @@ input[type=submit]:focus {
   margin: 20vh 0;
   padding: 20px 50px; }
 
+#settingsMenu {
+  text-align: center;
+  margin: 2rem; }
+
+.settings-form {
+  background-color: rgba(93, 93, 93, 0.9);
+  border: 3px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 10vh auto;
+  padding: 20px 50px; }
+
 .login-heading {
   text-align: center; }
 
@@ -253,6 +266,25 @@ input[type=submit]:focus {
 
 img {
   max-width: 100%; }
+
+button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid black;
+  display: inline;
+  border-radius: 5px;
+  font-size: calc(17px + .1vw);
+  margin: .5rem;
+  padding: .5rem 1rem .5rem .5rem;
+  outline: none;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75); }
+
+.settings-wrapper {
+  position: relative; }
+
+.settings-button {
+  position: absolute;
+  top: 2vh;
+  left: 88vw; }
 
 .select-heading {
   color: rgba(255, 255, 255, 0.8);

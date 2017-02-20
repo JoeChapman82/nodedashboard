@@ -1,5 +1,5 @@
-{% macro countdown(event,dueDate) %}
-<div class="flex-widget widget-countdown">
+{% macro countdown(display, event,dueDate) %}
+<div class="flex-widget-{{ display }} canvas-display widget-countdown">
 <p class="countdown-event">{{ event }}</p>
 <p id="countdownTimerDays" class="countdown-timer-days"><br></p>
 <p id="countdownTimerTime" class="countdown-timer-time"></p>
