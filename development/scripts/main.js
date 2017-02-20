@@ -196,6 +196,8 @@ $('#saveToFave').click(function() {
 
 $('#getFave').click(function() {
   $.post('retrieve-fave', function(data, status) {
+    console.log(data);
+    console.log(status);
       $('#retrievedData').text(data[1].widget);
       console.log(data[1].widget);
     });
