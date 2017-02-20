@@ -6,7 +6,7 @@ const favMan = {
   fs.writeFile('dashboards/favourites/favourite.json', JSON.stringify(req.body), function() {
     console.log(__dirname + '/../public/dashboards/favourites/favourite.json');
     console.log(__dirname);
-    console.log('../../..' + __dirname)
+    console.log('../../..' + __dirname);
     res.send('saved');
   });
 },
