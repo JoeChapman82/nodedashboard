@@ -1,7 +1,7 @@
 .select-heading {
   color: $white-soft;
   text-align: center;
-  margin-top: -10px;
+  margin-top: 10px;
 }
 
 .select-fieldset {
@@ -50,7 +50,7 @@ input[type=radio]:hover {
   // font-size: 50px;
 }
 
-.select-label.hovered {
+.select-label:hover {
   background-color: $color-hover;
   border-color: $color-focus;
 }
@@ -62,7 +62,7 @@ input[type=radio]:hover {
   transform: translate(1px, 2px);
 }
 
-.select-label.focused {
+.select-label:focus {
   border-color: $color-focus;
 }
 

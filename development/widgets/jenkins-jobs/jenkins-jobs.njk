@@ -1,0 +1,8 @@
+{% macro jenkins(display, position, widget, size, rate) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-jenkins" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+  <div class="icon-background-alt">
+    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+  </div>
+  <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">All jenkins builds are successful</p>
+</div>
+{% endmacro %}

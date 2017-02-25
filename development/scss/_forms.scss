@@ -61,6 +61,128 @@ input[type=submit]:focus {
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-block;
-  margin: 10vh auto;
-  padding: 20px 50px;
+  margin: 5vh auto;
+  padding: 0;
+  max-width: 100%;
+}
+
+.fave-form {
+  position: absolute;
+  top: 3vh;
+  left: 1.5vw;
+  text-align: center;
+  background-color: $white-softer;
+  border: 3px solid $grey-border;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 25vw;
+  padding: 1.25rem 2.5rem;
+}
+
+.fave-form.hidden {
+  .hidden {
+    display: none;
+  }
+}
+
+.nameField {
+  margin-bottom: 0.5rem;
+}
+
+.settings-fieldset {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.25rem 2rem 1.25rem 2rem;
+}
+
+.settings-fieldset:first-of-type {
+  border-top: 3px double $main-background-colour;
+}
+
+.settings-legend {
+  float: left;
+  font-size: $font-large;
+  font-weight: bold;
+  margin-top: .70rem;
+  padding-right: 1.5rem;
+}
+
+.settings-inputs {
+  float: right;
+  border-left: 1px solid $main-background-colour;
+  padding-left: 1.5rem;
+}
+
+.settings-input {
+  display: inline;
+  margin: 0;
+}
+
+.settings-input:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.settings-label {
+  display: inline;
+  margin-right: .5rem;
+  font-weight: bold;
+}
+
+.settings-fieldset-top-wrapper {
+  border: 2px groove $white-fieldset;
+  // margin-bottom: .1rem;
+}
+
+.settings-fieldset-top-wrapper:first-of-type {
+  border-top: 3px double $main-background-colour;
+}
+
+.settings-fieldset-top {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.25rem 2rem 1.25rem 2rem;
+  border: 0;
+}
+
+.settings-legend-top {
+  font-size: $font-large;
+  font-weight: bold;
+  padding-top: 1rem;
+}
+
+.settings-label-radio {
+  background-color: $white-soft;
+  border: 3px solid $grey-border;
+  box-shadow: 2px 2px 1px #000000;
+  width: 10rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  padding: 1rem 2rem 1rem 1rem;
+}
+
+.settings-label-radio:hover {
+  background-color: $color-hover;
+  border-color: $color-focus;
+}
+
+.settings-label-radio.selected {
+  background-color: $widget-light-blue;
+  border-color: $widget-medium-blue;
+  box-shadow: 1px 1px 1px #666;
+  transform: translate(1px, 2px);
+}
+
+.settings-label-radio:focus {
+  border-color: $color-focus;
+}
+
+.settings-input-radio {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  float: left;
 }

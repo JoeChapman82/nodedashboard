@@ -74,3 +74,15 @@ i {
 .align-wrapper {
   text-align: center;
  }
+
+ .clearfix {
+   display: block;
+   clear: both;
+ }
+
+ #testIframe {
+   margin: 0;
+   padding: 0;
+   height: 97vh;
+   overflow: hidden;
+ }

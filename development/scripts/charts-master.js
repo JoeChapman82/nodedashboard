@@ -2,7 +2,6 @@
 // labels - The id of the <div> with data attributes
 // data - The id of the data <table>
 // pass js objects - no jquery
-// TODO - try to add jquery support
 
 "use strict";
 
@@ -10,7 +9,7 @@ function Chart(canvas, labels, data) {
   var self = this;
 
 // amend the height attached to canvas element for tv displays (to account for dufferent aspect ratio)
-  if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-double-width')) {
+  if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-1') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-double-width-2')) {
     document.getElementById(canvas).setAttribute('height', '430');
   }
 

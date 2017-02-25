@@ -1,0 +1,10 @@
+{% macro progress(display, data, position, widget, size, rate) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-progress" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+  <p class="progress-meter-heading">Sprint Progress</p>
+<div id="progressMeterData" data-percent="{{ data }}"></div>
+<canvas id="progressMeterDisplay" class="progress-meter-canvas" width="200" height="200"></canvas>
+<span>Some text here</span>
+<br>
+<span>Last updated at { time }</span>
+</div>
+{% endmacro %}

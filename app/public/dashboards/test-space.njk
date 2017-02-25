@@ -1,0 +1,13 @@
+{% extends "nunjucks/templates/layout.njk" %}
+{% block page_title %}PYI - Test Space{% endblock %}
+{% import "nunjucks/widgets/master-widgets.njk" as widget %}
+
+{% block styleSheets %}
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/weather-icons.min.css">
+{% endblock %}
+
+{% block body %}
+<iframe id="testIframe" src="https://jenkins.pyidigital.org/view/PYI%20components/" width="500" height="500"></iframe>
+{% endblock %}

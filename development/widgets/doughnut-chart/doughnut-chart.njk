@@ -1,0 +1,14 @@
+{% macro doughnutChart(display, x, y, main, title, position, widget, size, rate) %}
+<table id="dataChartDoughnut" class="data-table">
+    {% for item in main %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ display }}-{{ size }} widget-doughnutChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}"  data-rate="{{ rate }}">
+  <div id="doughnutChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+  <canvas id="doughnutChartDisplay" class="doughnut-chart-display" width="275" height="360"></canvas>
+</div>
+{% endmacro %}

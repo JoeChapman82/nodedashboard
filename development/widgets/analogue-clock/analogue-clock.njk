@@ -1,0 +1,7 @@
+{% macro aClock(display, position, widget, size, rate) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-aClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+    <canvas id="clock" width="250" height="300">
+      Please upgrade your browser.
+</canvas>
+</div>
+{% endmacro %}

@@ -32,20 +32,26 @@ gulp.task('uglyjs', function (cb) {
 });
 
 gulp.task('concat-njk-widgets', function() {
-  return gulp.src(__dirname + '/development/nunjucks/widgets/*.njk')
+  return gulp.src(__dirname + '/development/widgets/**/*.njk')
     .pipe(concat('master-widgets.njk'))
     .pipe(gulp.dest(__dirname + '/app/public/nunjucks/widgets'));
+});
+
+gulp.task('concat-scripts', function() {
+  return gulp.src(__dirname + '/development/widgets/**/*.js')
+    .pipe(concat('master-widget-scripts.js'))
+    .pipe(gulp.dest(__dirname + '/development/scripts'));
 });
 
 gulp.task('server', function () {
   nodemon({
     script: 'server.js',
-    ext: 'js, json',
+    ext: 'js'
   }).on('quit', function () {
     process.exit(0);
   });
 });
 
 gulp.task('default', function (done) {
-  runSequence('watch', 'sass', 'uglyjs', 'concat-njk-widgets', 'server', done);
+  runSequence('watch', 'sass', 'concat-scripts', 'uglyjs', 'concat-njk-widgets', 'server', done);
 });

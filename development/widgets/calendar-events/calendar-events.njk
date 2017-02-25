@@ -1,0 +1,21 @@
+{% macro calendar(display, calendar, position, widget, size, rate) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-calendar" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+  <div class="center-wrapper">
+    <div class="icon-background-calendar">
+      <i class="fa fa-calendar"></i>
+    </div>
+  <p class="calender-heading">Todays Events</p>
+  <div id="events">
+  {% if calendar.length < 1 %}
+  <p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>
+    No events today</p>
+ {% else %}
+{% for event in calendar %}
+<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>{{ event.start }}
+<br>{{ event.summary }}</p>
+{% endfor %}
+{% endif %}
+</div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,39 +1,48 @@
 {% extends "nunjucks/templates/layout.njk" %}
 {% block page_title %}PYI - Test Space{% endblock %}
 {% import "nunjucks/widgets/master-widgets.njk" as widget %}
+{% import "nunjucks/partials/forms.njk" as forms %}
+
 
 {% block body %}
 
+{{ forms.save() }}
+
+{# Used in main.js to not display save message - loaded created by favMan.js #}
+{% if loaded %}
+<input id="loadedDashboard" type="hidden" name="" value="">
+{% endif %}
+
 <div class="flex-wrapper-regular switcher" id="sortable">
-  {% for item in widgets %}
-    {% if item === 'weather' %}
-      {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon) }}
-    {% elif item === 'pieChart' %}
-      {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
-    {% elif item === 'xkcd' %}
-      {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img) }}
-    {% elif item === 'scatterChart' %}
-      {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
-    {% elif item === 'progress' %}
-      {{ widget.progress(display, '85') }}
-    {% elif item === 'barChart' %}
-      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Something to do with fruit') }}
-    {% elif item === 'doughnutChart' %}
-      {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
-    {% elif item === 'map' %}
-      {{ widget.map(display, 'New York', 'Empire State Building') }}
-    {% elif item === 'aClock' %}
-      {{ widget.aClock(display) }}
-    {% elif item === 'countdown' %}
-      {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00') }}
-    {% elif item === 'notices' %}
-      {{ widget.notices(display, 'PYI Dashboard','Made by DWP Digital') }}
-    {% elif item === 'jenkins' %}
-      {{ widget.jenkins(display) }}
-    {% elif item === 'dClock' %}
-      {{ widget.dClock(display) }}
-    {% elif item === 'calendar' %}
-      {{ widget.calendar(display, calendar) }}
+    {% for item in widgets %}
+    {% if item.widget === 'weather' %}
+      {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'pieChart' %}
+      {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'xkcd' %}
+      {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'scatterChart' %}
+      {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'progress' %}
+      {{ widget.progress(display, '85', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'barChart' %}
+      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'A bar chart - random data', item.position, item.widget, item.size, item.size*305, item.dataRate) }}
+    {% elif item.widget === 'doughnutChart' %}
+      {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'map' %}
+      {{ widget.map(display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'aClock' %}
+      {{ widget.aClock(display, item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'countdown' %}
+      {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'notices' %}
+      {{ widget.notices(display, 'PYI Dashboard','Made by DWP Digital', item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'jenkins' %}
+      {{ widget.jenkins(display, item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'dClock' %}
+      {{ widget.dClock(display, item.position, item.widget, item.size, item.dataRate) }}
+    {% elif item.widget === 'calendar' %}
+      {{ widget.calendar(display, calendar, item.position, item.widget, item.size, item.dataRate) }}
     {% endif %}
   {% endfor %}
 </div>
@@ -41,79 +50,41 @@
 <div id="secondBoard" class="hidden">
   <div class="flex-wrapper-regular" id="sortable2">
     {% for item in widgetsTwo %}
-      {% if item === 'weather' %}
-        {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon) }}
-      {% elif item === 'pieChart' %}
-        {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom') }}
-      {% elif item === 'xkcd' %}
-        {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img) }}
-      {% elif item === 'scatterChart' %}
-        {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart') }}
-      {% elif item === 'progress' %}
-        {{ widget.progress(display, '85') }}
-      {% elif item === 'barChart' %}
-        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Something to do with fruit') }}
-      {% elif item === 'doughnutChart' %}
-        {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut') }}
-      {% elif item === 'map' %}
-        {{ widget.map(display, 'New York', 'Empire State Building') }}
-      {% elif item === 'aClock' %}
-        {{ widget.aClock(display) }}
-      {% elif item === 'countdown' %}
-        {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00') }}
-      {% elif item === 'notices' %}
-        {{ widget.notices(display, 'PYI Dashboard','Made by DWP Digital') }}
-      {% elif item === 'jenkins' %}
-        {{ widget.jenkins(display) }}
-      {% elif item === 'dClock' %}
-        {{ widget.dClock(display) }}
-      {% elif item === 'calendar' %}
-        {{ widget.calendar(display, calendar) }}
+      {% if item.widget === 'weather' %}
+        {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'pieChart' %}
+        {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Pie Chart', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'xkcd' %}
+        {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'scatterChart' %}
+        {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'progress' %}
+        {{ widget.progress(display, '85', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'barChart' %}
+        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Bar Chart - ranndom Date', item.position, item.widget, item.size, item.size*305, item.dataRate) }}
+      {% elif item.widget === 'doughnutChart' %}
+        {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Doughtnut Chart', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'map' %}
+        {{ widget.map(display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'aClock' %}
+        {{ widget.aClock(display, item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'countdown' %}
+        {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'notices' %}
+        {{ widget.notices(display, 'PYI Dashboard','Made by DWP Digital', item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'jenkins' %}
+        {{ widget.jenkins(display, item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'dClock' %}
+        {{ widget.dClock(display, item.position, item.widget, item.size, item.dataRate) }}
+      {% elif item.widget === 'calendar' %}
+        {{ widget.calendar(display, calendar, item.position, item.widget, item.size, item.dataRate) }}
       {% endif %}
     {% endfor %}
   </div>
 </div>
+
 {% endblock %}
 
 {% block widgetScripts %}
-{% for item in widgets %}
-  {% if item === 'progress' %}
-    <script type="text/javascript" src="../../scripts/widgets/progress-meter.js"></script>
-  {% elif item === 'aClock' %}
-    <script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
-  {% elif item === 'dClock' %}
-    <script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
-  {% elif item === 'countdown' %}
-    <script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
-  {% elif item === 'barChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/bar-chart.js"></script>
-  {% elif item === 'doughnutChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/doughnut-chart.js"></script>
-  {% elif item === 'scatterChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/scatter-chart.js"></script>
-  {% elif item === 'pieChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/pie-chart.js"></script>
-  {% endif %}
-{% endfor %}
-
-{% for item in widgetsTwo %}
-  {% if item === 'progress' %}
-    <script type="text/javascript" src="../../scripts/widgets/progress-meter.js"></script>
-  {% elif item === 'aClock' %}
-    <script type="text/javascript" src="../../scripts/widgets/analogue-clock.js"></script>
-  {% elif item === 'dClock' %}
-    <script type="text/javascript" src="../../scripts/widgets/digital-clock.js"></script>
-  {% elif item === 'countdown' %}
-    <script type="text/javascript" src="../../scripts/widgets/countdown.js"></script>
-  {% elif item === 'barChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/bar-chart.js"></script>
-  {% elif item === 'doughnutChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/doughnut-chart.js"></script>
-  {% elif item === 'scatterChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/scatter-chart.js"></script>
-  {% elif item === 'pieChart' %}
-    <script type="text/javascript" src="../../scripts/widgets/pie-chart.js"></script>
-  {% endif %}
-{% endfor %}
-
+    <script type="text/javascript" src="../../scripts/master-widget-scripts.js"></script>
 {% endblock %}

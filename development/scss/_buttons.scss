@@ -10,12 +10,87 @@ button {
   box-shadow: 2px 2px 2px 0px $shadow-colour;
 }
 
+//Settings button
 .settings-wrapper {
   position: relative;
 }
 
 .settings-button {
+  left: 88vw;
   position: absolute;
   top: 2vh;
-  left: 88vw;
+}
+//Favourites button
+.favourites-wrapper {
+  position: relative;
+}
+
+.favourites-button {
+  left: 1vw;
+  position: absolute;
+  top: 2vh;
+}
+
+.save-button {
+  margin: .35rem .25rem -.25rem;
+  padding: .5rem;
+  text-align: center;
+}
+
+.save-button:hover {
+  background-color: $color-hover;
+}
+
+.save-wrapper {
+  background-color: $background-soft-grey;
+  border: 2px solid $white-softer;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 40vw;
+  padding: 0 4rem;
+}
+
+.save-q {
+  margin: 1rem 0 0;
+}
+
+#saveIt {
+    text-align: center;
+}
+
+.fav-select {
+  display: block;
+  width: 10rem;
+}
+
+.close-select {
+  margin-top: 2rem;
+  background-color: $widget-red;
+}
+
+.settings-tab-button {
+  margin: 0 auto;
+  padding: .25rem .75rem;
+  border-radius: 0;
+  width: 50%;
+}
+
+.current-tab {
+  background-color: $widget-light-blue;
+}
+
+.update-button:focus {
+  border-color: $color-focus;
+}
+
+.update-button:hover {
+  background-color: $color-hover;
+  border-color: $color-focus;
+}
+
+.clicked {
+  background-color: $widget-light-blue;
+  border-color: $widget-medium-blue;
+  box-shadow: 1px 1px 1px #666;
+  transform: translate(1px, 2px);
 }

@@ -1,5 +1,21 @@
 {% macro input(id, name, value, type, text, classLab, classInput) %}
 <label class="{{ classLab }}" for="{{ id }}">
-<input id="{{ id }}" class="{{ classInput }}" type="{{ type }}" name="{{ name }}" value="{{ value }}" data-target="{{ value }}-preview">{{ text }}
-</label>
+<input id="{{ id }}" class="{{ classInput }}" type="{{ type }}" name="{{ name }}" value="{{ value }}" data-target="{{ value }}-preview">{{ text }}</label>
+{% endmacro %}
+
+{% macro save() %}
+<div id="saveIt" class="hidden">
+<div class="save-wrapper">
+<p class="save-q">Would you like to save this arrangement?</p>
+<button class="save-button" id="saveYes" type="button" name="button">Yes</button>
+<button class="save-button" id="saveNo" type="button" name="button">No</button>
+<button class="save-button" id="saveStop" type="button" name="button">Stop asking</button>
+<h2 id="savedMessage"></h2>
+<div id="saveName" class="hidden">
+  <label for="">What would you like to call it?</label>
+  <input id="name" class="nameField" type="text" name="faveName" value="">
+  <button id="sendData" type="button" name="button">Save Dashboard</button>
+</div>
+</div>
+</div>
 {% endmacro %}

@@ -2,90 +2,188 @@
 
 {% block page_title %}PYI - Dashboard Select{% endblock %}
 {% import "nunjucks/partials/forms.njk" as forms %}
+{% import "nunjucks/partials/previews.njk" as preview %}
 
 {% block body %}
-<div class="settings-wrapper">
-  <button id="settingsButton" class="settings-button switcher-button" type="button" name="button"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
-</div>
 
-<div id="settingsMenu" class="hidden">
-  <button class="settings-button return-button" type="button" name="button"><i class="fa fa-angle-left" aria-hidden="true"></i> Return</button>
-  <h1 class="select-heading">Settings</h1>
-  <div class="settings-form">
-    <label for="">checkbox</label>
-    <input type="checkbox" name="" value="">
-    <label for="refresh">Data call frequency (minutes)</label>
-    <input type="number" name="refresh" value="">
+<div class="favourites-wrapper">
+  <button id="favouritesButton" class="favourites-button" type="button" name="button" data-target="faveWrapper"><i class="fa fa-heart" aria-hidden="true"></i> Favourites</button>
+  {# <div class="favourites-form-wrapper"> #}
+  <div id="faveWrapper" class="hidden">
+    <form id="faveForm" class="fave-form" action="load-fave" method="post">
+      {% if favourites.length > 0 %}
+      {% for item in favourites %}
+      <button class="fav-select" type="submit" form="faveForm" name="fave" value="{{ item }}">{{ item }}</button>
+      {% endfor %}
+      {% else %}
+      <p>You have no saved favourites :(</p>
+      {% endif %}
+      <button id="closeFave" class="close-select" type="button" name="button"><i class="fa fa-window-close" aria-hidden="true"></i> Close</button>
+    </form>
   </div>
 </div>
 
-<div id="dashboard-settings">
-<h1 class="select-heading">Select your dashboards</h1>
 <form class="select-form" action="dashboard-select" method="post">
 
-<fieldset class="select-fieldset">
-  <legend class="select-legend">Screen Size</legend>
-  {{ forms.input('pc-select', 'display', 'pc', 'radio', 'PC / Laptop', 'select-label', 'select-radio') }}
-  {{ forms.input('tv-select', 'display', 'tv', 'radio', '1080p TV', 'select-label', 'select-radio') }}
-</fieldset>
-
-<fieldset id="widget-select" class="select-fieldset hidden">
-  <legend class="select-legend">Select your widgets</legend>
-{{ forms.input('weather-select', 'widget', 'weather', 'checkbox', 'Weather', 'select-label', 'select-checkbox') }}
-{{ forms.input('map-select', 'widget', 'map', 'checkbox', 'Google Map', 'select-label', 'select-checkbox') }}
-{{ forms.input('aclock-select', 'widget', 'aClock', 'checkbox', 'Analogue Clock', 'select-label', 'select-checkbox') }}
-{{ forms.input('notices-select', 'widget', 'notices', 'checkbox', 'Notices', 'select-label', 'select-checkbox') }}
-{{ forms.input('countdown-select', 'widget', 'countdown', 'checkbox', 'Countdown', 'select-label', 'select-checkbox') }}
-{{ forms.input('jenkins-select', 'widget', 'jenkins', 'checkbox', 'Jenkins Jobs', 'select-label', 'select-checkbox') }}
-{{ forms.input('calender-select', 'widget', 'calendar', 'checkbox', 'Google Calender', 'select-label', 'select-checkbox') }}
-{{ forms.input('dclock-select', 'widget', 'dClock', 'checkbox', 'Digital Clock', 'select-label', 'select-checkbox') }}
-{{ forms.input('xkcd-select', 'widget', 'xkcd', 'checkbox', 'Random XKCD', 'select-label', 'select-checkbox') }}
-{{ forms.input('progress-select', 'widget', 'progress', 'checkbox', 'Progress Meter', 'select-label', 'select-checkbox') }}
-{{ forms.input('pie-select', 'widget', 'pieChart', 'checkbox', 'Pie Chart', 'select-label', 'select-checkbox') }}
-{{ forms.input('scatter-select', 'widget', 'scatterChart', 'checkbox', 'Scatter Chart', 'select-label', 'select-checkbox') }}
-{{ forms.input('bar-select', 'widget', 'barChart', 'checkbox', 'Bar Chart', 'select-label', 'select-checkbox') }}
-{{ forms.input('doughnut-select', 'widget', 'doughnutChart', 'checkbox', 'Doughnut Chart', 'select-label', 'select-checkbox') }}
-</fieldset>
-<div id="previewPane" class="faded hidden">
-  <h3 class="select-heading">Preview</h2>
-<div class="flex">
-
-  <div class="flex-wrapper-preview">
-    <div class="hidden"></div>
+  <div class="settings-wrapper">
+    <button id="settingsButton" class="settings-button switcher-button" type="button" name="button"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
   </div>
 
-    <hr id="preview-breaker" class="hidden">
+  {# TODO Set up partials for other form elements - switch inputs existing partials #}
+  <div id="settingsMenu" class="hidden">
+    <button class="settings-button return-button" type="button" name="button"><i class="fa fa-angle-left" aria-hidden="true"></i> Return</button>
+    <h1 class="select-heading">Settings</h1>
+    <div class="settings-form">
+      <div class="settingsTabs flex">
+        <button id="sizesOpen" class="settings-tab-button current-tab" type="button" name="button" data-target="widgetSizesTab">Widget sizes</button>
+        <button id="callRateOpen" class="settings-tab-button" type="button" name="button" data-target="callRateTab">Data call rate</button>
+        <button id="switchOpen" class="settings-tab-button" type="button" name="button" data-target="switchMethodTab">Switch method</button>
+        <button id="styleOpen" class="settings-tab-button" type="button" name="button" data-target="styleTab">Style</button>
+      </div>
 
-  <div class="flex-wrapper-preview-two hidden">
-    <div class="hidden"></div>
+      <div id="widgetSizesTab" class="settings-tab">
+        <div>
+          <h3>Change the sizes for your widgets</h3>
+          <p>Width from one to four (five for 1080p displays)</p>
+          <p>Height can be either one or two</p>
+        </div>
+        <div>
+        {% for key, value in defaults.widgets %}
+        <fieldset class="settings-fieldset">
+          <legend class="settings-legend">{{ value.displayName }}</legend>
+          <div class="settings-inputs">
+          <label class="settings-label" for="">Width</label>
+          <input class="settings-input width-input" type="number" min="1" max="5" maxlength="1" name="wdth" value="{{ value.width }}" data-target="{{ key }}-preview">
+          <label class="settings-label" for="">Height</label>
+          <input class="settings-input height-input" type="number" min="1" max="1" maxlength="1" name="heit" value="{{ value.height }}" data-target="{{ key }}-preview">
+        </div>
+        </fieldset>
+        {% endfor %}
+        <button id="updateSizes" class="update-button" type="button" name="button">Update</button>
+        <h3 id="updateSizeMessage" class="hidden">Sizes updated</h3>
+        </div>
+      </div>
+
+      <div id="callRateTab" class="settings-tab hidden">
+        <div>
+          <h3>Change how often new data is requested</h3>
+          <p>Enter a time in minutes</p>
+        </div>
+        <div>
+        {% for key, value in defaults.widgets %}
+        {% if value.dataCaller %}
+        <fieldset class="settings-fieldset">
+          <legend class="settings-legend">{{ value.displayName }}</legend>
+          <div class="settings-inputs">
+          <label class="settings-label" for="">Call frequency (mins)</label>
+          <input class="settings-input call-rate-input" type="number" min="1" max="300" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">
+        </div>
+        </fieldset>
+        {% endif %}
+        {% endfor %}
+        <button id="updateCallRate" class="update-button" type="button" name="button">Update</button>
+        <h3 id="updateRateMessage" class="hidden">Call rates updated</h3>
+        </div>
+      </div>
+
+      <div id="switchMethodTab" class="settings-tab hidden">
+        <div>
+          <h3>Change the way you switch between dashboards</h3>
+          <div class="settings-fieldset-top-wrapper">
+            <fieldset class="settings-fieldset-top"->
+              <legend class="settings-legend-top">Switch Method</legend>
+              <label class="settings-label-radio s-method" for="switchManual">Manual
+              <input id="switchManual" class="settings-input-radio" type="radio" name="switchMethod" value="manual">
+              </label>
+              <label class="settings-label-radio s-method selected" for="switchAuto">Automatic
+              <input id="switchAuto" class="settings-input-radio" type="radio" name="switchMethod" value="automatic" checked="checked">
+              </label>
+            </fieldset>
+          </div>
+          <div class="settings-fieldset-top-wrapper">
+            <fieldset class="settings-fieldset-top">
+              <legend class="settings-legend-top">Switch Type</legend>
+              <label class="settings-label-radio s-type" for="switchAnother">Another
+              <input id="switchAnother" class="settings-input-radio" type="radio" name="switchType" value="another">
+              </label>
+              <label class="settings-label-radio s-type" for="switchSwipe">Swipe
+              <input id="switchSwipe" class="settings-input-radio" type="radio" name="switchType" value="swipe">
+              </label>
+              <label class="settings-label-radio s-type selected" for="switchFade">Fade
+              <input id="switchFade" class="settings-input-radio" type="radio" name="switchType" value="fade" checked="checked">
+              </label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div id="styleTab" class="settings-tab hidden">
+        <div>
+          <h3>Change the style of your dashboard and widgets</h3>
+          <p>Check the readme for adding your own styles</p>
+          <div class="settings-fieldset-top-wrapper">
+            <fieldset class="settings-fieldset-top">
+              <legend class="settings-legend-top">Style type</legend>
+              <label class="settings-label-radio st-type selected" for="styleDashing">Dashing-esque
+              <input id="styleDashing" class="settings-input-radio" type="radio" name="styleType" value="dashing" checked="checked" data-target="dashImage">
+              </label>
+              <label class="settings-label-radio st-type" for="styleAngelic">Angelic
+              <input id="styleAngelic" class="settings-input-radio" type="radio" name="styleType" value="angelic" data-target="angelImage">
+              </label>
+              <label class="settings-label-radio st-type" for="styleBlue">Blue ranger
+              <input id="styleBlue" class="settings-input-radio" type="radio" name="styleType" value="blue" data-target="blueImage">
+              </label>
+              <h3>Preview</h3>
+              <img src="/sdfsf/sfsfd" alt="">
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-</div>
-</div>
+  <div id="dashboard-settings">
+  <h1 class="select-heading">Select your dashboards</h1>
+
+  <fieldset class="select-fieldset">
+    <legend class="select-legend">Screen Size</legend>
+    {{ forms.input('pc-select', 'display', 'pc', 'radio', 'PC / Laptop', 'select-label', 'select-radio') }}
+    {{ forms.input('tv-select', 'display', 'tv', 'radio', '1080p TV', 'select-label', 'select-radio') }}
+  </fieldset>
+
+  <fieldset id="widget-select" class="select-fieldset hidden">
+    <legend class="select-legend">Select your widgets</legend>
+    {% for key, value in defaults.widgets %}
+    {{ forms.input(key+'-select', 'widget', key, 'checkbox', value.displayName, 'select-label', 'select-checkbox') }}
+    {% endfor %}
+  </fieldset>
+
+  <div id="previewPane" class="faded hidden">
+    <h3 class="select-heading">Preview</h2>
+    <div class="flex">
+      {{ preview.previewWrapper('flex-wrapper-preview') }}
+      <hr id="preview-breaker" class="hidden">
+      {{ preview.previewWrapper('flex-wrapper-preview-two') }}
+    </div>
+  </div>
 
   <!-- All Widgets go here - placed into preview pane in main.js -->
-    <div id="weather-preview" class="flex-widget-preview widget-weather hidden">Weather</div>
-    <div id="map-preview" class="flex-widget-preview widget-map hidden">Map</div>
-    <div id="aClock-preview" class="flex-widget-preview widget-analogue-clock hidden">Analogue clock</div>
-    <div id="notices-preview" class="flex-widget-preview widget-notices hidden">Notices</div>
-    <div id="countdown-preview" class="flex-widget-preview widget-countdown hidden">Countdown</div>
-    <div id="jenkins-preview" class="flex-widget-preview widget-jenkins-jobs hidden">Jenkins Jobs</div>
-    <div id="calendar-preview" class="flex-widget-preview widget-calendar hidden">Calender</div>
-    <div id="dClock-preview" class="flex-widget-preview widget-digital-clock hidden">Digital Clock</div>
-    <div id="xkcd-preview" class="flex-widget-preview-double-width widget-xkcd hidden">Random XKCD</div>
-    <div id="progress-preview" class="flex-widget-preview widget-progress hidden">Progress Meter</div>
-    <div id="pieChart-preview" class="flex-widget-preview widget-pie-chart hidden">Pie Chart</div>
-    <div id="scatterChart-preview" class="flex-widget-preview widget-scatter-chart hidden">Scatter Chart</div>
-    <div id="barChart-preview" class="flex-widget-preview-double-width widget-bar-chart hidden">Bar Chart</div>
-    <div id="doughnutChart-preview" class="flex-widget-preview widget-doughnut-chart hidden">Doughnut Chart</div>
+  {% for key, value in defaults.widgets %}
+    <div id="{{ key }}-preview"
+         class="widget-{{ key }} hidden"
+         data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}">
+         {{ value.displayName }}
+    </div>
+  {% endfor %}
 
+  <input id="preview-submit" class="hidden" type="submit" name="" value="Load dashboard">
+  <input id="hiddenOrdering" type="hidden" name="ordering" value="">
 
-<input id="preview-submit" class="hidden" type="submit" name="" value="Load dashboard">
-<input id="hiddenOrdering" type="hidden" name="ordering" value="">
-
-</form>
+  </form>
 </div>
+
 <div id="loadingMessages" class="hidden">
-<h1 id="loadingMessage"></h1>
+  <h1 id="loadingMessage"></h1>
 </div>
 {% endblock %}
