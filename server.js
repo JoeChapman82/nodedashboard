@@ -37,11 +37,6 @@ nunjucks.configure(__dirname + '/app/public/', {
     // throwOnUndefined: true
 });
 
-// var njk = expressNunjucks(app, {
-//     watch: true,
-//     noCache: false
-// });
-
 var string = "username:password";
 var buffer = new Buffer(string);
 var toBase64 = buffer.toString('base64');

@@ -7,10 +7,32 @@ TODO - Check path variables / consider node-persist / local storage or other sto
 
 ****************/
 
+function checkName(str){
+    var regEx = /[-_a-z0-9]/ ;
+    return regEx.test(str);
+}
+
+ // console.log(checkName('/'));
+
 const favMan = {
   saveFile : function(req, res) {
+    fs.readdir(__dirname + '/../public/dashboards/favourites', function(err, files) {
+      if (err) {
+      res.send(err);
+      return;
+      } else if (typeof files !== 'undefined' && files.length >= 10) {
+      res.send('Sorry, only 10 Favourites allowed :(');
+      return;
+      }
+    });
+    for (let i = 0; i < req.body.name.length; i++) {
+      if (checkName(req.body.name[i]) === false) {
+      res.send('Invalid file name');
+      return;
+      }
+    }
   fs.writeFile(`${__dirname}/../public/dashboards/favourites/${req.body.name}.json`, req.body.ordering, function() {
-    res.send('saved');
+  return res.send('saved');
   });
 },
   readFile : function(req, res, next) {
@@ -34,6 +56,10 @@ const favMan = {
       }
       if (typeof files !== 'undefined' && files.length >= 1) {
         files.forEach(function(file) {
+          // To ignore .DS_Store file that heroku created
+          if (file.indexOf('.') === 0) {
+            return;
+          }
         let location = file.indexOf('.');
         faveNames.push(file.substring(0, location));
       });

@@ -1,11 +1,3 @@
-{% macro aClock(display, position, widget, size, rate, style) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-aClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
-    <canvas id="clock" width="250" height="300">
-      Please upgrade your browser.
-</canvas>
-</div>
-{% endmacro %}
-
 {% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title, position, widget, size, width, rate, style) %}
 <table id="{{ tableID }}" class="data-table">
     {% for item in main %}
@@ -40,6 +32,14 @@
 {% endif %}
 </div>
   </div>
+</div>
+{% endmacro %}
+
+{% macro aClock(display, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-aClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+    <canvas id="clock" width="250" height="300">
+      Please upgrade your browser.
+</canvas>
 </div>
 {% endmacro %}
 

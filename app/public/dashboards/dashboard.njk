@@ -22,6 +22,7 @@
 The assignment should be done in the macro #}
 <div class="flex-wrapper-regular switcher" id="sortable">
     {% for item in widgets %}
+    {# {{ widget[item.widget](dataSet, data) }} #}
     {% if item.widget === 'weather' %}
       {{ widget.weather(item.display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'pieChart' %}

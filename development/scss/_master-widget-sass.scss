@@ -57,6 +57,23 @@
   margin-top: 0px;
 }
 
+.widget-dClock {
+  background-color: $widget-red;
+}
+
+.digital-date {
+  font-size: $font-xxlarge;
+  color: $white;
+  margin-top: 5vw;
+}
+
+.digital-time {
+  font-size: $font-super;
+  color: $white;
+  font-weight: bold;
+  margin: 0;
+}
+
 .widget-countdown {
   background-color: rgba(220, 89, 69, 1);
 }
@@ -87,23 +104,6 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.widget-dClock {
-  background-color: $widget-red;
-}
-
-.digital-date {
-  font-size: $font-xxlarge;
-  color: $white;
-  margin-top: 5vw;
-}
-
-.digital-time {
-  font-size: $font-super;
-  color: $white;
-  font-weight: bold;
-  margin: 0;
-}
-
 .widget-doughnutChart {
   background-color: $white-soft;
 }
@@ -126,12 +126,12 @@
   margin-top: 30px;
 }
 
-.widget-map {
-  background-color: rgba(220, 89, 69, 1);
-}
-
 .widget-notices {
   background-color: $widget-green-light;
+}
+
+.widget-map {
+  background-color: rgba(220, 89, 69, 1);
 }
 
 .widget-pieChart {
@@ -139,6 +139,35 @@
 }
 
 .pie-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
+.widget-xkcd {
+  background-color: $white-soft;
+}
+
+// $widget-green-dark;
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%;
+}
+
+.xkcd-heading {
+  font-size: $font-large;
+  color: $main-background-colour;
+  margin: 0 auto -20px;
+}
+
+.widget-scatterChart {
+  background-color: $white-soft;
+}
+
+.scatter-chart-display {
   display: block;
   margin: 0 auto;
   max-height: 98%;
@@ -196,33 +225,4 @@
   font-size: 14vw;
   text-align: center;
   margin-top: 13vh;
-}
-
-.widget-scatterChart {
-  background-color: $white-soft;
-}
-
-.scatter-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0;
- }
-
-.widget-xkcd {
-  background-color: $white-soft;
-}
-
-// $widget-green-dark;
-
-.xkcd-comic {
-  max-width: 100%;
-  max-height: 87%;
-}
-
-.xkcd-heading {
-  font-size: $font-large;
-  color: $main-background-colour;
-  margin: 0 auto -20px;
 }
