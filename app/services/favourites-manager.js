@@ -30,6 +30,7 @@ const favMan = {
     let faveNames = [];
     fs.readdir(__dirname + '/../public/dashboards/favourites', function(err, files) {
       if (err) {
+        next();
         console.log(err);
       }
       if (files.length >= 1) {
