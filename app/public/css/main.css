@@ -616,30 +616,6 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-countdown {
-  background-color: #dc5945; }
-
-.countdown-event {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 2.3vw;
-  font-weight: bold;
-  margin-top: 9vh; }
-
-.countdown-timer-days,
-.countdown-timer-time {
-  color: rgba(255, 215, 0, 0.8);
-  font-size: 3vw; }
-
-.countdown-timer-days {
-  margin-top: 0;
-  margin-bottom: -40px; }
-
-.countdown-timer-time {
-  margin-bottom: 0px; }
-
-.countdown-due-date {
-  color: rgba(255, 255, 255, 0.9); }
-
 .widget-calendar {
   background-color: teal;
   overflow: scroll; }
@@ -668,6 +644,30 @@ input[type=radio]:hover {
   font-size: 17vw;
   text-align: center;
   margin-top: 0px; }
+
+.widget-countdown {
+  background-color: #dc5945; }
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2.3vw;
+  font-weight: bold;
+  margin-top: 9vh; }
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: 3vw; }
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px; }
+
+.countdown-timer-time {
+  margin-bottom: 0px; }
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9); }
 
 .widget-dClock {
   background-color: #dc5945; }
@@ -707,6 +707,16 @@ input[type=radio]:hover {
 .widget-notices {
   background-color: #47bbb3; }
 
+.widget-pieChart {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.pie-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
+
 .widget-progress {
   background-color: #3c6f9a; }
 
@@ -722,26 +732,6 @@ input[type=radio]:hover {
   font-size: 2.3vw;
   margin-top: 5vh;
   margin-bottom: 10px; }
-
-.widget-pieChart {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.pie-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
-
-.widget-scatterChart {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.scatter-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
 
 .widget-weather {
   background-color: steelblue; }
@@ -770,6 +760,16 @@ input[type=radio]:hover {
   font-size: 14vw;
   text-align: center;
   margin-top: 13vh; }
+
+.widget-scatterChart {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.scatter-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
 
 .widget-xkcd {
   background-color: rgba(255, 255, 255, 0.8); }

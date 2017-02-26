@@ -69,25 +69,6 @@ if (document.getElementById('barCanvas')) {
   }());
 }
 
-function digitalClock() {
-var today = new Date();
-var h = today.getHours();
-var m = today.getMinutes();
-var s = today.getSeconds();
-if (m < 10) {
-  m = '0' + m;
-}
-if (s < 10) {
-  s = '0' + s;
-}
-var date = today.toDateString();
-var time = h + ":" + m + ":" + s;
-$('#digitalDate').text(date);
-$('#digitalTime').text(time);
-}
-
-setInterval(digitalClock, 1000);
-
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
@@ -112,10 +93,36 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 
 setInterval(countdown, 1000);
 
+function digitalClock() {
+var today = new Date();
+var h = today.getHours();
+var m = today.getMinutes();
+var s = today.getSeconds();
+if (m < 10) {
+  m = '0' + m;
+}
+if (s < 10) {
+  s = '0' + s;
+}
+var date = today.toDateString();
+var time = h + ":" + m + ":" + s;
+$('#digitalDate').text(date);
+$('#digitalTime').text(time);
+}
+
+setInterval(digitalClock, 1000);
+
 if (document.getElementById('doughnutChartDisplay')) {
   (function() {
     var doughnutChart = new Chart('doughnutChartDisplay', 'doughnutChartData', 'dataChartDoughnut');
     doughnutChart.doughnutChart();
+  }());
+}
+
+if (document.getElementById('pieChartDisplay')) {
+  (function() {
+    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
+    pieChart.pieChart();
   }());
 }
 
@@ -180,13 +187,6 @@ var myInt = setInterval(mainDraw, 50);
 
 }());
 
-}
-
-if (document.getElementById('pieChartDisplay')) {
-  (function() {
-    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
-    pieChart.pieChart();
-  }());
 }
 
 if (document.getElementById('scatterChartDisplay')) {
