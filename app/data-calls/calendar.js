@@ -62,7 +62,7 @@ function getNewToken(oauth2Client, callback) {
     access_type: 'online',
     scope: SCOPES
   });
-  alert('Authorize this app by visiting this url: ', authUrl);
+  return ('Authorize this app by visiting this url: ', authUrl);
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
