@@ -3,6 +3,9 @@
 
 
 module.exports = function(req, res, next) {
+  if (typeof res.locals.data === 'undefined') {
+    res.locals.data = {};
+  }
   let dummyData = [];
   for (let i = 0; i <= (Math.floor(Math.random() * 20) + 5); i++) {
     let randomNum = Math.floor(Math.random() * 100);
@@ -22,8 +25,15 @@ module.exports = function(req, res, next) {
     pieData.push([`Item ${i + 1}`, randomNum]);
   }
 
-  res.locals.dummyData = dummyData;
-  res.locals.dummyDataScatter = dummyDataScatter;
-  res.locals.pieData = pieData;
+  let doughnutData = [];
+  for (let i = 0; i <= 8; i++) {
+    let randomNum = Math.floor(Math.random() * 100);
+    doughnutData.push([`Item ${i + 1}`, randomNum]);
+  }
+
+  res.locals.data.barChart = dummyData;
+  res.locals.data.scatterChart = dummyDataScatter;
+  res.locals.data.pieChart = pieData;
+  res.locals.data.doughnutChart = doughnutData;
   next();
 };

@@ -1,5 +1,5 @@
-{% macro dClock(display, position, widget, size, rate, style) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-dClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+{% macro dClock(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-dClock" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
   <div class="icon-background">
     <i class="fa fa-clock-o"></i>
   </div>

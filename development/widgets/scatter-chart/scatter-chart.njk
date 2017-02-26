@@ -1,14 +1,14 @@
-{% macro scatterChart(display, x, y, main, title, position, widget, size, rate, style) %}
+{% macro scatterChart(dataset, data) %}
 <table id="dataChartScatter" class="data-table">
-    {% for item in main %}
+    {% for item in data.scatterChart %}
     <tr>
     <td>{{ item[0] }}</td>
     <td>{{ item[1] }}</td>
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-scatterChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
-  <div id="scatterChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-scatterChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+  <div id="scatterChartData" data-x="Large numbers" data-y="Smaller numbers" data-title="Scatter Chart"></div>
   <canvas id="scatterChartDisplay" class="scatter-chart-display" width="300" height="360"></canvas>
 </div>
 {% endmacro %}

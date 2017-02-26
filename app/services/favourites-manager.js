@@ -26,6 +26,9 @@ const favMan = {
       }
     });
     for (let i = 0; i < req.body.name.length; i++) {
+      console.log(req.body.name);
+      console.log(req.body.name[i]);
+      console.log(checkName(req.body.name[i]));
       if (checkName(req.body.name[i]) === false) {
       res.send('Invalid file name');
       return;

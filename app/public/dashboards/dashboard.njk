@@ -12,82 +12,20 @@
 {% block body %}
 
 {{ forms.save() }}
-
 {# Used in main.js to not display save message - loaded created by favMan.js #}
 {% if loaded %}
 <input id="loadedDashboard" type="hidden" name="" value="">
 {% endif %}
 
-{# TODO - This is a daft way to do this. Should be looped over with each widget getting padded item only
-The assignment should be done in the macro #}
 <div class="flex-wrapper-regular switcher" id="sortable">
     {% for item in widgets %}
-    {# {{ widget[item.widget](dataSet, data) }} #}
-    {% if item.widget === 'weather' %}
-      {{ widget.weather(item.display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'pieChart' %}
-      {{ widget.pieChart(item.display, 'labels', 'numbers', pieData, 'Nom, nom, nom', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'xkcd' %}
-      {{ widget.xkcd(item.display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'scatterChart' %}
-      {{ widget.scatterChart(item.display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'progress' %}
-      {{ widget.progress(item.display, '85', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'barChart' %}
-      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', item.display, 'Something', 'Something else', dummyData, 'A bar chart - random data', item.position, item.widget, item.size, item.size*305, item.dataRate, item.style) }}
-    {% elif item.widget === 'doughnutChart' %}
-      {{ widget.doughnutChart(item.display, 'labels', 'numbers', pieData, 'Mmm, doughnut', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'map' %}
-      {{ widget.map(item.display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'aClock' %}
-      {{ widget.aClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'countdown' %}
-      {{ widget.countdown(item.display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'notices' %}
-      {{ widget.notices(item.display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'jenkins' %}
-      {{ widget.jenkins(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'dClock' %}
-      {{ widget.dClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% elif item.widget === 'calendar' %}
-      {{ widget.calendar(item.display, calendar, item.position, item.widget, item.size, item.dataRate, item.style) }}
-    {% endif %}
-  {% endfor %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
 </div>
-
 <div id="secondBoard" class="hidden">
   <div class="flex-wrapper-regular" id="sortable2">
     {% for item in widgetsTwo %}
-
-      {% if item.widget === 'weather' %}
-        {{ widget.weather(item.display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'pieChart' %}
-        {{ widget.pieChart(item.display, 'labels', 'numbers', pieData, 'Pie Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'xkcd' %}
-        {{ widget.xkcd(item.display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'scatterChart' %}
-        {{ widget.scatterChart(item.display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'progress' %}
-        {{ widget.progress(item.display, '85', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'barChart' %}
-        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', item.display, 'Something', 'Something else', dummyData, 'Bar Chart - ranndom Date', item.position, item.widget, item.size, item.size*305, item.dataRate, item.style) }}
-      {% elif item.widget === 'doughnutChart' %}
-        {{ widget.doughnutChart(item.display, 'labels', 'numbers', pieData, 'Doughtnut Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'map' %}
-        {{ widget.map(item.display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'aClock' %}
-        {{ widget.aClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'countdown' %}
-        {{ widget.countdown(item.display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'notices' %}
-        {{ widget.notices(item.display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'jenkins' %}
-        {{ widget.jenkins(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'dClock' %}
-        {{ widget.dClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% elif item.widget === 'calendar' %}
-        {{ widget.calendar(item.display, calendar, item.position, item.widget, item.size, item.dataRate, item.style) }}
-      {% endif %}
+      {{ widget[item.widget](item, data) }}
     {% endfor %}
   </div>
 </div>

@@ -4,6 +4,9 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 module.exports = function(req, res, next) {
+  if (typeof res.locals.data === 'undefined') {
+    res.locals.data = {};
+  }
 if (process.env.NODE_ENV === 'development' ) {
 
   return new Promise(function(resolve, reject) {
@@ -135,7 +138,7 @@ function listEvents(auth) {
   });
 }
 }).then(function(response) {
-  res.locals.calendar = response;
+  res.locals.data.calendar = response;
   next();
 }).catch(function(error) {
   console.log(error);

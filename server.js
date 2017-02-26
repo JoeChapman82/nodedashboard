@@ -44,7 +44,6 @@ console.log(string + " encoding to base64 is " + toBase64);
 
 // Routes
 app.get('/', function(req, res) {
-  console.log(process.env);
   res.render('index');
 });
 
@@ -65,7 +64,6 @@ app.post('/dashboard-select', [
   genData,
   dashboardOrder,
   function(req, res) {
-  console.log(req.body);  // res.locals.display = req.body.display;
     res.render('dashboards/dashboard');
   }
 ]);

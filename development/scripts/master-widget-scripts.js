@@ -1,3 +1,10 @@
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
+  }());
+}
+
 // TODO - redo this
 if (document.getElementById("clock"))
 (function() {
@@ -61,13 +68,6 @@ context.stroke();
 setInterval(setTime, 1000);
 
 }());
-
-if (document.getElementById('barCanvas')) {
-  (function() {
-    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-    myChart.interval(50);
-  }());
-}
 
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'

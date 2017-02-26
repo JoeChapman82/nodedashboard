@@ -1,5 +1,5 @@
-{% macro jenkins(display, position, widget, size, rate, style) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-jenkins" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+{% macro jenkins(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
   <div class="icon-background-alt">
     <i class="fa fa-thumbs-o-up jenkins-icon" aria-hidden="true"></i>
   </div>

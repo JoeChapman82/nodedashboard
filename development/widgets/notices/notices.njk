@@ -1,6 +1,6 @@
-{% macro notices(display, heading, comment, position, widget, size, rate, style) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-notices" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
-<h2>{{ heading }}</h2>
-<p>{{ comment }}</p>
+{% macro notices(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-notices" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+<h2>PYI Dashboard</h2>
+<p>Made by ME Digital</p>
 </div>
 {% endmacro %}

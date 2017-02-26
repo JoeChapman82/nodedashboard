@@ -1,14 +1,16 @@
-{% macro weather(display, id, type, city, temp, icon, position, widget, size, rate) %}
-<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-weather" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+{% macro weather(dataset, data) %}
+ <h1>{{ data.weather[0] | dump }}</h1>
+<h1>{{ data.weather[0].icon }}</h1>
+<div id="weatherOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-weather" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
   <div class="icon-background-weather">
-    {% if icon %}
-    <i class="wi wi-{{ icon }}"></i>
+    {% if data.weather.weather[0].icon %}
+    <i class="wi wi-{{ data.weather.weather[0].icon }}"></i>
     {% else %}
     <i class="wi wi-thermometer"></i>
     {% endif %}
   </div>
-<p class="weather-city">{{ city }} Weather</p>
-<p class="weather-type">{{ type }}</p>
-<p class="weather-temp">{{ temp }}°C</p>
+<p class="weather-city">{{ data.weather.name }} Weather</p>
+<p class="weather-type">{{ data.weather.weather[0].main }}</p>
+<p class="weather-temp">{{ data.weather.main.temp | round(1) }}°C</p>
 </div>
 {% endmacro %}

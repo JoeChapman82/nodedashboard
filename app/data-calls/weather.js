@@ -5,11 +5,11 @@ const url = 'http://api.openweathermap.org/data/2.5/weather?appid=' + process.en
 const weatherCall = new ApiCaller(url);
 
 module.exports = function (req, res, next) {
+  if (typeof res.locals.data === 'undefined') {
+    res.locals.data = {};
+  }
   weatherCall.call().then(function(response) {
-    res.locals.weatherType = response.weather[0].main;
-    res.locals.weatherCity = response.name;
-    res.locals.weatherTemp = Math.floor(response.main.temp * 10) / 10;
-    res.locals.weatherIcon = response.weather[0].icon;
+    res.locals.data.weather = response;
     next();
   }).catch(function(error) {
     console.log(error);

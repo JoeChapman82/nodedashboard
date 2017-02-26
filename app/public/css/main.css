@@ -360,6 +360,15 @@ input[type=submit]:focus {
   text-align: center;
   width: 98%; }
 
+.flex-widget-pc-8 {
+  background-color: steelblue;
+  box-sizing: border-box;
+  height: 98%;
+  margin: 5px;
+  position: relative;
+  text-align: center;
+  width: 98%; }
+
 .flex-widget-tv-1 {
   background-color: rgba(71, 187, 179, 0.4);
   box-sizing: border-box;
@@ -645,20 +654,6 @@ input[type=radio]:hover {
   text-align: center;
   margin-top: 0px; }
 
-.widget-dClock {
-  background-color: #dc5945; }
-
-.digital-date {
-  font-size: 2.3vw;
-  color: #fff;
-  margin-top: 5vw; }
-
-.digital-time {
-  font-size: 4vw;
-  color: #fff;
-  font-weight: bold;
-  margin: 0; }
-
 .widget-countdown {
   background-color: #dc5945; }
 
@@ -683,6 +678,20 @@ input[type=radio]:hover {
 .countdown-due-date {
   color: rgba(255, 255, 255, 0.9); }
 
+.widget-dClock {
+  background-color: #dc5945; }
+
+.digital-date {
+  font-size: 2.3vw;
+  color: #fff;
+  margin-top: 5vw; }
+
+.digital-time {
+  font-size: 4vw;
+  color: #fff;
+  font-weight: bold;
+  margin: 0; }
+
 .widget-doughnutChart {
   background-color: rgba(255, 255, 255, 0.8); }
 
@@ -701,9 +710,6 @@ input[type=radio]:hover {
   font-size: 2.3vw;
   margin-top: 30px; }
 
-.widget-notices {
-  background-color: #47bbb3; }
-
 .widget-map {
   background-color: #dc5945; }
 
@@ -717,27 +723,8 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-xkcd {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.xkcd-comic {
-  max-width: 100%;
-  max-height: 87%; }
-
-.xkcd-heading {
-  font-size: calc(17px + .1vw);
-  color: #222222;
-  margin: 0 auto -20px; }
-
-.widget-scatterChart {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.scatter-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
+.widget-notices {
+  background-color: #47bbb3; }
 
 .widget-progress {
   background-color: #3c6f9a; }
@@ -754,6 +741,16 @@ input[type=radio]:hover {
   font-size: 2.3vw;
   margin-top: 5vh;
   margin-bottom: 10px; }
+
+.widget-scatterChart {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.scatter-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
 
 .widget-weather {
   background-color: steelblue; }
@@ -782,3 +779,15 @@ input[type=radio]:hover {
   font-size: 14vw;
   text-align: center;
   margin-top: 13vh; }
+
+.widget-xkcd {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%; }
+
+.xkcd-heading {
+  font-size: calc(17px + .1vw);
+  color: #222222;
+  margin: 0 auto -20px; }
