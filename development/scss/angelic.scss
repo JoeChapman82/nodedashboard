@@ -1,0 +1,83 @@
+@import 'variables/colours';
+@import 'variables/fonts';
+
+body {
+  background-color: #f1f1f1;
+}
+
+.flex-widget-pc-1,
+ .flex-widget-pc-2,
+ .flex-widget-pc-3,
+ .flex-widget-pc-4,
+ .flex-widget-tv-1,
+ .flex-widget-tv-2,
+ .flex-widget-tv-3,
+ .flex-widget-tv-4 {
+  background-color: $white;
+  background-image: radial-gradient($white, $white-softer);
+//  background-image: radial-gradient($white, $background-soft-grey);
+  border: 1px solid $soft-blue;
+  box-shadow: 0 0 .75rem $soft-blue;
+}
+
+
+.calendar-icon {
+  color: $black;
+}
+
+.calender-heading {
+  color: $black;
+}
+
+.icon-background-calendar {
+  color: $black;
+}
+
+.countdown-event {
+  color: $black-trans
+}
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: $black-trans;
+}
+
+.countdown-due-date {
+  color: $black-trans;
+}
+
+.digital-date {
+  color: $black-trans;
+}
+
+.digital-time {
+  color: $black-trans;
+}
+
+.jenkins-jobs-heading {
+  color: $black-trans;
+}
+
+.jenkins-icon {
+  color: $black-trans;
+}
+
+.progress-meter-heading {
+  color: $black-trans;
+}
+
+.weather-city {
+  color: $black-trans;
+}
+
+.weather-type {
+  color: $black-trans;
+}
+
+.icon-background-weather {
+  color: $black-trans;
+}
+
+.weather-temp {
+  color: $black-trans;
+}

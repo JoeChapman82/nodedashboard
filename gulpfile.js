@@ -17,7 +17,8 @@ gulp.task('sass', function(){
 
 gulp.task('watch', ['sass'], function(){
   gulp.watch(__dirname + '/development/scss/**/*.scss', ['sass']);
-  gulp.watch(__dirname + '/app/public/nunjucks/**/*.njk', ['concat-njk-widgets']);
+  gulp.watch(__dirname + '/app/public/nunjucks/**/*.njk', ['concat-widgets-njk']);
+  gulp.watch(__dirname + '/app/public/dashboards/**/*.njk');
   gulp.watch(__dirname + '/development/scripts/**/*.js', ['uglyjs']);
 });
 

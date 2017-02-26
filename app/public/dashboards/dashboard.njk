@@ -3,6 +3,11 @@
 {% import "nunjucks/widgets/master-widgets.njk" as widget %}
 {% import "nunjucks/partials/forms.njk" as forms %}
 
+{% if widgets[0].style !== 'dashing' %}
+{% block additionalStyleSheets %}
+<link rel="stylesheet" type="text/css" href="css/{{ widgets[0].style }}.css">
+{% endblock %}
+{% endif %}
 
 {% block body %}
 
@@ -13,36 +18,38 @@
 <input id="loadedDashboard" type="hidden" name="" value="">
 {% endif %}
 
+{# TODO - This is a daft way to do this. Should be looped over with each widget getting padded item only
+The assignment should be done in the macro #}
 <div class="flex-wrapper-regular switcher" id="sortable">
     {% for item in widgets %}
     {% if item.widget === 'weather' %}
-      {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.weather(item.display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'pieChart' %}
-      {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Nom, nom, nom', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.pieChart(item.display, 'labels', 'numbers', pieData, 'Nom, nom, nom', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'xkcd' %}
-      {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.xkcd(item.display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'scatterChart' %}
-      {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.scatterChart(item.display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'progress' %}
-      {{ widget.progress(display, '85', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.progress(item.display, '85', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'barChart' %}
-      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'A bar chart - random data', item.position, item.widget, item.size, item.size*305, item.dataRate) }}
+      {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', item.display, 'Something', 'Something else', dummyData, 'A bar chart - random data', item.position, item.widget, item.size, item.size*305, item.dataRate, item.style) }}
     {% elif item.widget === 'doughnutChart' %}
-      {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Mmm, doughnut', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.doughnutChart(item.display, 'labels', 'numbers', pieData, 'Mmm, doughnut', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'map' %}
-      {{ widget.map(display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.map(item.display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'aClock' %}
-      {{ widget.aClock(display, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.aClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'countdown' %}
-      {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.countdown(item.display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'notices' %}
-      {{ widget.notices(display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.notices(item.display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'jenkins' %}
-      {{ widget.jenkins(display, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.jenkins(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'dClock' %}
-      {{ widget.dClock(display, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.dClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% elif item.widget === 'calendar' %}
-      {{ widget.calendar(display, calendar, item.position, item.widget, item.size, item.dataRate) }}
+      {{ widget.calendar(item.display, calendar, item.position, item.widget, item.size, item.dataRate, item.style) }}
     {% endif %}
   {% endfor %}
 </div>
@@ -50,34 +57,35 @@
 <div id="secondBoard" class="hidden">
   <div class="flex-wrapper-regular" id="sortable2">
     {% for item in widgetsTwo %}
+
       {% if item.widget === 'weather' %}
-        {{ widget.weather(display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.weather(item.display, 'weatherOne', weatherType, weatherCity, weatherTemp, weatherIcon, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'pieChart' %}
-        {{ widget.pieChart(display, 'labels', 'numbers', pieData, 'Pie Chart', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.pieChart(item.display, 'labels', 'numbers', pieData, 'Pie Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'xkcd' %}
-        {{ widget.xkcd(display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.xkcd(item.display, 'xkcdOne', xkcd.num, xkcd.title, xkcd.img, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'scatterChart' %}
-        {{ widget.scatterChart(display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.scatterChart(item.display, 'Big numbers', 'Smaller numbers', dummyDataScatter, 'A Scatter Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'progress' %}
-        {{ widget.progress(display, '85', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.progress(item.display, '85', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'barChart' %}
-        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', display, 'Something', 'Something else', dummyData, 'Bar Chart - ranndom Date', item.position, item.widget, item.size, item.size*305, item.dataRate) }}
+        {{ widget.barChart('barTable', 'barDataDiv', 'barCanvas', item.display, 'Something', 'Something else', dummyData, 'Bar Chart - ranndom Date', item.position, item.widget, item.size, item.size*305, item.dataRate, item.style) }}
       {% elif item.widget === 'doughnutChart' %}
-        {{ widget.doughnutChart(display, 'labels', 'numbers', pieData, 'Doughtnut Chart', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.doughnutChart(item.display, 'labels', 'numbers', pieData, 'Doughtnut Chart', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'map' %}
-        {{ widget.map(display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.map(item.display, 'New York', 'Empire State Building', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'aClock' %}
-        {{ widget.aClock(display, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.aClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'countdown' %}
-        {{ widget.countdown(display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.countdown(item.display, 'COUNTDOWN TO DINNER','29-Mar-2017 19:00:00', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'notices' %}
-        {{ widget.notices(display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.notices(item.display, 'PYI Dashboard','Made by ME Digital', item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'jenkins' %}
-        {{ widget.jenkins(display, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.jenkins(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'dClock' %}
-        {{ widget.dClock(display, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.dClock(item.display, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% elif item.widget === 'calendar' %}
-        {{ widget.calendar(display, calendar, item.position, item.widget, item.size, item.dataRate) }}
+        {{ widget.calendar(item.display, calendar, item.position, item.widget, item.size, item.dataRate, item.style) }}
       {% endif %}
     {% endfor %}
   </div>

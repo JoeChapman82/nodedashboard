@@ -124,17 +124,17 @@
           <div class="settings-fieldset-top-wrapper">
             <fieldset class="settings-fieldset-top">
               <legend class="settings-legend-top">Style type</legend>
-              <label class="settings-label-radio st-type selected" for="styleDashing">Dashing-esque
-              <input id="styleDashing" class="settings-input-radio" type="radio" name="styleType" value="dashing" checked="checked" data-target="dashImage">
+              {% for item in defaults.stylesheets %}
+              <label class="settings-label-radio st-type {% if item === 'dashing' %} selected {% endif %}"for="style{{ item }}">{{ item | capitalize }}{% if item === 'dashing' %}-esque{% endif %}
+              <input id="style{{ item }}" class="settings-input-radio st-input" type="radio" name="styleType" value="{{ item }}" {% if item === 'dashing' %}checked="checked"{% endif %} data-target="{{ item }}Preview">
               </label>
-              <label class="settings-label-radio st-type" for="styleAngelic">Angelic
-              <input id="styleAngelic" class="settings-input-radio" type="radio" name="styleType" value="angelic" data-target="angelImage">
-              </label>
-              <label class="settings-label-radio st-type" for="styleBlue">Blue ranger
-              <input id="styleBlue" class="settings-input-radio" type="radio" name="styleType" value="blue" data-target="blueImage">
-              </label>
+              {% endfor %}
               <h3>Preview</h3>
-              <img src="/sdfsf/sfsfd" alt="">
+              <div class="preview-images">
+              {% for item in defaults.stylesheets %}
+              <img id="{{ item }}Preview" class="preview-image" src="../images/{{ item }}.png" alt="{{ item }} style dashboard preview">
+              {% endfor %}
+              </div>
             </fieldset>
           </div>
         </div>
@@ -172,7 +172,7 @@
   {% for key, value in defaults.widgets %}
     <div id="{{ key }}-preview"
          class="widget-{{ key }} hidden"
-         data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}">
+         data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}" data-style="{{ value.style }}">
          {{ value.displayName }}
     </div>
   {% endfor %}

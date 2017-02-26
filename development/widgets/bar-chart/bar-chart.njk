@@ -1,4 +1,4 @@
-{% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title, position, widget, size, width, rate) %}
+{% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title, position, widget, size, width, rate, style) %}
 <table id="{{ tableID }}" class="data-table">
     {% for item in main %}
     <tr>
@@ -7,7 +7,7 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-barChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-barChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="{{ dataID }}" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="{{ CanvasID }}" class="bar-chart-display" width="{{ width }}" height="350"></canvas>
 </div>

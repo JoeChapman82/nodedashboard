@@ -1,4 +1,5 @@
 $main-background-colour: rgba(34, 34, 34, 1);
+$alt-background-colour: #a7a9ac;
 $background-soft-grey: rgba(93, 93, 93, .9);
 
 $form-field-border-colour: rgba(0, 0, 0, 1);
@@ -6,6 +7,7 @@ $form-field-border-colour: rgba(0, 0, 0, 1);
 $grey-border: rgba(128, 128, 128, 1);
 
 $shadow-colour: rgba(0, 0, 0, .75);
+$box-shadow-colour: #666;
 
 $color-focus: 	rgba(255, 140, 0, 1);
 
@@ -18,6 +20,11 @@ $white: #fff;
 $white-fieldset: #dfdfdf;
 $white-soft: rgba(255, 255, 255, .8);
 $white-softer: rgba(255, 255, 255, .6);
+$soft-blue: rgba(81, 203, 238, 1);
+
+$black: #000;
+
+$black-trans: rgba(0, 0, 0, .7);
 
 // Widget backgrounds
 $widget-light-blue: rgba(70, 130, 180, 1);

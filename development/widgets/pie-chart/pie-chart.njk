@@ -1,4 +1,4 @@
-{% macro pieChart(display, x, y, main, title, position, widget, size, rate) %}
+{% macro pieChart(display, x, y, main, title, position, widget, size, rate, style) %}
 <table id="dataChartPie" class="data-table">
     {% for item in main %}
     <tr>
@@ -7,7 +7,7 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-pieChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-pieChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="pieChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="pieChartDisplay" class="pie-chart-display" width="275" height="360"></canvas>
 </div>

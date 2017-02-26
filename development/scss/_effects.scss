@@ -1,0 +1,13 @@
+.focused {
+  border-color: $color-focus;
+}
+
+.faded-out {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+.faded-in {
+  opacity: 1;
+  transition: opacity 400ms;
+}

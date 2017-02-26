@@ -12,6 +12,15 @@ $(function() {
   $("#sortable2").disableSelection();
 });
 
+document.querySelectorAll('input[type="checkbox"], input[type="radio"], button').forEach(function(input){
+  input.addEventListener('focus', function() {
+    this.parentNode.classList.add('focused');
+  });
+  input.addEventListener('blur', function() {
+    this.parentNode.classList.remove('focused');
+  });
+});
+
 // Dashboard select page
 //Change this to generic click / data target function
 if (document.querySelector('#favouritesButton')) {
@@ -81,7 +90,8 @@ $('.select-checkbox').click(function() {
   height: placedWidget.dataset.height,
   position: placedWidget.dataset.position,
   dataCaller: placedWidget.dataset.caller,
-  dataRate: placedWidget.dataset.rate
+  dataRate: placedWidget.dataset.rate,
+  style: placedWidget.dataset.style
 };
 sizeCounter += parseInt(placedWidget.dataset.width);
   if($(this).parent().hasClass('selected')) {
@@ -171,15 +181,34 @@ document.querySelectorAll('.settings-input-radio').forEach(function(input) {
 });
 
 }());
+
+
+// Settings image preview
+document.querySelectorAll('.st-input').forEach(function(item) {
+  item.onclick = function() {
+    var clickedValue = this.value;
+    this.parentNode.parentNode.childNodes.forEach(function(label) {
+      if (typeof label.classList !== 'undefined' && label.classList.contains('st-type')) {
+        label.classList.remove('selected');
+      }
+    });
+    document.querySelector('#' + this.dataset.target).parentNode.childNodes.forEach(function(child) {
+      if (typeof child.classList !== 'undefined') {
+        child.classList.add('hidden');
+      }
+    });
+    // Update the styles
+    document.querySelector('#' + this.dataset.target).classList.remove('hidden');
+    this.parentNode.classList.add('selected');
+    document.querySelectorAll('div[id$="-preview"]').forEach(function(previewWidget) {
+      if (typeof previewWidget.dataset.style !== 'undefined') {
+         previewWidget.dataset.style = clickedValue;
+      }
+    });
+  };
+});
+
 }
-
-// click(function() {
-//   $(this).parent().addClass('selected');
-//   $(this).parent().siblings().not($('legend')).removeClass('selected');
-//   $('#widget-select').fadeIn('slow');
-// });
-
-
 /// Set up settings for switch method then set up switch statement to
 /// cover selected method
 
@@ -225,7 +254,8 @@ document.getElementById('sendData').onclick = function() {
       widget: widget.dataset.widget,
       size: widget.dataset.size,
       display: widget.dataset.display,
-      dataRate: widget.dataset.rate
+      dataRate: widget.dataset.rate,
+      style: widget.dataset.style
     };
   });
   // Save order to favourites
@@ -254,7 +284,7 @@ document.getElementById('saveStop').onclick = function() {
 
 function saveOrder() {
   if (showMessage === true) {
-    window.removeEventListener('click', fadeBoards); // Remember to this out
+    window.removeEventListener('click', fadeBoards); // Remember to take this out
     setTimeout(function() {
   // Save the order - Find divs with classes starting with (class^ = startingwith, class$ = ending with, class* = containing )
   var allWidgets = document.querySelectorAll('div[class^="flex-widget-"]');

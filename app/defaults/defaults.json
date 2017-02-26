@@ -1,20 +1,22 @@
 {
-  "stylesheet": "",
-  "switchMethod": "switch",
+  "stylesheets": ["dashing", "angelic", "green-ranger"],
+  "switchMethods": ["switch", "fade", "another"],
   "widgets": {
     "aClock": {
       "name": "aClock",
       "displayName": "Analogue Clock",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "barChart": {
       "name": "barChart",
       "displayName": "Bar Chart",
       "width": 2,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "calendar": {
       "name": "calendar",
@@ -22,70 +24,80 @@
       "width": 1,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 3600000
+      "dataRate": 3600000,
+      "style": "dashing"
     },
     "countdown": {
       "name": "countdown",
       "displayName": "Countdown",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "dClock" : {
       "name": "dClock",
       "displayName": "Digital Clock",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "doughnutChart": {
       "name": "doughnutChart",
       "displayName": "Doughnut Chart",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "jenkins": {
       "name": "jenkins",
       "displayName": "Jenkins Jobs",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "map": {
       "name": "map",
       "displayName": "Google Map",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "notices": {
       "name": "notices",
       "displayName": "Notices",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "pieChart": {
       "name": "pieChart",
       "displayName": "Pie Chart",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "progress": {
       "name": "progress",
       "displayName": "Progress Meter",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "scatterChart": {
       "name": "scatterChart",
       "displayName": "Scatter Chart",
       "width": 1,
       "height": 1,
-      "dataCaller": false
+      "dataCaller": false,
+      "style": "dashing"
     },
     "weather": {
       "name": "weather",
@@ -93,7 +105,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 900000
+      "dataRate": 900000,
+      "style": "dashing"
     },
     "xkcd": {
       "name": "xkcd",
@@ -101,7 +114,8 @@
       "width": 2,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 900000
+      "dataRate": 900000,
+      "style": "dashing"
     }
   }
 }

@@ -1,5 +1,5 @@
 {% macro weather(display, id, type, city, temp, icon, position, widget, size, rate) %}
-<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-weather" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-weather" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div class="icon-background-weather">
     {% if icon %}
     <i class="wi wi-{{ icon }}"></i>

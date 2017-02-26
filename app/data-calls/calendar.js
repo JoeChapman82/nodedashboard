@@ -4,6 +4,8 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 module.exports = function(req, res, next) {
+if (process.env.NODE_ENV === 'development' ) {
+
   return new Promise(function(resolve, reject) {
 
 // If modifying these scopes, delete your previously saved credentials
@@ -59,10 +61,10 @@ function authorize(credentials, callback) {
  */
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
-    access_type: 'online',
+    access_type: 'offline',
     scope: SCOPES
   });
-  return ('Authorize this app by visiting this url: ', authUrl);
+  console.log('Authorize this app by visiting this url: ', authUrl);
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -139,4 +141,9 @@ function listEvents(auth) {
   console.log(error);
   next();
 });
+
+} else {
+  next();
+}
+
 };

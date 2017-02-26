@@ -9,12 +9,12 @@ body {
   background-color: $main-background-colour;
   font-size: 1rem;
   margin: none;
-  padding: none;
   max-width: 100%;
+  padding: none;
 }
 
 .alt-body-background {
-  background: #A7A9AC;
+  background: $alt-background-colour;
   background-image: -webkit-gradient(linear, left top, right top, color-stop(.34, rgba(230,237,241,.05)), color-stop(.67, rgba(230,237,241,0)));
   background-size: 5px 5px;
 }
@@ -32,9 +32,9 @@ body {
 }
 
 iframe {
-  width: 98%;
   height: 85%;
   margin-top: -10px;
+  width: 98%;
 }
 
 i {
@@ -75,14 +75,14 @@ i {
   text-align: center;
  }
 
- .clearfix {
-   display: block;
-   clear: both;
+.clearfix {
+  clear: both;
+  display: block;
  }
 
  #testIframe {
-   margin: 0;
-   padding: 0;
    height: 97vh;
+   margin: 0;
    overflow: hidden;
+   padding: 0;
  }

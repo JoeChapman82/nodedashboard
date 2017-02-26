@@ -69,6 +69,25 @@ if (document.getElementById('barCanvas')) {
   }());
 }
 
+function digitalClock() {
+var today = new Date();
+var h = today.getHours();
+var m = today.getMinutes();
+var s = today.getSeconds();
+if (m < 10) {
+  m = '0' + m;
+}
+if (s < 10) {
+  s = '0' + s;
+}
+var date = today.toDateString();
+var time = h + ":" + m + ":" + s;
+$('#digitalDate').text(date);
+$('#digitalTime').text(time);
+}
+
+setInterval(digitalClock, 1000);
+
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
@@ -99,25 +118,6 @@ if (document.getElementById('doughnutChartDisplay')) {
     doughnutChart.doughnutChart();
   }());
 }
-
-function digitalClock() {
-var today = new Date();
-var h = today.getHours();
-var m = today.getMinutes();
-var s = today.getSeconds();
-if (m < 10) {
-  m = '0' + m;
-}
-if (s < 10) {
-  s = '0' + s;
-}
-var date = today.toDateString();
-var time = h + ":" + m + ":" + s;
-$('#digitalDate').text(date);
-$('#digitalTime').text(time);
-}
-
-setInterval(digitalClock, 1000);
 
 if (document.querySelector('#progressMeterDisplay')) {
 

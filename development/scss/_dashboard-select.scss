@@ -1,7 +1,7 @@
 .select-heading {
   color: $white-soft;
-  text-align: center;
   margin-top: 10px;
+  text-align: center;
 }
 
 .select-fieldset {
@@ -21,7 +21,7 @@
 
 input[type=radio]:hover {
   background-color: $color-hover;
-  border: 5px solid yellow;
+  border: $color-hover;
 }
 
 .select-label {

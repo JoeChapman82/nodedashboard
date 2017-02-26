@@ -1,13 +1,13 @@
-{% macro aClock(display, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-aClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro aClock(display, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-aClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
     <canvas id="clock" width="250" height="300">
       Please upgrade your browser.
 </canvas>
 </div>
 {% endmacro %}
 
-{% macro calendar(display, calendar, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-calendar" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro calendar(display, calendar, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-calendar" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div class="center-wrapper">
     <div class="icon-background-calendar">
       <i class="fa fa-calendar"></i>
@@ -28,7 +28,7 @@
 </div>
 {% endmacro %}
 
-{% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title, position, widget, size, width, rate) %}
+{% macro barChart(tableID, dataID, CanvasID, display, x, y, main, title, position, widget, size, width, rate, style) %}
 <table id="{{ tableID }}" class="data-table">
     {% for item in main %}
     <tr>
@@ -37,14 +37,14 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-barChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-barChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="{{ dataID }}" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="{{ CanvasID }}" class="bar-chart-display" width="{{ width }}" height="350"></canvas>
 </div>
 {% endmacro %}
 
-{% macro countdown(display, event, dueDate, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} canvas-display widget-countdown" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro countdown(display, event, dueDate, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} canvas-display widget-countdown" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}", data-style="{{ style }}">
 <p class="countdown-event">{{ event }}</p>
 <p id="countdownTimerDays" class="countdown-timer-days"><br></p>
 <p id="countdownTimerTime" class="countdown-timer-time"></p>
@@ -52,8 +52,8 @@
 </div>
 {% endmacro %}
 
-{% macro dClock(display, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-dClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro dClock(display, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-dClock" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div class="icon-background">
     <i class="fa fa-clock-o"></i>
   </div>
@@ -62,7 +62,7 @@
 </div>
 {% endmacro %}
 
-{% macro doughnutChart(display, x, y, main, title, position, widget, size, rate) %}
+{% macro doughnutChart(display, x, y, main, title, position, widget, size, rate, style) %}
 <table id="dataChartDoughnut" class="data-table">
     {% for item in main %}
     <tr>
@@ -71,29 +71,36 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-doughnutChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}"  data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-doughnutChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}"  data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="doughnutChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="doughnutChartDisplay" class="doughnut-chart-display" width="275" height="360"></canvas>
 </div>
 {% endmacro %}
 
-{% macro jenkins(display, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-jenkins" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro jenkins(display, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-jenkins" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div class="icon-background-alt">
-    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+    <i class="fa fa-thumbs-o-up jenkins-icon" aria-hidden="true"></i>
   </div>
   <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">All jenkins builds are successful</p>
 </div>
 {% endmacro %}
 
-{% macro map(display, title, location, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-map" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro map(display, title, location, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-map" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <h3>{{ title }}</h3>
   <iframe id="mapWidgetFrame" src="//www.google.com/maps/embed/v1/place?q={{ location }}&zoom=17&key=AIzaSyCjCwOg99rHP3xGtJyM7LpPdnayHEz4Bxg"></iframe>
 </div>
 {% endmacro %}
 
-{% macro pieChart(display, x, y, main, title, position, widget, size, rate) %}
+{% macro notices(display, heading, comment, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-notices" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+<h2>{{ heading }}</h2>
+<p>{{ comment }}</p>
+</div>
+{% endmacro %}
+
+{% macro pieChart(display, x, y, main, title, position, widget, size, rate, style) %}
 <table id="dataChartPie" class="data-table">
     {% for item in main %}
     <tr>
@@ -102,21 +109,14 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-pieChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-pieChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="pieChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="pieChartDisplay" class="pie-chart-display" width="275" height="360"></canvas>
 </div>
 {% endmacro %}
 
-{% macro notices(display, heading, comment, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-notices" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
-<h2>{{ heading }}</h2>
-<p>{{ comment }}</p>
-</div>
-{% endmacro %}
-
-{% macro progress(display, data, position, widget, size, rate) %}
-<div class="flex-widget-{{ display }}-{{ size }} widget-progress" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro progress(display, data, position, widget, size, rate, style) %}
+<div class="flex-widget-{{ display }}-{{ size }} widget-progress" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <p class="progress-meter-heading">Sprint Progress</p>
 <div id="progressMeterData" data-percent="{{ data }}"></div>
 <canvas id="progressMeterDisplay" class="progress-meter-canvas" width="200" height="200"></canvas>
@@ -126,7 +126,7 @@
 </div>
 {% endmacro %}
 
-{% macro scatterChart(display, x, y, main, title, position, widget, size, rate) %}
+{% macro scatterChart(display, x, y, main, title, position, widget, size, rate, style) %}
 <table id="dataChartScatter" class="data-table">
     {% for item in main %}
     <tr>
@@ -135,14 +135,23 @@
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ display }}-{{ size }} widget-scatterChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div class="flex-widget-{{ display }}-{{ size }} widget-scatterChart" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div id="scatterChartData" data-x="{{ x }}" data-y="{{ y }}" data-title="{{ title }}"></div>
   <canvas id="scatterChartDisplay" class="scatter-chart-display" width="300" height="360"></canvas>
 </div>
 {% endmacro %}
 
+{% macro xkcd(display, id, number, title, img, position, widget, size, rate, style) %}
+<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-xkcd" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
+  <p class="xkcd-heading">XKCD: {{ number }}<br>
+  {{ title }}</p>
+  <br>
+  <img class="xkcd-comic" src="{{ img }}" alt="Todays XKCD">
+</div>
+{% endmacro %}
+
 {% macro weather(display, id, type, city, temp, icon, position, widget, size, rate) %}
-<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-weather" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-weather" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <div class="icon-background-weather">
     {% if icon %}
     <i class="wi wi-{{ icon }}"></i>
@@ -153,14 +162,5 @@
 <p class="weather-city">{{ city }} Weather</p>
 <p class="weather-type">{{ type }}</p>
 <p class="weather-temp">{{ temp }}°C</p>
-</div>
-{% endmacro %}
-
-{% macro xkcd(display, id, number, title, img, position, widget, size, rate) %}
-<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-xkcd" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
-  <p class="xkcd-heading">XKCD: {{ number }}<br>
-  {{ title }}</p>
-  <br>
-  <img class="xkcd-comic" src="{{ img }}" alt="Todays XKCD">
 </div>
 {% endmacro %}

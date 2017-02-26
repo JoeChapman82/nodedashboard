@@ -1,0 +1,61 @@
+body {
+  background-color: #f1f1f1; }
+
+.flex-widget-pc-1,
+.flex-widget-pc-2,
+.flex-widget-pc-3,
+.flex-widget-pc-4,
+.flex-widget-tv-1,
+.flex-widget-tv-2,
+.flex-widget-tv-3,
+.flex-widget-tv-4 {
+  background-color: #fff;
+  background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.6));
+  border: 1px solid #51cbee;
+  box-shadow: 0 0 0.75rem #51cbee; }
+
+.calendar-icon {
+  color: #000; }
+
+.calender-heading {
+  color: #000; }
+
+.icon-background-calendar {
+  color: #000; }
+
+.countdown-event {
+  color: rgba(0, 0, 0, 0.7); }
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(0, 0, 0, 0.7); }
+
+.countdown-due-date {
+  color: rgba(0, 0, 0, 0.7); }
+
+.digital-date {
+  color: rgba(0, 0, 0, 0.7); }
+
+.digital-time {
+  color: rgba(0, 0, 0, 0.7); }
+
+.jenkins-jobs-heading {
+  color: rgba(0, 0, 0, 0.7); }
+
+.jenkins-icon {
+  color: rgba(0, 0, 0, 0.7); }
+
+.progress-meter-heading {
+  color: rgba(0, 0, 0, 0.7); }
+
+.weather-city {
+  color: rgba(0, 0, 0, 0.7); }
+
+.weather-type {
+  color: rgba(0, 0, 0, 0.7); }
+
+.icon-background-weather {
+  color: rgba(0, 0, 0, 0.7); }
+
+.weather-temp {
+  color: rgba(0, 0, 0, 0.7); }

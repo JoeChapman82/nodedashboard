@@ -1,0 +1,13 @@
+@import 'variables/colours';
+@import 'variables/fonts';
+ 
+.flex-widget-pc-1,
+ .flex-widget-pc-2,
+ .flex-widget-pc-3,
+ .flex-widget-pc-4,
+ .flex-widget-tv-1,
+ .flex-widget-tv-2,
+ .flex-widget-tv-3,
+ .flex-widget-tv-4 {
+  background-color: $widget-green-dark;
+}

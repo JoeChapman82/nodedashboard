@@ -1,13 +1,13 @@
 button {
   background-color: $white-soft;
   border: 2px solid $form-field-border-colour;
-  display: inline;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 0 $shadow-colour;
+  display: inline;
   font-size: $font-large;
   margin: .5rem;
-  padding: .5rem 1rem .5rem .5rem;
   outline: none;
-  box-shadow: 2px 2px 2px 0px $shadow-colour;
+  padding: .5rem 1rem .5rem .5rem;
 }
 
 //Settings button
@@ -64,22 +64,33 @@ button {
 }
 
 .close-select {
-  margin-top: 2rem;
   background-color: $widget-red;
+  margin-top: 2rem;
 }
 
 .settings-tab-button {
+  border-radius: 0;
   margin: 0 auto;
   padding: .25rem .75rem;
-  border-radius: 0;
   width: 50%;
+}
+
+.settings-tab-button:hover {
+  background-color: $color-hover;
+//  border-color: $color-hover;
+}
+
+.settings-tab-button:focus {
+  background-color: $color-hover;
 }
 
 .current-tab {
   background-color: $widget-light-blue;
 }
 
-.update-button:focus {
+.update-button:focus,
+  .favourites-button:focus,
+    .settings-button:focus {
   border-color: $color-focus;
 }
 
@@ -91,6 +102,6 @@ button {
 .clicked {
   background-color: $widget-light-blue;
   border-color: $widget-medium-blue;
-  box-shadow: 1px 1px 1px #666;
+  box-shadow: 1px 1px 1px $box-shadow-colour;
   transform: translate(1px, 2px);
 }

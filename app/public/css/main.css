@@ -8,11 +8,11 @@ body {
   background-color: #222222;
   font-size: 1rem;
   margin: none;
-  padding: none;
-  max-width: 100%; }
+  max-width: 100%;
+  padding: none; }
 
 .alt-body-background {
-  background: #A7A9AC;
+  background: #a7a9ac;
   background-image: -webkit-gradient(linear, left top, right top, color-stop(0.34, rgba(230, 237, 241, 0.05)), color-stop(0.67, rgba(230, 237, 241, 0)));
   background-size: 5px 5px; }
 
@@ -26,9 +26,9 @@ body {
   display: inline-block; }
 
 iframe {
-  width: 98%;
   height: 85%;
-  margin-top: -10px; }
+  margin-top: -10px;
+  width: 98%; }
 
 i {
   max-width: 100%; }
@@ -61,14 +61,14 @@ i {
   text-align: center; }
 
 .clearfix {
-  display: block;
-  clear: both; }
+  clear: both;
+  display: block; }
 
 #testIframe {
-  margin: 0;
-  padding: 0;
   height: 97vh;
-  overflow: hidden; }
+  margin: 0;
+  overflow: hidden;
+  padding: 0; }
 
 fieldset {
   box-sizing: border-box;
@@ -429,13 +429,13 @@ img {
 button {
   background-color: rgba(255, 255, 255, 0.8);
   border: 2px solid black;
-  display: inline;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.75);
+  display: inline;
   font-size: calc(17px + .1vw);
   margin: .5rem;
-  padding: .5rem 1rem .5rem .5rem;
   outline: none;
-  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75); }
+  padding: .5rem 1rem .5rem .5rem; }
 
 .settings-wrapper {
   position: relative; }
@@ -480,19 +480,27 @@ button {
   width: 10rem; }
 
 .close-select {
-  margin-top: 2rem;
-  background-color: #dc5945; }
+  background-color: #dc5945;
+  margin-top: 2rem; }
 
 .settings-tab-button {
+  border-radius: 0;
   margin: 0 auto;
   padding: .25rem .75rem;
-  border-radius: 0;
   width: 50%; }
+
+.settings-tab-button:hover {
+  background-color: #7f7f00; }
+
+.settings-tab-button:focus {
+  background-color: #7f7f00; }
 
 .current-tab {
   background-color: steelblue; }
 
-.update-button:focus {
+.update-button:focus,
+.favourites-button:focus,
+.settings-button:focus {
   border-color: darkorange; }
 
 .update-button:hover {
@@ -507,8 +515,8 @@ button {
 
 .select-heading {
   color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  margin-top: 10px; }
+  margin-top: 10px;
+  text-align: center; }
 
 .select-fieldset {
   border: 0;
@@ -525,7 +533,7 @@ button {
 
 input[type=radio]:hover {
   background-color: #7f7f00;
-  border: 5px solid yellow; }
+  border: #7f7f00; }
 
 .select-label {
   background-color: rgba(255, 255, 255, 0.8);
@@ -576,6 +584,17 @@ input[type=radio]:hover {
 
 .select-form {
   text-align: center; }
+
+.focused {
+  border-color: darkorange; }
+
+.faded-out {
+  opacity: 0;
+  transition: opacity 400ms; }
+
+.faded-in {
+  opacity: 1;
+  transition: opacity 400ms; }
 
 .widget-aClock {
   background-color: rgba(71, 187, 179, 0.4); }

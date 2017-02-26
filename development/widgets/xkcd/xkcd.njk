@@ -1,5 +1,5 @@
-{% macro xkcd(display, id, number, title, img, position, widget, size, rate) %}
-<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-xkcd" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}">
+{% macro xkcd(display, id, number, title, img, position, widget, size, rate, style) %}
+<div id="{{ id }}" class="flex-widget-{{ display }}-{{ size }} widget-xkcd" data-position="{{ position }}" data-widget="{{ widget }}" data-display="{{ display }}" data-size="{{ size }}" data-rate="{{ rate }}" data-style="{{ style }}">
   <p class="xkcd-heading">XKCD: {{ number }}<br>
   {{ title }}</p>
   <br>
