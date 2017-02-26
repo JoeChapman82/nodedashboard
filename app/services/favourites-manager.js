@@ -32,7 +32,7 @@ const favMan = {
       if (err) {
         console.log(err);
       }
-      if (typeof files.length !== 'undefined' && files.length >= 1) {
+      if (typeof files !== 'undefined' && files.length >= 1) {
         files.forEach(function(file) {
         let location = file.indexOf('.');
         faveNames.push(file.substring(0, location));
