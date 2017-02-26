@@ -12,10 +12,12 @@ const browserSync = require('browser-sync');
 const bodyParser = require('body-parser');
 const request = require('request');
 
-const calendarCall = require(__dirname + '/app/data-calls/google-calendar/quickstart');
+const calendarCall = require(__dirname + '/app/data-calls/calendar');
 const xkcdCall = require(__dirname + '/app/data-calls/xkcd');
-const weatherCall = require(__dirname + '/app/data-calls/open-weather');
+const weatherCall = require(__dirname + '/app/data-calls/weather');
 const genData = require(__dirname + '/app/data-calls/example-data-generator');
+
+const dataGatherer = require(__dirname + '/app/services/data-gather');
 
 const dashboardOrder = require(__dirname + '/app/services/dashboard-order');
 const favMan = require(__dirname + '/app/services/favourites-manager');
@@ -63,6 +65,7 @@ app.post('/dashboard-select', [
   calendarCall,
   weatherCall,
   xkcdCall,
+//  dataGatherer,
   genData,
   dashboardOrder,
   function(req, res) {

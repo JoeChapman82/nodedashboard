@@ -31,16 +31,22 @@ gulp.task('uglyjs', function (cb) {
 );
 });
 
-gulp.task('concat-njk-widgets', function() {
+gulp.task('concat-widgets-njk', function() {
   return gulp.src(__dirname + '/development/widgets/**/*.njk')
     .pipe(concat('master-widgets.njk'))
     .pipe(gulp.dest(__dirname + '/app/public/nunjucks/widgets'));
 });
 
-gulp.task('concat-scripts', function() {
+gulp.task('concat-widgets-scripts', function() {
   return gulp.src(__dirname + '/development/widgets/**/*.js')
     .pipe(concat('master-widget-scripts.js'))
     .pipe(gulp.dest(__dirname + '/development/scripts'));
+});
+
+gulp.task('concat-widgets-sass', function() {
+  return gulp.src(__dirname + '/development/widgets/**/*.scss')
+    .pipe(concat('_master-widget-sass.scss'))
+    .pipe(gulp.dest(__dirname + '/development/scss'));
 });
 
 gulp.task('server', function () {
@@ -53,5 +59,10 @@ gulp.task('server', function () {
 });
 
 gulp.task('default', function (done) {
-  runSequence('watch', 'sass', 'concat-scripts', 'uglyjs', 'concat-njk-widgets', 'server', done);
+  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-widgets-njk', 'watch', 'sass', 'uglyjs', 'server', done);
+});
+
+// TODO add linting tasks etc
+gulp.task('build', function (done) {
+  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-widgets-njk', 'sass', 'uglyjs', done);
 });

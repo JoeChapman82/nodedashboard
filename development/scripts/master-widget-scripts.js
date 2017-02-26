@@ -1,3 +1,6 @@
+// TODO - redo this
+if (document.getElementById("clock"))
+(function() {
 function setTime() {
 
 var canvas = document.getElementById("clock");
@@ -57,6 +60,15 @@ context.stroke();
 
 setInterval(setTime, 1000);
 
+}());
+
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
+  }());
+}
+
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
@@ -81,6 +93,13 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 
 setInterval(countdown, 1000);
 
+if (document.getElementById('doughnutChartDisplay')) {
+  (function() {
+    var doughnutChart = new Chart('doughnutChartDisplay', 'doughnutChartData', 'dataChartDoughnut');
+    doughnutChart.doughnutChart();
+  }());
+}
+
 function digitalClock() {
 var today = new Date();
 var h = today.getHours();
@@ -99,15 +118,6 @@ $('#digitalTime').text(time);
 }
 
 setInterval(digitalClock, 1000);
-
-var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-myChart.interval(50);
-
-var doughnutChart = new Chart('doughnutChartDisplay', 'doughnutChartData', 'dataChartDoughnut');
-doughnutChart.doughnutChart();
-
-var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
-pieChart.pieChart();
 
 if (document.querySelector('#progressMeterDisplay')) {
 
@@ -172,5 +182,16 @@ var myInt = setInterval(mainDraw, 50);
 
 }
 
-var scatterChart = new Chart('scatterChartDisplay', 'scatterChartData', 'dataChartScatter');
-scatterChart.scatterChart();
+if (document.getElementById('pieChartDisplay')) {
+  (function() {
+    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
+    pieChart.pieChart();
+  }());
+}
+
+if (document.getElementById('scatterChartDisplay')) {
+  (function() {
+    var scatterChart = new Chart('scatterChartDisplay', 'scatterChartData', 'dataChartScatter');
+    scatterChart.scatterChart();
+  }());
+}

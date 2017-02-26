@@ -1,1 +1,0 @@
-function digitalClock(){var t=new Date,e=t.getHours(),i=t.getMinutes(),a=t.getSeconds();i<10&&(i="0"+i),a<10&&(a="0"+a);var g=t.toDateString(),l=e+":"+i+":"+a;$("#digitalDate").text(g),$("#digitalTime").text(l)}setInterval(digitalClock,1e3);

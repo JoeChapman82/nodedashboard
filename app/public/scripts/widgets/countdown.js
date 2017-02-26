@@ -1,1 +1,0 @@
-function countdown(){var e=new Date($("#countdownDueDate").text()),t=new Date,n=new Date(e-t),o=Math.floor(n/864e5),a=n.getHours(),u=n.getMinutes(),w=n.getSeconds();w<10&&(w="0"+w),u<10&&(u="0"+u),0!==o&&$("#countdownTimerDays").text(o+" days"),$("#countdownTimerTime").text(a+":"+u+":"+w)}setInterval(countdown,1e3);

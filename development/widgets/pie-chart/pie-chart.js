@@ -1,2 +1,6 @@
-var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
-pieChart.pieChart();
+if (document.getElementById('pieChartDisplay')) {
+  (function() {
+    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
+    pieChart.pieChart();
+  }());
+}

@@ -1,3 +1,6 @@
+// TODO - redo this
+if (document.getElementById("clock"))
+(function() {
 function setTime() {
 
 var canvas = document.getElementById("clock");
@@ -56,3 +59,5 @@ context.stroke();
 }
 
 setInterval(setTime, 1000);
+
+}());

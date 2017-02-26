@@ -577,51 +577,6 @@ input[type=radio]:hover {
 .select-form {
   text-align: center; }
 
-.widget-weather {
-  background-color: steelblue; }
-
-.weather-city {
-  font-size: 1.7vw;
-  color: #fff;
-  opacity: 0.5; }
-
-.weather-temp {
-  font-size: 4vw;
-  font-weight: bold;
-  color: #fff;
-  opacity: 0.8; }
-
-.weather-type {
-  font-size: 1.7vw;
-  color: #fff;
-  opacity: 0.8; }
-
-.icon-background-weather {
-  color: #fff;
-  width: 100%;
-  position: absolute;
-  opacity: 0.1;
-  font-size: 14vw;
-  text-align: center;
-  margin-top: 13vh; }
-
-.widget-map {
-  background-color: #dc5945; }
-
-.widget-dClock {
-  background-color: #dc5945; }
-
-.digital-date {
-  font-size: 2.3vw;
-  color: #fff;
-  margin-top: 5vw; }
-
-.digital-time {
-  font-size: 4vw;
-  color: #fff;
-  font-weight: bold;
-  margin: 0; }
-
 .widget-aClock {
   background-color: rgba(71, 187, 179, 0.4); }
 
@@ -632,8 +587,15 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 7vh 0 2vh; }
 
-.widget-notices {
-  background-color: #47bbb3; }
+.widget-barChart {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.bar-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
 
 .widget-countdown {
   background-color: #dc5945; }
@@ -658,14 +620,6 @@ input[type=radio]:hover {
 
 .countdown-due-date {
   color: rgba(255, 255, 255, 0.9); }
-
-.widget-jenkins {
-  background-color: #ec663c; }
-
-.jenkins-jobs-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 2.3vw;
-  margin-top: 30px; }
 
 .widget-calendar {
   background-color: teal;
@@ -696,17 +650,43 @@ input[type=radio]:hover {
   text-align: center;
   margin-top: 0px; }
 
-.widget-xkcd {
+.widget-dClock {
+  background-color: #dc5945; }
+
+.digital-date {
+  font-size: 2.3vw;
+  color: #fff;
+  margin-top: 5vw; }
+
+.digital-time {
+  font-size: 4vw;
+  color: #fff;
+  font-weight: bold;
+  margin: 0; }
+
+.widget-doughnutChart {
   background-color: rgba(255, 255, 255, 0.8); }
 
-.xkcd-comic {
-  max-width: 100%;
-  max-height: 87%; }
+.doughnut-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
 
-.xkcd-heading {
-  font-size: calc(17px + .1vw);
-  color: #222222;
-  margin: 0 auto -20px; }
+.widget-jenkins {
+  background-color: #ec663c; }
+
+.jenkins-jobs-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2.3vw;
+  margin-top: 30px; }
+
+.widget-map {
+  background-color: #dc5945; }
+
+.widget-notices {
+  background-color: #47bbb3; }
 
 .widget-progress {
   background-color: #3c6f9a; }
@@ -724,10 +704,10 @@ input[type=radio]:hover {
   margin-top: 5vh;
   margin-bottom: 10px; }
 
-.widget-barChart {
+.widget-pieChart {
   background-color: rgba(255, 255, 255, 0.8); }
 
-.bar-chart-display {
+.pie-chart-display {
   display: block;
   margin: 0 auto;
   max-height: 98%;
@@ -744,22 +724,42 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-pieChart {
+.widget-weather {
+  background-color: steelblue; }
+
+.weather-city {
+  font-size: 1.7vw;
+  color: #fff;
+  opacity: 0.5; }
+
+.weather-temp {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0.8; }
+
+.weather-type {
+  font-size: 1.7vw;
+  color: #fff;
+  opacity: 0.8; }
+
+.icon-background-weather {
+  color: #fff;
+  width: 100%;
+  position: absolute;
+  opacity: 0.1;
+  font-size: 14vw;
+  text-align: center;
+  margin-top: 13vh; }
+
+.widget-xkcd {
   background-color: rgba(255, 255, 255, 0.8); }
 
-.pie-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%; }
 
-.widget-doughnutChart {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.doughnut-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
+.xkcd-heading {
+  font-size: calc(17px + .1vw);
+  color: #222222;
+  margin: 0 auto -20px; }

@@ -1,0 +1,228 @@
+.widget-aClock {
+  background-color: $widget-green-dark;
+}
+
+#clock {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 7vh 0 2vh;
+}
+
+.widget-barChart {
+  background-color: $white-soft;
+}
+
+.bar-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
+.widget-countdown {
+  background-color: rgba(220, 89, 69, 1);
+}
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $font-xxlarge;
+  font-weight: bold;
+  margin-top: 9vh;
+}
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: $font-xxxlarge;
+}
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px;
+}
+
+.countdown-timer-time {
+  margin-bottom: 0px;
+}
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.widget-calendar {
+  background-color: $widget-green-medium;
+  overflow: scroll;
+}
+
+.center-wrapper {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.calender-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+}
+
+.calendar-icon {
+  margin-right: 10px;
+  color: $white-soft;
+}
+
+.calendar-event {
+  font-size: $font-large;
+  font-weight: 500;
+}
+
+.icon-background-calendar {
+  color: $white;
+  width: 100%;
+  position: absolute;
+  opacity: 0.1;
+  font-size: 17vw;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.widget-dClock {
+  background-color: $widget-red;
+}
+
+.digital-date {
+  font-size: $font-xxlarge;
+  color: $white;
+  margin-top: 5vw;
+}
+
+.digital-time {
+  font-size: $font-super;
+  color: $white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.widget-doughnutChart {
+  background-color: $white-soft;
+}
+
+.doughnut-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
+.widget-jenkins {
+  background-color: $widget-orange;
+}
+
+.jenkins-jobs-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
+}
+
+.widget-map {
+  background-color: rgba(220, 89, 69, 1);
+}
+
+.widget-notices {
+  background-color: $widget-green-light;
+}
+
+.widget-progress {
+  background-color: darken($widget-light-blue, 7%);
+}
+
+#progressMeterDisplay {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+}
+
+.progress-meter-heading {
+  color: $white-softer;
+  font-size: $font-xxlarge;
+  margin-top: 5vh;
+  margin-bottom: 10px;
+}
+
+.widget-pieChart {
+  background-color: $white-soft;
+}
+
+.pie-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
+.widget-scatterChart {
+  background-color: $white-soft;
+}
+
+.scatter-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
+.widget-weather {
+  background-color: $widget-light-blue;
+}
+
+.weather-city {
+  font-size: $font-xlarge;
+  color: $white;
+  opacity: 0.5;
+}
+
+.weather-temp {
+  font-size: $font-super;
+  font-weight: bold;
+  color: $white;
+  opacity: 0.8;
+}
+
+.weather-type {
+  font-size: $font-xlarge;
+  color: $white;
+  opacity: 0.8;
+}
+
+.icon-background-weather {
+  color: $white;
+  width: 100%;
+  position: absolute;
+  opacity: 0.1;
+  font-size: 14vw;
+  text-align: center;
+  margin-top: 13vh;
+}
+
+.widget-xkcd {
+  background-color: $white-soft;
+}
+
+// $widget-green-dark;
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%;
+}
+
+.xkcd-heading {
+  font-size: $font-large;
+  color: $main-background-colour;
+  margin: 0 auto -20px;
+}
