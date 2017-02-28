@@ -11,7 +11,7 @@
     No events today</p>
  {% else %}
 {% for event in data.calendar %}
-<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>{{ data.start }}
+<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>{{ event.start }}
 <br>{{ event.summary }}</p>
 {% endfor %}
 {% endif %}

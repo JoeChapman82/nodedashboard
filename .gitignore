@@ -4,3 +4,7 @@
 node_modules/
 client_secret.json
 /app/public/dashboards/test-space.njk
+
+development/widgets/jenkins/jenkins-all/
+development/widgets/jenkins/jenkins-single/
+app/data-calls/jenkins.js

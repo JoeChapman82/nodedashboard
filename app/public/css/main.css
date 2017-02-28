@@ -367,7 +367,7 @@ input[type=submit]:focus {
   margin: 5px;
   position: relative;
   text-align: center;
-  width: 98%; }
+  width: 120%; }
 
 .flex-widget-tv-1 {
   background-color: rgba(71, 187, 179, 0.4);
@@ -702,13 +702,13 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-jenkins {
-  background-color: #ec663c; }
+.widget-jenkins-all {
+  background-color: rgba(71, 187, 179, 0.4);
+  overflow: scroll; }
 
-.jenkins-jobs-heading {
+.jenkins-all-heading {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 2.3vw;
-  margin-top: 30px; }
+  font-size: 1.7vw; }
 
 .widget-map {
   background-color: #dc5945; }
@@ -791,3 +791,27 @@ input[type=radio]:hover {
   font-size: calc(17px + .1vw);
   color: #222222;
   margin: 0 auto -20px; }
+
+.widget-jenkins-all {
+  background-color: rgba(71, 187, 179, 0.4);
+  overflow: scroll; }
+
+.jenkins-all-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.7vw; }
+
+.widget-jenkinsSingle {
+  background-color: rgba(71, 187, 179, 0.4);
+  overflow: scroll; }
+
+.jenkins-single-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.7vw; }
+
+.widget-jenkins {
+  background-color: #ec663c; }
+
+.jenkins-jobs-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2.3vw;
+  margin-top: 30px; }

@@ -12,3 +12,10 @@
 * add your styles for body background and individual widgets
 * Your stylesheet will be placed last so any styles use will apply over defaults
 * Use the basic reset available {{ }} as a starter if you want.
+
+## Jenkins widget setup
+
+* You'll need your api key and a crumb
+* You'll find your crumb from the menu next to your name at the top right of each page - Choose configure, then show API token
+* For the crumb:
+* Go to YourJenkinsURL/crumbIssuer/api/json to get your crumb

@@ -8,7 +8,7 @@
 function Chart(canvas, labels, data) {
   var self = this;
 
-// amend the height attached to canvas element for tv displays (to account for dufferent aspect ratio)
+// amend the height attached to canvas element for tv displays (to account for different aspect ratio)
   if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-1') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-double-width-2')) {
     document.getElementById(canvas).setAttribute('height', '430');
   }
@@ -53,7 +53,7 @@ function Chart(canvas, labels, data) {
     var  arrForSum = [];
     self.dataArrayFull.forEach(function(member) {
     if (loopIndex % 2 === 0) {
-      if ($.isNumeric(member)) {     /// Need to change this to not use jQuery
+      if ($.isNumeric(member)) {     // TODO Need to change this to not use jQuery
         arrForSum.push(parseFloat(member));
       } else {
       arrForSum.push(member);
@@ -157,13 +157,19 @@ Chart.prototype.drawBarChart = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawTitle();
     this.drawBarChart();
-    for (var i = 0; i < this.animateArray.length; i++){
-      if (this.animateArray[i] < this.numbersArray[i]) {
+    for (var i = 0; i < this.animateArray.length; i++) {
+      if (this.numbersArray[i] - this.animateArray[i] > 10000) {
+        this.animateArray[i] += 1000;
+      } else if (this.numbersArray[i] - this.animateArray[i] > 1000) {
+        this.animateArray[i] += 100;
+      } else if (this.numbersArray[i] - this.animateArray[i] > 100) {
+        this.animateArray[i] += 10;
+      } else if (this.animateArray[i] < this.numbersArray[i]) {
         this.animateArray[i]++;
+      }
         if (this.animateArray[i] >= this.highestPointY) {
           clearInterval(this.intervalLoop);
         }
-      }
     }
   };
 

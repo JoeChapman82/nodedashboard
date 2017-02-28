@@ -93,7 +93,7 @@ $('.select-checkbox').click(function() {
   dataRate: placedWidget.dataset.rate,
   style: placedWidget.dataset.style
 };
-sizeCounter += parseInt(placedWidget.dataset.width);
+sizeCounter += parseInt(placedWidget.dataset.width) * parseInt(placedWidget.dataset.height);
   if($(this).parent().hasClass('selected')) {
     $('#' + $(this).data('target')).fadeOut('fast').addClass('hidden').removeClass('displayed');
     sizeCounter -= parseInt(placedWidget.dataset.width) * 2;
@@ -265,7 +265,7 @@ document.getElementById('sendData').onclick = function() {
         setTimeout(function() {
           document.getElementById('saveIt').classList.add('hidden');
         }, 3000);
-      showMessage = false;
+    //  showMessage = false; // Changed for demo - Should check for success
     });
     window.addEventListener('click', fadeBoards); // Remember to this out
 };
@@ -307,10 +307,10 @@ $('#getFave').click(function() {
 if (document.querySelector('#weatherOne')) {
 setInterval(function() {
   $.post('weather', function(data, status) {
-    $('.icon-background-weather i').attr('class', 'wi wi-' + data[3]);
-    $('.weather-city').text(data[1] + ' Weather');
-    $('.weather-type').text(data[0]);
-    $('.weather-temp').text(data[2] + '°C');
+    $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
+    $('.weather-city').text(data.name + ' Weather');
+    $('.weather-type').text(data.weather[0].main);
+    $('.weather-temp').text(data.main.temp + '°C');
   });
 }, parseInt(document.getElementById('weatherOne').dataset.rate));
 }
@@ -327,7 +327,6 @@ setInterval(function() {
 if (document.querySelector('.widget-calendar')) {
 setInterval(function() {
   $.post('calendar', function(data, status) {
-    console.log(data);
     $('#events').html('');
     if (data.length < 1) {
       $('#events').append('<i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>No events today</p>');

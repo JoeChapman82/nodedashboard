@@ -16,10 +16,9 @@ gulp.task('sass', function(){
 });
 
 gulp.task('watch', ['sass'], function(){
-  gulp.watch(__dirname + '/development/scss/**/*.scss', ['sass']);
-  gulp.watch(__dirname + '/app/public/nunjucks/**/*.njk', ['concat-widgets-njk']);
-  gulp.watch(__dirname + '/app/public/dashboards/**/*.njk');
-  gulp.watch(__dirname + '/development/scripts/**/*.js', ['uglyjs']);
+  gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['sass']);
+  gulp.watch([__dirname + '/app/public/nunjucks/**/*.njk', __dirname + '/app/public/dashboards/**/*.njk', __dirname + '/development/widgets/**/*.njk'], ['concat-widgets-njk']);
+  gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'uglyjs']);
 });
 
 gulp.task('uglyjs', function (cb) {

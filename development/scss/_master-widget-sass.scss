@@ -116,14 +116,14 @@
   padding: 0;
  }
 
-.widget-jenkins {
-  background-color: $widget-orange;
+.widget-jenkins-all {
+  background-color: $widget-green-dark;
+  overflow: scroll;
 }
 
-.jenkins-jobs-heading {
+.jenkins-all-heading {
   color: $white-soft;
-  font-size: $font-xxlarge;
-  margin-top: 30px;
+  font-size: $font-xlarge;
 }
 
 .widget-map {
@@ -225,4 +225,34 @@
   font-size: $font-large;
   color: $main-background-colour;
   margin: 0 auto -20px;
+}
+
+.widget-jenkins-all {
+  background-color: $widget-green-dark;
+  overflow: scroll;
+}
+
+.jenkins-all-heading {
+  color: $white-soft;
+  font-size: $font-xlarge;
+}
+
+.widget-jenkinsSingle {
+  background-color: $widget-green-dark;
+  overflow: scroll;
+}
+
+.jenkins-single-heading {
+  color: $white-soft;
+  font-size: $font-xlarge;
+}
+
+.widget-jenkins {
+  background-color: $widget-orange;
+}
+
+.jenkins-jobs-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
 }

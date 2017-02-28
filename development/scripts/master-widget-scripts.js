@@ -1,10 +1,3 @@
-if (document.getElementById('barCanvas')) {
-  (function() {
-    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-    myChart.interval(50);
-  }());
-}
-
 // TODO - redo this
 if (document.getElementById("clock"))
 (function() {
@@ -68,6 +61,13 @@ context.stroke();
 setInterval(setTime, 1000);
 
 }());
+
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
+  }());
+}
 
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
@@ -195,3 +195,17 @@ if (document.getElementById('scatterChartDisplay')) {
     scatterChart.scatterChart();
   }());
 }
+
+window.onload = function() {
+
+if (document.querySelectorAll('.timestamp')) {
+  document.querySelectorAll('.timestamp').forEach(function(timestamp) {
+    console.log(timestamp);
+    console.log(timestamp.innerText);
+    timestamp.innerText = new Date(parseInt(timestamp.innerText)).toUTCString();
+  });
+}
+
+};
+
+console.log('hello');

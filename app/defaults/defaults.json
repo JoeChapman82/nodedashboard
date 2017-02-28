@@ -8,7 +8,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "barChart": {
       "name": "barChart",
@@ -16,7 +17,8 @@
       "width": 2,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "calendar": {
       "name": "calendar",
@@ -25,7 +27,8 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 3600000,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "countdown": {
       "name": "countdown",
@@ -33,7 +36,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "dClock" : {
       "name": "dClock",
@@ -41,7 +45,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "doughnutChart": {
       "name": "doughnutChart",
@@ -49,7 +54,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "jenkins": {
       "name": "jenkins",
@@ -57,7 +63,28 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsAll": {
+      "name": "jenkinsAll",
+      "displayName": "Jenkins Complete",
+      "width": 2,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "style": "dashing",
+      "available": false
+    },
+    "jenkinsSingle": {
+      "name": "jenkinsSingle",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "style": "dashing",
+      "available": false
     },
     "map": {
       "name": "map",
@@ -65,7 +92,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "notices": {
       "name": "notices",
@@ -73,7 +101,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "pieChart": {
       "name": "pieChart",
@@ -81,7 +110,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "progress": {
       "name": "progress",
@@ -89,7 +119,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "scatterChart": {
       "name": "scatterChart",
@@ -97,7 +128,8 @@
       "width": 1,
       "height": 1,
       "dataCaller": false,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "weather": {
       "name": "weather",
@@ -106,7 +138,8 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 900000,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     },
     "xkcd": {
       "name": "xkcd",
@@ -115,7 +148,8 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 900000,
-      "style": "dashing"
+      "style": "dashing",
+      "available": true
     }
   }
 }

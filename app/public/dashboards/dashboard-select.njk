@@ -49,15 +49,17 @@
         </div>
         <div>
         {% for key, value in defaults.widgets %}
+        {% if value.available %}
         <fieldset class="settings-fieldset">
           <legend class="settings-legend">{{ value.displayName }}</legend>
           <div class="settings-inputs">
           <label class="settings-label" for="">Width</label>
-          <input class="settings-input width-input" type="number" min="1" max="5" maxlength="1" name="wdth" value="{{ value.width }}" data-target="{{ key }}-preview">
+          <input class="settings-input width-input" type="number" min="1" max="5" maxlength="1" name="width" value="{{ value.width }}" data-target="{{ key }}-preview">
           <label class="settings-label" for="">Height</label>
-          <input class="settings-input height-input" type="number" min="1" max="1" maxlength="1" name="heit" value="{{ value.height }}" data-target="{{ key }}-preview">
+          <input class="settings-input height-input" type="number" min="1" max="4" maxlength="1" name="height" value="{{ value.height }}" data-target="{{ key }}-preview">
         </div>
         </fieldset>
+        {% endif %}
         {% endfor %}
         <button id="updateSizes" class="update-button" type="button" name="button">Update</button>
         <h3 id="updateSizeMessage" class="hidden">Sizes updated</h3>
@@ -71,7 +73,7 @@
         </div>
         <div>
         {% for key, value in defaults.widgets %}
-        {% if value.dataCaller %}
+        {% if value.dataCaller and value.available %}
         <fieldset class="settings-fieldset">
           <legend class="settings-legend">{{ value.displayName }}</legend>
           <div class="settings-inputs">
@@ -155,7 +157,9 @@
   <fieldset id="widget-select" class="select-fieldset hidden">
     <legend class="select-legend">Select your widgets</legend>
     {% for key, value in defaults.widgets %}
+    {% if value.available %}
     {{ forms.input(key+'-select', 'widget', key, 'checkbox', value.displayName, 'select-label', 'select-checkbox') }}
+    {% endif %}
     {% endfor %}
   </fieldset>
 
@@ -170,11 +174,13 @@
 
   <!-- All Widgets go here - placed into preview pane in main.js -->
   {% for key, value in defaults.widgets %}
+  {% if value.available %}
     <div id="{{ key }}-preview"
          class="widget-{{ key }} hidden"
          data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}" data-style="{{ value.style }}">
          {{ value.displayName }}
     </div>
+    {% endif %}
   {% endfor %}
 
   <input id="preview-submit" class="hidden" type="submit" name="" value="Load dashboard">

@@ -1,6 +1,6 @@
 {% macro xkcd(dataset, data) %}
 <div id="xkcdOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-xkcd" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
-  <p class="xkcd-heading">XKCD: {{ data.xkcd.number }}<br>
+  <p class="xkcd-heading">XKCD: {{ data.xkcd.num }}<br>
   {{ data.xkcd.title }}</p>
   <br>
   <img class="xkcd-comic" src="{{ data.xkcd.img }}" alt="Todays XKCD">
