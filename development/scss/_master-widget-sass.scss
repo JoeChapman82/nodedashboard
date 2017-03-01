@@ -116,18 +116,12 @@
   padding: 0;
  }
 
-.widget-jenkins-all {
-  background-color: $widget-green-dark;
-  overflow: scroll;
-}
-
-.jenkins-all-heading {
-  color: $white-soft;
-  font-size: $font-xlarge;
-}
-
 .widget-map {
   background-color: rgba(220, 89, 69, 1);
+}
+
+.widget-notices {
+  background-color: $widget-green-light;
 }
 
 .widget-pieChart {
@@ -141,10 +135,6 @@
   max-width: 99%;
   padding: 0;
  }
-
-.widget-notices {
-  background-color: $widget-green-light;
-}
 
 .widget-progress {
   background-color: darken($widget-light-blue, 7%);
@@ -245,6 +235,10 @@
 .jenkins-single-heading {
   color: $white-soft;
   font-size: $font-xlarge;
+}
+
+.jenkins-subheading {
+  font-size: $font-large;
 }
 
 .widget-jenkins {

@@ -200,8 +200,6 @@ window.onload = function() {
 
 if (document.querySelectorAll('.timestamp')) {
   document.querySelectorAll('.timestamp').forEach(function(timestamp) {
-    console.log(timestamp);
-    console.log(timestamp.innerText);
     timestamp.innerText = new Date(parseInt(timestamp.innerText)).toUTCString();
   });
 }

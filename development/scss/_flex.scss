@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   height: 95vh;
-  margin: 0 80px;
+  margin: 0 40px;
   max-width: 100%;
 }
 
@@ -114,7 +114,7 @@
   background-color: $widget-green-dark;
   box-sizing: border-box;
   flex-basis: 24%;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   max-height: 100%;
   position: relative;
@@ -124,7 +124,7 @@
 .flex-widget-pc-2 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -134,7 +134,7 @@
 .flex-widget-pc-3 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -144,7 +144,7 @@
 .flex-widget-pc-4 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -164,7 +164,7 @@
 .flex-widget-tv-1 {
   background-color: $widget-green-dark;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   max-height: 100vh;
   width: 19%;
   margin: 5px;
@@ -175,17 +175,17 @@
 .flex-widget-tv-2 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
   width: 38.6%;
 }
 
-.flex-widget-tv-2 {
+.flex-widget-tv-3 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -195,7 +195,7 @@
 .flex-widget-tv-4 {
   background-color: $widget-light-blue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;

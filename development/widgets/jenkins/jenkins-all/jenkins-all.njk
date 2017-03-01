@@ -1,0 +1,8 @@
+{% macro jenkinsAll(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins-all" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+  <p id="jenkinsJobsHeading" class="jenkins-all-heading">{{ data.jenkins.jobs | length }} Jenkins jobs found</p>
+  {% for item in data.jenkins.jobs %}
+  <p>{{ loop.index }}.{{ item.name }}: {{ item.color }}: {{ item.healthReport | dump }}: {{ item.lastCompletedBuild | dump }}</p>
+  {% endfor %}
+</div>
+{% endmacro %}

@@ -6,6 +6,15 @@
 </div>
 {% endmacro %}
 
+{% macro countdown(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} canvas-display widget-countdown" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.rate }}", data-style="{{ dataset.style }}">
+<p class="countdown-event">COUNTDOWN TO BEDTIME</p>
+<p id="countdownTimerDays" class="countdown-timer-days"><br></p>
+<p id="countdownTimerTime" class="countdown-timer-time"></p>
+<p id="countdownDueDate" class="countdown-due-date">Due date:<br> 29-Mar-2017 19:00:00</p>
+</div>
+{% endmacro %}
+
 {% macro barChart(dataset, data) %}
 
 <table id="barTable" class="data-table">
@@ -51,15 +60,6 @@
   </div>
   <p id="digitalDate" class="digital-date"></p>
   <p id="digitalTime" class="digital-time"></p>
-</div>
-{% endmacro %}
-
-{% macro countdown(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} canvas-display widget-countdown" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.rate }}", data-style="{{ dataset.style }}">
-<p class="countdown-event">COUNTDOWN TO BEDTIME</p>
-<p id="countdownTimerDays" class="countdown-timer-days"><br></p>
-<p id="countdownTimerTime" class="countdown-timer-time"></p>
-<p id="countdownDueDate" class="countdown-due-date">Due date:<br> 29-Mar-2017 19:00:00</p>
 </div>
 {% endmacro %}
 
@@ -133,15 +133,6 @@
 </div>
 {% endmacro %}
 
-{% macro xkcd(dataset, data) %}
-<div id="xkcdOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-xkcd" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
-  <p class="xkcd-heading">XKCD: {{ data.xkcd.num }}<br>
-  {{ data.xkcd.title }}</p>
-  <br>
-  <img class="xkcd-comic" src="{{ data.xkcd.img }}" alt="Todays XKCD">
-</div>
-{% endmacro %}
-
 {% macro weather(dataset, data) %}
  <h1>{{ data.weather[0] | dump }}</h1>
 <h1>{{ data.weather[0].icon }}</h1>
@@ -156,6 +147,15 @@
 <p class="weather-city">{{ data.weather.name }} Weather</p>
 <p class="weather-type">{{ data.weather.weather[0].main }}</p>
 <p class="weather-temp">{{ data.weather.main.temp | round(1) }}°C</p>
+</div>
+{% endmacro %}
+
+{% macro xkcd(dataset, data) %}
+<div id="xkcdOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-xkcd" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+  <p class="xkcd-heading">XKCD: {{ data.xkcd.num }}<br>
+  {{ data.xkcd.title }}</p>
+  <br>
+  <img class="xkcd-comic" src="{{ data.xkcd.img }}" alt="Todays XKCD">
 </div>
 {% endmacro %}
 
@@ -185,10 +185,10 @@
       <p class="jenkins-single-heading">{{ job.name }}</p>
       {# <h4>{{ job.color }}</h4> #}
       {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}
-      <h4>{{ job.healthReport[0].description }}</h4>
+      <h4 class="jenkins-subheading">{{ job.healthReport[0].description }}</h4>
       <p><img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/{{job.healthReport[0].iconUrl}}" aria-hidden="true"></p>
       <p>Score: {{ job.healthReport[0].score }}</p>
-      <h4>Last completed build</h4>
+      <h4 class="jenkins-subheading">Last completed build</h4>
       <p class="timestamp">{{ job.lastCompletedBuild.timestamp }}</p>
       <p>Build status: {{ job.lastCompletedBuild.result }}</p>
       {% endif %}

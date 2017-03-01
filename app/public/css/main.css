@@ -235,7 +235,7 @@ input[type=submit]:focus {
   display: flex;
   flex-wrap: wrap;
   height: 95vh;
-  margin: 0 80px;
+  margin: 0 40px;
   max-width: 100%; }
 
 @media only screen and (min-width: 1600px) {
@@ -327,7 +327,7 @@ input[type=submit]:focus {
   background-color: rgba(71, 187, 179, 0.4);
   box-sizing: border-box;
   flex-basis: 24%;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   max-height: 100%;
   position: relative;
@@ -336,7 +336,7 @@ input[type=submit]:focus {
 .flex-widget-pc-2 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -345,7 +345,7 @@ input[type=submit]:focus {
 .flex-widget-pc-3 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -354,7 +354,7 @@ input[type=submit]:focus {
 .flex-widget-pc-4 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -372,7 +372,7 @@ input[type=submit]:focus {
 .flex-widget-tv-1 {
   background-color: rgba(71, 187, 179, 0.4);
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   max-height: 100vh;
   width: 19%;
   margin: 5px;
@@ -382,16 +382,16 @@ input[type=submit]:focus {
 .flex-widget-tv-2 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
   width: 38.6%; }
 
-.flex-widget-tv-2 {
+.flex-widget-tv-3 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -400,7 +400,7 @@ input[type=submit]:focus {
 .flex-widget-tv-4 {
   background-color: steelblue;
   box-sizing: border-box;
-  height: 46vh;
+  height: 50%;
   margin: 5px;
   position: relative;
   text-align: center;
@@ -537,7 +537,7 @@ button {
 
 .select-legend {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.7vw;
+  font-size: calc(20px + .1vw);
   margin-bottom: -20px; }
 
 input[type=radio]:hover {
@@ -702,16 +702,11 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-jenkins-all {
-  background-color: rgba(71, 187, 179, 0.4);
-  overflow: scroll; }
-
-.jenkins-all-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.7vw; }
-
 .widget-map {
   background-color: #dc5945; }
+
+.widget-notices {
+  background-color: #47bbb3; }
 
 .widget-pieChart {
   background-color: rgba(255, 255, 255, 0.8); }
@@ -722,9 +717,6 @@ input[type=radio]:hover {
   max-height: 98%;
   max-width: 99%;
   padding: 0; }
-
-.widget-notices {
-  background-color: #47bbb3; }
 
 .widget-progress {
   background-color: #3c6f9a; }
@@ -756,7 +748,7 @@ input[type=radio]:hover {
   background-color: steelblue; }
 
 .weather-city {
-  font-size: 1.7vw;
+  font-size: calc(20px + .1vw);
   color: #fff;
   opacity: 0.5; }
 
@@ -767,7 +759,7 @@ input[type=radio]:hover {
   opacity: 0.8; }
 
 .weather-type {
-  font-size: 1.7vw;
+  font-size: calc(20px + .1vw);
   color: #fff;
   opacity: 0.8; }
 
@@ -798,7 +790,7 @@ input[type=radio]:hover {
 
 .jenkins-all-heading {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.7vw; }
+  font-size: calc(20px + .1vw); }
 
 .widget-jenkinsSingle {
   background-color: rgba(71, 187, 179, 0.4);
@@ -806,7 +798,10 @@ input[type=radio]:hover {
 
 .jenkins-single-heading {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.7vw; }
+  font-size: calc(20px + .1vw); }
+
+.jenkins-subheading {
+  font-size: calc(17px + .1vw); }
 
 .widget-jenkins {
   background-color: #ec663c; }

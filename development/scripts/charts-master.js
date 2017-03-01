@@ -9,7 +9,7 @@ function Chart(canvas, labels, data) {
   var self = this;
 
 // amend the height attached to canvas element for tv displays (to account for different aspect ratio)
-  if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-1') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-double-width-2')) {
+  if (document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-1') || document.getElementById(canvas).parentElement.classList.contains('flex-widget-tv-2')) {
     document.getElementById(canvas).setAttribute('height', '430');
   }
 
