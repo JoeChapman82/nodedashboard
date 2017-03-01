@@ -83,7 +83,7 @@ app.post('/dashboards/calendar',[calendarCall, function(req, res) {
 
 //Route any other requests to index;
 app.get('*', function(req, res) {
-  res.render('/404');
+  res.render('index');
 });
 
 };
