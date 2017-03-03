@@ -5,11 +5,14 @@
 
 {% if widgets[0].style !== 'dashing' %}
 {% block additionalStyleSheets %}
-<link rel="stylesheet" type="text/css" href="css/{{ widgets[0].style }}.css">
+<link rel="stylesheet" type="text/css" href="../css/{{ widgets[0].style }}.css">
 {% endblock %}
 {% endif %}
 
 {% block body %}
+{% if hello %}{{ hello }}{% else %}No hello here :({% endif %}
+{{ xkcd | dump }}
+{{ 'helo' }}
 
 {{ forms.save() }}
 {# Used in main.js to not display save message - loaded created by favMan.js #}
@@ -17,14 +20,30 @@
 <input id="loadedDashboard" type="hidden" name="" value="">
 {% endif %}
 
-<div class="flex-wrapper-regular switcher" id="sortable">
+<div id="firstBoard">
+<div  class="flex-wrapper-regular switcher sortable">
     {% for item in widgets %}
       {{ widget[item.widget](item, data) }}
     {% endfor %}
 </div>
+</div>
 <div id="secondBoard" class="hidden">
-  <div class="flex-wrapper-regular" id="sortable2">
+  <div class="flex-wrapper-regular sortable">
     {% for item in widgetsTwo %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+  </div>
+</div>
+<div id="thirdBoard" class="hidden">
+  <div class="flex-wrapper-regular sortable">
+    {% for item in widgetsThree %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+  </div>
+</div>
+<div id="fourthBoard" class="hidden">
+  <div class="flex-wrapper-regular sortable">
+    {% for item in widgetsFour %}
       {{ widget[item.widget](item, data) }}
     {% endfor %}
   </div>

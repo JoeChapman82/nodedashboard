@@ -41,7 +41,6 @@ const favMan = {
       } else {
         res.locals.retrievedFave = JSON.parse(data);
         res.locals.display = res.locals.retrievedFave[1].display;
-        res.locals.loaded = true;
       }
       next();
     });

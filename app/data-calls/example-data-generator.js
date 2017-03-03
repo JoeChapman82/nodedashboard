@@ -20,7 +20,7 @@ module.exports = function(req, res, next) {
   }
 
   let pieData = [];
-  for (let i = 0; i <= 8; i++) {
+  for (let i = 0; i <= 7; i++) {
     let randomNum = Math.floor(Math.random() * 100);
     pieData.push([`Item ${i + 1}`, randomNum]);
   }

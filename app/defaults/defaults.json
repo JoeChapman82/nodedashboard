@@ -26,6 +26,7 @@
       "width": 1,
       "height": 1,
       "dataCaller": true,
+      "dataCallTo": "calendar",
       "dataRate": 3600000,
       "style": "dashing",
       "available": true
@@ -62,7 +63,9 @@
       "displayName": "Jenkins Jobs",
       "width": 1,
       "height": 1,
-      "dataCaller": false,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
       "style": "dashing",
       "available": true
     },
@@ -73,6 +76,7 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 900000,
+      "dataCallTo": "jenkins",
       "style": "dashing",
       "available": true
     },
@@ -83,6 +87,84 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle1": {
+      "name": "jenkinsSingle1",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle2": {
+      "name": "jenkinsSingle2",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle3": {
+      "name": "jenkinsSingle3",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle4": {
+      "name": "jenkinsSingle4",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle5": {
+      "name": "jenkinsSingle5",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle6": {
+      "name": "jenkinsSingle6",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
+      "style": "dashing",
+      "available": true
+    },
+    "jenkinsSingle7": {
+      "name": "jenkinsSingle7",
+      "displayName": "Jenkins Single",
+      "width": 1,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 900000,
+      "dataCallTo": "jenkins",
       "style": "dashing",
       "available": true
     },
@@ -138,6 +220,7 @@
       "height": 1,
       "dataCaller": true,
       "dataRate": 900000,
+      "dataCallTo": "weather",
       "style": "dashing",
       "available": true
     },
@@ -147,7 +230,8 @@
       "width": 2,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 900000,
+      "dataRate": 10000,
+      "dataCallTo": "xkcd",
       "style": "dashing",
       "available": true
     }

@@ -37,6 +37,9 @@ class ApiCaller {
           resolve(response.body);
         }
       });
+    }).catch(function(error) {
+      console.error(error);
+      return;
     });
 }
 

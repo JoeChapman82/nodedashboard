@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const browserSync = require('browser-sync')
 require(__dirname + '/config')(app);
 require(__dirname + '/routes')(app);
 
@@ -17,18 +18,12 @@ var buffer = new Buffer(string);
 var toBase64 = buffer.toString('base64');
 console.log(string + " encoding to base64 is " + toBase64);
 
-// Routes
-
-
-
-
 app.listen(PORT, function() {
   console.log('Server listening on port:' + PORT);
 });
 
+
 module.exports = app;
-
-
 
 // app.get('/', function(req, res) {
 //   res.render('index');

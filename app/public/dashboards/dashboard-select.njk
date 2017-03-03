@@ -6,6 +6,7 @@
 
 {% block body %}
 
+ {# TODO - Position fave / settings buttons properly #}
 <div class="favourites-wrapper">
   <button id="favouritesButton" class="favourites-button" type="button" name="button" data-target="faveWrapper"><i class="fa fa-heart" aria-hidden="true"></i> Favourites</button>
   {# <div class="favourites-form-wrapper"> #}
@@ -23,7 +24,7 @@
   </div>
 </div>
 
-<form class="select-form" action="dashboard-select" method="post">
+<form class="select-form" action="/dashboards/dashboard" method="post">
 
   <div class="settings-wrapper">
     <button id="settingsButton" class="settings-button switcher-button" type="button" name="button"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
@@ -56,7 +57,7 @@
           <label class="settings-label" for="">Width</label>
           <input class="settings-input width-input" type="number" min="1" max="5" maxlength="1" name="width" value="{{ value.width }}" data-target="{{ key }}-preview">
           <label class="settings-label" for="">Height</label>
-          <input class="settings-input height-input" type="number" min="1" max="4" maxlength="1" name="height" value="{{ value.height }}" data-target="{{ key }}-preview">
+          <input class="settings-input height-input" type="number" min="1" max="4" maxlength="1" name="height" value="{{ value.height }}" data-target="{{ key }}-preview" disabled>
         </div>
         </fieldset>
         {% endif %}
@@ -78,7 +79,7 @@
           <legend class="settings-legend">{{ value.displayName }}</legend>
           <div class="settings-inputs">
           <label class="settings-label" for="">Call frequency (mins)</label>
-          <input class="settings-input call-rate-input" type="number" min="1" max="300" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">
+          <input class="settings-input call-rate-input" type="number" max="300" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">
         </div>
         </fieldset>
         {% endif %}
@@ -134,7 +135,7 @@
               <h3>Preview</h3>
               <div class="preview-images">
               {% for item in defaults.stylesheets %}
-              <img id="{{ item }}Preview" class="preview-image" src="../images/{{ item }}.png" alt="{{ item }} style dashboard preview">
+              <img id="{{ item }}Preview" class="preview-image {% if item !== 'dashing' %}hidden{% endif %}" src="../images/{{ item }}.png" alt="{{ item }} style dashboard preview">
               {% endfor %}
               </div>
             </fieldset>
@@ -170,6 +171,11 @@
       <hr id="preview-breaker" class="hidden">
       {{ preview.previewWrapper('flex-wrapper-preview-two') }}
     </div>
+    <div class="flex">
+      {{ preview.previewWrapper('flex-wrapper-preview-three') }}
+      <hr id="preview-breaker-two" class="hidden">
+      {{ preview.previewWrapper('flex-wrapper-preview-four') }}
+    </div>
   </div>
 
   <!-- All Widgets go here - placed into preview pane in main.js -->
@@ -177,7 +183,7 @@
   {% if value.available %}
     <div id="{{ key }}-preview"
          class="widget-{{ key }} hidden"
-         data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}" data-style="{{ value.style }}">
+         data-widget="{{ key }}" data-width="{{ value.width }}" data-height="{{ value.height }}" data-position="{{ loop.index }}" data-caller="{{ value.dataCaller }}" data-rate="{{ value.dataRate }}" data-call="{{ value.dataCallTo }}" data-style="{{ value.style }}">
          {{ value.displayName }}
     </div>
     {% endif %}

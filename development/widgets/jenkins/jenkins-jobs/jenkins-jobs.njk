@@ -1,8 +1,29 @@
 {% macro jenkins(dataset, data) %}
 <div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+  {% if data.jenkins.jobs %}
   <div class="icon-background-alt">
+    {% if data.jenkins.successfulJobs === data.jenkins.totalJobs or data.jenkins.successfulJobs > data.jenkins.totalJobs / 2 %}
     <i class="fa fa-thumbs-o-up jenkins-icon" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+    {% endif %}
   </div>
+  {% if data.jenkins.successfulJobs === data.jenkins.totalJobs %}
   <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">All jenkins builds are successful</p>
+  {% elif data.jenkins.successfulJobs < data.jenkins.totalJobs %}
+  <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">
+    {{ data.jenkins.successfulJobs }} out of {{ data.jenkins.totalJobs }} jenkins builds are successful
+  </p>
+  {% endif %}
+  {% else %}
+  <div class="icon-background-alt">
+    <i class="fa fa-frown-o" aria-hidden="true"></i>
+  </div>
+  <p id="jenkinsJobsHeading" class="jenkins-jobs-heading">
+    No data received from jenkins
+  </p>
+  {% endif %}
 </div>
 {% endmacro %}
+
+<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>

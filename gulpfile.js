@@ -1,24 +1,26 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync').create();
-var nodemon = require('gulp-nodemon');
-var runSequence = require('run-sequence');
-var uglify = require('gulp-uglify');
-var pump = require('pump');
-var concat = require('gulp-concat');
-// var browserSync = require('browser-sync').create();
-
+/*jshint esversion: 6 */
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync').create();
+const nodemon = require('gulp-nodemon');
+const runSequence = require('run-sequence');
+const uglify = require('gulp-uglify');
+const pump = require('pump');
+const concat = require('gulp-concat');
 
 gulp.task('sass', function(){
   return gulp.src(__dirname + '/development/scss/**/*.scss')
   .pipe(sass())
-  .pipe(gulp.dest(__dirname + '/app/public/css'));
+  .pipe(gulp.dest(__dirname + '/app/public/css'))
+  .pipe(browserSync.reload({
+  stream: true
+}));
 });
 
 gulp.task('watch', ['sass'], function(){
-  gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['sass']);
-  gulp.watch([__dirname + '/app/public/nunjucks/**/*.njk', __dirname + '/app/public/dashboards/**/*.njk', __dirname + '/development/widgets/**/*.njk'], ['concat-widgets-njk']);
-  gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'uglyjs']);
+  gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['sass'], browserSync.reload());
+  gulp.watch([__dirname + '/app/public/**/*.njk', __dirname + '/development/widgets/**/*.njk'], ['concat-widgets-njk'], browserSync.reload());
+  gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'uglyjs'], browserSync.reload());
 });
 
 gulp.task('uglyjs', function (cb) {
@@ -28,13 +30,19 @@ gulp.task('uglyjs', function (cb) {
     gulp.dest(__dirname + '/app/public/scripts')
   ],
   cb
-);
+)
+.pipe(browserSync.reload({
+stream: true
+}));
 });
 
 gulp.task('concat-widgets-njk', function() {
   return gulp.src(__dirname + '/development/widgets/**/*.njk')
     .pipe(concat('master-widgets.njk'))
-    .pipe(gulp.dest(__dirname + '/app/public/nunjucks/widgets'));
+    .pipe(gulp.dest(__dirname + '/app/public/nunjucks/widgets'))
+    .pipe(browserSync.reload({
+    stream: true
+  }));
 });
 
 gulp.task('concat-widgets-scripts', function() {
@@ -49,18 +57,26 @@ gulp.task('concat-widgets-sass', function() {
     .pipe(gulp.dest(__dirname + '/development/scss'));
 });
 
-gulp.task('server', function () {
+gulp.task('browserSync', function() {
+  browserSync.init({
+    proxy: 'localhost:3000',
+    port: 3001
+  });
+});
+
+gulp.task('server', function() {
   nodemon({
     script: 'server.js',
-    ext: 'js'
-  }).on('quit', function () {
+    ext: 'js, njk',
+  }).on('quit', function() {
     process.exit(0);
   });
 });
 
 gulp.task('default', function (done) {
-  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-widgets-njk', 'watch', 'sass', 'uglyjs', 'server', done);
+  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-widgets-njk', 'watch', 'sass', 'uglyjs', 'server', 'browserSync', done);
 });
+
 
 // TODO add linting tasks etc
 gulp.task('build', function (done) {

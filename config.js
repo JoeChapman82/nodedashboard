@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 const express = require('express');
 const nunjucks = require('nunjucks');
+const chokidar = require('chokidar');
 const expressNunjucks = require('express-nunjucks');
 const browserSync = require('browser-sync');
 const bodyParser = require('body-parser');
@@ -19,7 +20,10 @@ module.exports = function(app) {
   nunjucks.configure(__dirname + '/app/public/', {
       autoescape: true,
       express: app,
-      // throwOnUndefined: true
+      useCache: false,
+      noCache: true,
+      watch: true,
+    //  throwOnUndefined: true
   });
   return app;
 };

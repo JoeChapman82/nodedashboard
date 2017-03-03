@@ -1,56 +1,45 @@
 /*jshint esversion: 6 */
 
 const request = require('request');
+const requireDir = require('require-dir');
 
-const calendarCall = require(__dirname + '/app/data-calls/calendar');
-const genData = require(__dirname + '/app/data-calls/example-data-generator');
-const jenkinsCall = require(__dirname + '/app/data-calls/jenkins');
-const weatherCall = require(__dirname + '/app/data-calls/weather');
-const xkcdCall = require(__dirname + '/app/data-calls/xkcd');
+const dataDirectory = requireDir(__dirname + '/app/data-calls');
 
-const dataGatherer = require(__dirname + '/app/services/data-gather');
+const toCallTemp = [dataDirectory.jenkins, dataDirectory.calendar, dataDirectory.weather, dataDirectory.xkcd, dataDirectory['example-data-generator']];
+
+const dataCallFinder = require(__dirname + '/app/services/data-call-finder');
 
 const dashboardOrder = require(__dirname + '/app/services/dashboard-order');
 const favMan = require(__dirname + '/app/services/favourites-manager');
 const getDefaults = require(__dirname + '/app/services/default-gather');
 
 module.exports = function(app) {
+// app.use('/', dataGatherer());
 
 // GET ROUTES
-app.get('/', function(req, res) {
-  res.render('index');
-});
-
-app.get('/dashboards/dashboard-select', [favMan.getFaves, getDefaults,function(req, res) {
-  res.render('dashboards/dashboard-select');
-}]);
-
-app.get('/dashboards/dashboard', [
-  jenkinsCall,
-  calendarCall,
-  weatherCall,
-  xkcdCall,
-//  dataGatherer,
-  genData,
+app.get('/', [
   function(req, res) {
-  res.render('dashboards/dashboard', {
-     widgets: widgets,
-     widgetsTwo: widgetsTwo
-   });
+  res.render('index');
 }]);
 
 // POST ROUTES
-app.post('/', function(req, res) {
-  res.redirect('/dashboards/dashboard-select');
-  });
-
 app.post('/dashboards/dashboard-select', [
-  dashboardOrder,
+  favMan.getFaves,
+  getDefaults,
   function(req, res) {
-    widgets = res.locals.widgets;
-    widgetsTwo = res.locals.widgetsTwo;
-    res.redirect('/dashboards/dashboard');
-  }]);
+  res.render('dashboards/dashboard-select');
+}]);
+
+app.post('/dashboards/dashboard', [
+  dataCallFinder,
+  dashboardOrder,
+  ...toCallTemp,
+  // ...app.locals.toCall,
+  function(req, res) {
+  res.render('dashboards/dashboard', {
+    hello: 'why hello theere'
+   });
+}]);
 
   // Routes for saving and recovering favourites
   app.post('/dashboards/save-fave', favMan.saveFile);
@@ -60,30 +49,38 @@ app.post('/dashboards/dashboard-select', [
   app.post('/dashboards/load-fave', [
     favMan.readFile,
     dashboardOrder,
+    dataCallFinder,
+    ...toCallTemp,
     function(req, res) {
-      widgets = res.locals.widgets;
-      widgetsTwo = res.locals.widgetsTwo;
-      res.redirect('/dashboards/dashboard');
+      res.render('dashboards/dashboard');
     }
   ]);
 
-// Routes for ajax calls
-app.post('/dashboards/xkcd',[xkcdCall, function(req, res) {
-  res.json(res.locals.data.xkcd);
+// Routes for ajax calls - TODO - Make one route that gets the appropriate data
+app.post('/dashboards/xkcd',[
+  dataDirectory.xkcd,
+  function(req, res) {
+    console.log(res.locals.data.xkcd);
+
+  // res.json(res.locals.data.xkcd);
+  res.render('index', {
+    hello: 'hello',
+    xkcd: res.locals.data.xkcd
+  });
 }]);
 
-app.post('/dashboards/weather',[weatherCall, function(req, res) {
+app.post('/dashboards/weather',[dataDirectory.weather, function(req, res) {
   res.send(res.locals.data.weather);
 }]);
 
-app.post('/dashboards/calendar',[calendarCall, function(req, res) {
+app.post('/dashboards/calendar',[dataDirectory.calendar, function(req, res) {
   res.send(res.locals.data.calendar);
 }]);
 
 
 //Route any other requests to index;
 app.get('*', function(req, res) {
-  res.render('index');
+  res.redirect('../');
 });
 
 };

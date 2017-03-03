@@ -10,18 +10,6 @@
   padding: 7vh 0 2vh;
 }
 
-.widget-barChart {
-  background-color: $white-soft;
-}
-
-.bar-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0;
- }
-
 .widget-calendar {
   background-color: $widget-green-medium;
   overflow: scroll;
@@ -56,6 +44,18 @@
   text-align: center;
   margin-top: 0px;
 }
+
+.widget-barChart {
+  background-color: $white-soft;
+}
+
+.bar-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
 
 .widget-countdown {
   background-color: rgba(220, 89, 69, 1);
