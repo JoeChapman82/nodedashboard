@@ -79,7 +79,7 @@
           <legend class="settings-legend">{{ value.displayName }}</legend>
           <div class="settings-inputs">
           <label class="settings-label" for="">Call frequency (mins)</label>
-          <input class="settings-input call-rate-input" type="number" max="300" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">
+          <input class="settings-input call-rate-input" type="number" max="300" min="1" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">
         </div>
         </fieldset>
         {% endif %}
@@ -157,6 +157,9 @@
 
   <fieldset id="widget-select" class="select-fieldset hidden">
     <legend class="select-legend">Select your widgets</legend>
+    <div id="errorMessages" class="hidden">
+      <p class="error-message">Sorry, that widget won't fit in the avaible space. Try another.</p>
+    </div>
     {% for key, value in defaults.widgets %}
     {% if value.available %}
     {{ forms.input(key+'-select', 'widget', key, 'checkbox', value.displayName, 'select-label', 'select-checkbox') }}

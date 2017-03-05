@@ -1,3 +1,9 @@
 .login-heading {
   text-align: center;
 }
+
+.error-message {
+  border: 5px solid $widget-red;
+  color: $widget-red;
+  font-size: $font-xxlarge;
+}

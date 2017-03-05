@@ -20,6 +20,7 @@ module.exports = function(req, res, next) {
     toCall.push(dataDirectory[call]);
   });
 
+res.locals.callers = callers;
 res.locals.toCall = toCall;
 // console.log(toCall[0]());
 // toCall.forEach(function(call) {

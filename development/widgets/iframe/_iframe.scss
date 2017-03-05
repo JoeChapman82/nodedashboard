@@ -1,14 +1,14 @@
-.widget-map {
-  background-color: $widget-lime;
+.widget-iframe {
+  background-color: $widget-purple;
 }
 
-#mapWidgetFrame {
+.iframe-widget-iframe {
   height: 47vh;
   margin-top: .02rem;
   width: 99%;
 }
 
-#widgetMapPreventInteration {
+#preventInteraction {
   height: 47vh;
   position: absolute;
   width: 98.8%;

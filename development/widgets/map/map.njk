@@ -1,6 +1,7 @@
 {% macro map(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-map" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
-  <h3>New York</h3>
-  <iframe id="mapWidgetFrame" src="//www.google.com/maps/embed/v1/place?q=Empire State Building&zoom=17&key=AIzaSyCjCwOg99rHP3xGtJyM7LpPdnayHEz4Bxg"></iframe>
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-map" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  <div id="widgetMapPreventInteration">
+  </div>
+  <iframe id="mapWidgetFrame" src="//www.google.com/maps/embed/v1/place?q=One Leeds City Office Park&zoom=17&key=AIzaSyCjCwOg99rHP3xGtJyM7LpPdnayHEz4Bxg"></iframe>
 </div>
 {% endmacro %}

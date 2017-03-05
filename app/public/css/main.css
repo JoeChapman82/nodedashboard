@@ -77,13 +77,13 @@ fieldset {
 
 input {
   border: 2px solid black;
-  display: block;
   border-radius: 2px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.75);
+  display: block;
   font-size: calc(17px + .1vw);
   margin: 5px auto 20px;
-  padding: 8px;
   outline: none;
-  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75); }
+  padding: 8px; }
 
 label {
   display: block;
@@ -92,8 +92,8 @@ label {
 
 input[type="submit"] {
   font-size: calc(17px + .1vw);
-  padding: 10px 50px;
-  margin-top: 30px; }
+  margin-top: 30px;
+  padding: 10px 50px; }
 
 input:focus,
 textarea:focus {
@@ -115,8 +115,8 @@ input[type=submit]:focus {
   padding: 20px 50px; }
 
 #settingsMenu {
-  text-align: center;
-  margin: 2rem; }
+  margin: 2rem;
+  text-align: center; }
 
 .settings-form {
   background-color: rgba(93, 93, 93, 0.9);
@@ -125,21 +125,21 @@ input[type=submit]:focus {
   box-sizing: border-box;
   display: inline-block;
   margin: 5vh auto;
-  padding: 0;
-  max-width: 100%; }
+  max-width: 100%;
+  padding: 0; }
 
 .fave-form {
-  position: absolute;
-  top: 3vh;
-  left: 1.5vw;
-  text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
   border: 3px solid gray;
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-block;
+  left: 1.5vw;
   max-width: 25vw;
-  padding: 1.25rem 2.5rem; }
+  position: absolute;
+  padding: 1.25rem 2.5rem;
+  text-align: center;
+  top: 3vh; }
 
 .fave-form.hidden .hidden {
   display: none; }
@@ -150,7 +150,7 @@ input[type=submit]:focus {
 .settings-fieldset {
   box-sizing: border-box;
   margin: 0;
-  padding: 1.25rem 2rem 1.25rem 2rem; }
+  padding: 1.25rem 2rem; }
 
 .settings-fieldset:first-of-type {
   border-top: 3px double #222222; }
@@ -163,8 +163,8 @@ input[type=submit]:focus {
   padding-right: 1.5rem; }
 
 .settings-inputs {
-  float: right;
   border-left: 1px solid #222222;
+  float: right;
   padding-left: 1.5rem; }
 
 .settings-input {
@@ -176,8 +176,8 @@ input[type=submit]:focus {
 
 .settings-label {
   display: inline;
-  margin-right: .5rem;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-right: .5rem; }
 
 .settings-fieldset-top-wrapper {
   border: 2px groove #dfdfdf; }
@@ -186,10 +186,10 @@ input[type=submit]:focus {
   border-top: 3px double #222222; }
 
 .settings-fieldset-top {
+  border: 0;
   box-sizing: border-box;
   margin: 0;
-  padding: 1.25rem 2rem 1.25rem 2rem;
-  border: 0; }
+  padding: 1.25rem 2rem; }
 
 .settings-legend-top {
   font-size: calc(17px + .1vw);
@@ -199,14 +199,14 @@ input[type=submit]:focus {
 .settings-label-radio {
   background-color: rgba(255, 255, 255, 0.8);
   border: 3px solid gray;
-  box-shadow: 2px 2px 1px #000000;
-  width: 10rem;
-  font-weight: bold;
-  text-align: center;
   border-radius: 5px;
+  box-shadow: 2px 2px 1px #000;
   display: inline-block;
+  font-weight: bold;
   margin: 10px;
-  padding: 1rem 2rem 1rem 1rem; }
+  padding: 1rem 2rem 1rem 1rem;
+  text-align: center;
+  width: 10rem; }
 
 .settings-label-radio:hover {
   background-color: #7f7f00;
@@ -222,13 +222,21 @@ input[type=submit]:focus {
   border-color: darkorange; }
 
 .settings-input-radio {
+  float: left;
   margin: 0;
-  padding: 0;
   opacity: 0;
-  float: left; }
+  padding: 0; }
+
+.disabled {
+  opacity: 0.2; }
 
 .login-heading {
   text-align: center; }
+
+.error-message {
+  border: 5px solid #dc5945;
+  color: #dc5945;
+  font-size: calc(25px + .1vw); }
 
 .flex-wrapper-regular {
   box-sizing: border-box;
@@ -257,7 +265,7 @@ input[type=submit]:focus {
 .flex-wrapper-preview-two,
 .flex-wrapper-preview-three,
 .flex-wrapper-preview-four {
-  background-color: grey;
+  background-color: #808080;
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-flex;
@@ -374,10 +382,10 @@ input[type=submit]:focus {
   background-color: rgba(71, 187, 179, 0.4);
   box-sizing: border-box;
   height: 50%;
-  max-height: 100vh;
   margin: 5px;
-  text-align: center;
-  position: relative; }
+  max-height: 100vh;
+  position: relative;
+  text-align: center; }
 
 .flex-widget-tv-1 {
   width: 19%; }
@@ -393,7 +401,7 @@ input[type=submit]:focus {
 
 .icon-background {
   color: #fff;
-  font-size: 19vw;
+  font-size: calc(250px + 2vw);
   margin-top: 40px;
   opacity: .1;
   position: absolute;
@@ -402,7 +410,7 @@ input[type=submit]:focus {
 
 .icon-background-alt {
   color: #fff;
-  font-size: 16vw;
+  font-size: calc(210px + 2vw);
   margin-top: 100px;
   opacity: .5;
   position: absolute;
@@ -592,35 +600,6 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 7vh 0 2vh; }
 
-.widget-calendar {
-  background-color: teal;
-  overflow: scroll; }
-
-.center-wrapper {
-  margin-top: auto;
-  margin-bottom: auto; }
-
-.calender-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 2.3vw; }
-
-.calendar-icon {
-  margin-right: 10px;
-  color: rgba(255, 255, 255, 0.8); }
-
-.calendar-event {
-  font-size: calc(17px + .1vw);
-  font-weight: 500; }
-
-.icon-background-calendar {
-  color: #fff;
-  width: 100%;
-  position: absolute;
-  opacity: 0.1;
-  font-size: 17vw;
-  text-align: center;
-  margin-top: 0px; }
-
 .widget-barChart {
   background-color: rgba(255, 255, 255, 0.8); }
 
@@ -631,26 +610,53 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
+.widget-calendar {
+  background-color: teal;
+  overflow: scroll; }
+
+.center-wrapper {
+  margin-bottom: auto;
+  margin-top: auto; }
+
+.calender-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: calc(25px + .1vw); }
+
+.calendar-icon {
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 10px; }
+
+.calendar-event {
+  font-size: calc(17px + .1vw);
+  font-weight: 500; }
+
+.icon-background-calendar {
+  color: #fff;
+  font-size: calc(210px + 2vw);
+  margin-top: 0;
+  opacity: .1;
+  position: absolute;
+  text-align: center;
+  width: 100%; }
+
 .widget-countdown {
-  background-color: #dc5945; }
+  background-color: #dc5945;
+  padding: 0 .5rem; }
 
 .countdown-event {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 2.3vw;
+  font-size: calc(25px + .1vw);
   font-weight: bold;
   margin-top: 9vh; }
 
 .countdown-timer-days,
 .countdown-timer-time {
   color: rgba(255, 215, 0, 0.8);
-  font-size: 3vw; }
+  font-size: calc(40px + .2vw); }
 
 .countdown-timer-days {
   margin-top: 0;
   margin-bottom: -40px; }
-
-.countdown-timer-time {
-  margin-bottom: 0px; }
 
 .countdown-due-date {
   color: rgba(255, 255, 255, 0.9); }
@@ -659,12 +665,12 @@ input[type=radio]:hover {
   background-color: #dc5945; }
 
 .digital-date {
-  font-size: 2.3vw;
+  font-size: calc(25px + .1vw);
   color: #fff;
   margin-top: 5vw; }
 
 .digital-time {
-  font-size: 4vw;
+  font-size: calc(50px + .5vw);
   color: #fff;
   font-weight: bold;
   margin: 0; }
@@ -679,8 +685,38 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
+.widget-iframe {
+  background-color: #9c4274; }
+
+.iframe-widget-iframe {
+  height: 47vh;
+  margin-top: .02rem;
+  width: 99%; }
+
+#preventInteraction {
+  height: 47vh;
+  position: absolute;
+  width: 98.8%; }
+
+.widget-image {
+  background-color: #ec663c; }
+
+.image-widget-image {
+  height: 48vh;
+  width: 100%; }
+
 .widget-map {
-  background-color: #dc5945; }
+  background-color: #96bf48; }
+
+#mapWidgetFrame {
+  height: 47vh;
+  margin-top: .02rem;
+  width: 99%; }
+
+#widgetMapPreventInteration {
+  height: 47vh;
+  position: absolute;
+  width: 98.8%; }
 
 .widget-notices {
   background-color: #47bbb3; }
@@ -700,14 +736,14 @@ input[type=radio]:hover {
 
 #progressMeterDisplay {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
   max-height: 98%;
   max-width: 99%;
   padding: 0; }
 
 .progress-meter-heading {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 2.3vw;
+  font-size: calc(25px + .1vw);
   margin-top: 5vh;
   margin-bottom: 10px; }
 
@@ -721,6 +757,18 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
+.widget-xkcd {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%; }
+
+.xkcd-heading {
+  font-size: calc(17px + .1vw);
+  color: #222222;
+  margin: 0 auto -20px; }
+
 .widget-weather {
   background-color: steelblue; }
 
@@ -730,7 +778,7 @@ input[type=radio]:hover {
   opacity: 0.5; }
 
 .weather-temp {
-  font-size: 4vw;
+  font-size: calc(50px + .5vw);
   font-weight: bold;
   color: #fff;
   opacity: 0.8; }
@@ -749,18 +797,6 @@ input[type=radio]:hover {
   text-align: center;
   margin-top: 13vh; }
 
-.widget-xkcd {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.xkcd-comic {
-  max-width: 100%;
-  max-height: 87%; }
-
-.xkcd-heading {
-  font-size: calc(17px + .1vw);
-  color: #222222;
-  margin: 0 auto -20px; }
-
 .widget-jenkins-all {
   background-color: rgba(71, 187, 179, 0.4);
   overflow: scroll; }
@@ -768,6 +804,14 @@ input[type=radio]:hover {
 .jenkins-all-heading {
   color: rgba(255, 255, 255, 0.8);
   font-size: calc(20px + .1vw); }
+
+.widget-jenkins {
+  background-color: #ec663c; }
+
+.jenkins-jobs-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: calc(25px + .1vw);
+  margin-top: 30px; }
 
 .widget-jenkinsSingle {
   background-color: rgba(71, 187, 179, 0.4);
@@ -779,11 +823,3 @@ input[type=radio]:hover {
 
 .jenkins-subheading {
   font-size: calc(17px + .1vw); }
-
-.widget-jenkins {
-  background-color: #ec663c; }
-
-.jenkins-jobs-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 2.3vw;
-  margin-top: 30px; }

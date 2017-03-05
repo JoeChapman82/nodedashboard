@@ -5,14 +5,8 @@ const url = 'http://api.openweathermap.org/data/2.5/weather?appid=' + process.en
 const weatherCall = new ApiCaller(url);
 
 module.exports = function (req, res, next) {
-  if (typeof res.locals.data === 'undefined') {
-    res.locals.data = {};
-  }
   weatherCall.call().then(function(response) {
     res.locals.data.weather = response;
-    next();
-  }).catch(function(error) {
-    console.log(error);
     next();
   });
 };

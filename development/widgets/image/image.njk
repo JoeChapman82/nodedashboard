@@ -1,0 +1,7 @@
+{% macro image(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-image" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+<div>
+  <img class="image-widget-image" src="/../images/be-better.jpg" alt="You're awesome">
+</div>
+</div>
+{% endmacro %}

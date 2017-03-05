@@ -31,7 +31,7 @@
   .flex-wrapper-preview-two,
     .flex-wrapper-preview-three,
       .flex-wrapper-preview-four {
-  background-color: grey;
+  background-color: $preview-background-colour;
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-flex;
@@ -99,7 +99,7 @@
 }
 
 .flex-widget-preview-tv-2 {
-   width: 38.5%;
+  width: 38.5%;
  }
 
 .flex-widget-preview-tv-3 {
@@ -144,7 +144,7 @@
 }
 
 .flex-widget-pc-1 {
-    width: 24%;
+  width: 24%;
 }
 
 .flex-widget-pc-2 {
@@ -176,10 +176,10 @@
   background-color: $widget-green-dark;
   box-sizing: border-box;
   height: 50%;
-  max-height: 100vh;
   margin: 5px;
-  text-align: center;
+  max-height: 100vh;
   position: relative;
+  text-align: center;
 }
 
 .flex-widget-tv-1 {
@@ -200,7 +200,7 @@
 
 .icon-background {
   color: $white;
-  font-size: 19vw;
+  font-size: $icon-large;
   margin-top: 40px;
   opacity: .1;
   position: absolute;
@@ -210,7 +210,7 @@
 
 .icon-background-alt {
   color: $white;
-  font-size: 16vw;
+  font-size: $icon-medium;
   margin-top: 100px;
   opacity: .5;
   position: absolute;

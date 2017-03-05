@@ -1,6 +1,6 @@
 {% macro countdown(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} canvas-display widget-countdown" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.rate }}", data-style="{{ dataset.style }}">
-<p class="countdown-event">COUNTDOWN TO BEDTIME</p>
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} canvas-display widget-countdown" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.rate }}", data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+<p class="countdown-event">COUNTDOWN TO EVENT</p>
 <p id="countdownTimerDays" class="countdown-timer-days"><br></p>
 <p id="countdownTimerTime" class="countdown-timer-time"></p>
 <p id="countdownDueDate" class="countdown-due-date">Due date:<br> 29-Mar-2017 19:00:00</p>

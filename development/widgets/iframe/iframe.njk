@@ -1,0 +1,7 @@
+{% macro iframe(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-iframe" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+<div id="preventInteraction">
+</div>
+  <iframe class="iframe-widget-iframe" src="https://www.gov.uk/" sandbox></iframe>
+</div>
+{% endmacro %}

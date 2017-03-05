@@ -1,7 +1,7 @@
 {% macro jenkinsSingle1(dataset, data) %}
 <div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle
 {% if job.lastCompletedBuild.result === SUCCESS %}jenkins-success{% elif job.lastCompletedBuild.result === 'FAILED' %}jenkins-failure{% endif %}"
- data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+ data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   {% if data.jenkins.jobs %}
     {% for job in data.jenkins.jobs %}
       {% if job.name === "dsl-build-crypto-service" %}

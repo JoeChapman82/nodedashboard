@@ -4,10 +4,7 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 module.exports = function(req, res, next) {
-  if (typeof res.locals.data === 'undefined') {
-    res.locals.data = {};
-  }
-if (process.env.NODE_ENV === 'development' ) {
+if (process.env.NODE_ENV === 'development' && process.env.USE_CALENDAR) {
 
   return new Promise(function(resolve, reject) {
 

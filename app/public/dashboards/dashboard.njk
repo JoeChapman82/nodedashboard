@@ -10,9 +10,6 @@
 {% endif %}
 
 {% block body %}
-{% if hello %}{{ hello }}{% else %}No hello here :({% endif %}
-{{ xkcd | dump }}
-{{ 'helo' }}
 
 {{ forms.save() }}
 {# Used in main.js to not display save message - loaded created by favMan.js #}

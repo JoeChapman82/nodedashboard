@@ -18,7 +18,7 @@ gulp.task('sass', function(){
 });
 
 gulp.task('watch', ['sass'], function(){
-  gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['sass'], browserSync.reload());
+  gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['concat-widgets-sass', 'sass'], browserSync.reload());
   gulp.watch([__dirname + '/app/public/**/*.njk', __dirname + '/development/widgets/**/*.njk'], ['concat-widgets-njk'], browserSync.reload());
   gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'uglyjs'], browserSync.reload());
 });
@@ -60,7 +60,14 @@ gulp.task('concat-widgets-sass', function() {
 gulp.task('browserSync', function() {
   browserSync.init({
     proxy: 'localhost:3000',
-    port: 3001
+    port: 3001,
+    reloadDelay: 3000,
+    ghostMode: {
+    clicks: false,
+    forms: false,
+    scroll: false
+},
+    open: false
   });
 });
 

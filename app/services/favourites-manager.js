@@ -8,7 +8,7 @@ TODO - Check path variables / consider node-persist / local storage or other sto
 ****************/
 
 function checkName(str){
-    var regEx = /[-_a-z0-9]/ ;
+    var regEx = /[-_a-zA-Z0-9]/ ;
     return regEx.test(str);
 }
 

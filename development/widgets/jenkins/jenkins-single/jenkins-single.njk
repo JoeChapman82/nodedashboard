@@ -1,5 +1,5 @@
 {% macro jenkinsSingle(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   {% if data.jenkins.jobs %}
     {% for job in data.jenkins.jobs %}
       {% if job.name === "dsl-build-pyi-controller" %}

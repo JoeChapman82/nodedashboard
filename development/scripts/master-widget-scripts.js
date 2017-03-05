@@ -66,8 +66,43 @@ if (document.getElementById('barCanvas')) {
   (function() {
     var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
     myChart.interval(50);
+
+    // TODO set up all charts to accept arrays and objects as data
+
+    //   var barInterval = setInterval(function() {
+    //     if (document.hasFocus()) {
+    //     $.ajax({
+    //       type: "POST",
+    //       url: 'data-calls',
+    //       data: {call: 'example-data-generator'},
+    //       success: function(data, status) {
+    //       }
+    //     });
+    //   }
+    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
+
   }());
 }
+
+if (document.querySelector('.widget-calendar')) {
+setInterval(function() {
+$.ajax({
+  type: "POST",
+  url: 'data-calls',
+  data: {call: 'calendar'},
+  success: function(data, status) {
+    $('#events').html('');
+    if (data.length < 1) {
+      $('#events').append('<i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>No events today</p>');
+    } else {
+      for (var i = 0; i < data.length; i++) {
+        $('#events').append('<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>' + data[i].start + ' <br>' + data[i].summary + '</p>');
+      }
+    }
+  }
+});
+}, parseInt(document.querySelector('.widget-calendar').dataset.rate));
+};
 
 function countdown() {
 var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
@@ -119,74 +154,36 @@ if (document.getElementById('doughnutChartDisplay')) {
   }());
 }
 
+if (document.getElementById('progressMeterDisplay')) {
+    var progressExample = new Progress('progressMeterDisplay', 'progressMeterData');
+    progressExample.interval(50);
+
+  var progInterval = setInterval(function() {
+    // Don't make another request if window not active - It makes the other intervals stack
+    if (document.hasFocus()) {
+      var d = new Date();
+      var m = d.getMinutes() < 10 ? '0' + d.getMinutes(): d.getMinutes();
+      var s = d.getSeconds() < 10 ? '0' + d.getSeconds(): d.getSeconds();
+      $.ajax({
+        type: "POST",
+        url: 'data-calls',
+        data: {call: 'example-data-generator'},
+        success: function(data, status) {
+          document.getElementById('progressMeterData').dataset.percent = data.randomNumber;
+          progressExample.progMetPercent = data.randomNumber;
+          progressExample.interval(50);
+          document.getElementById('progressTime').innerText = "Last updated at " + d.getHours() + ":"  + m + ":" + s;
+        }
+      });
+    }
+  }, parseInt(document.querySelector('.widget-progress').dataset.rate));
+}
+
 if (document.getElementById('pieChartDisplay')) {
   (function() {
     var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
     pieChart.pieChart();
   }());
-}
-
-if (document.querySelector('#progressMeterDisplay')) {
-
-(function() {
-
-var canvas = document.getElementById("progressMeterDisplay");
-var context = canvas.getContext("2d");
-var progMetData = document.getElementById('progressMeterData');
-var percentInc = 0;
-var progMetPercent = progMetData.getAttribute('data-percent');
-
-function drawProgressShadow() {
-context.beginPath();
-context.arc(100, 100, 80, 0.75 * Math.PI, 0.25 * Math.PI, false);
-context.strokeStyle = 'grey';
-context.lineCap = 'butt';
-context.lineWidth = 35;
-context.stroke();
-context.closePath();
-}
-
-function drawProgress() {
-context.beginPath();
-context.arc(100, 100, 80, 0.75 * Math.PI, (drawPercent()) * Math.PI, false);
-context.strokeStyle = 'rgba(255, 255, 255, 1)';
-context.lineCap = 'butt';
-context.lineWidth = 35;
-context.stroke();
-context.font = "bold 40px Arial";
-context.fillStyle = "rgba(255, 255, 255, 1)";
-  if (percentInc < 10) {
-    context.fillText(percentInc + "%", 69, 115);
-  } else if (percentInc === 100) {
-    context.fillText(percentInc + "%", 52, 115);
-  } else {
-    context.fillText(percentInc + "%", 62, 115);
-  }
-context.closePath();
-}
-
-function drawPercent() {
-  if (percentInc <= 83) {
-    return 0.75 + percentInc * 0.015;
-  } else {
-    return 0.25 - (100 - percentInc) * 0.0138;
-  }
-}
-
-function mainDraw() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  drawProgressShadow();
-  drawProgress();
-  percentInc++;
-  if (percentInc > progMetPercent) {
-    clearInterval(myInt);
-  }
-}
-
-var myInt = setInterval(mainDraw, 50);
-
-}());
-
 }
 
 if (document.getElementById('scatterChartDisplay')) {
@@ -196,12 +193,33 @@ if (document.getElementById('scatterChartDisplay')) {
   }());
 }
 
+if (document.querySelector('#weatherOne')) {
+setInterval(function() {
+$.ajax({
+  type: "POST",
+  url: 'data-calls',
+  data: {call: 'weather'},
+  success: function(data, status) {
+    $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
+    $('.weather-city').text(data.name + ' Weather');
+    $('.weather-type').text(data.weather[0].main);
+    $('.weather-temp').text(data.main.temp + '°C');
+  }
+});
+}, parseInt(document.getElementById('weatherOne').dataset.rate));
+};
+
 if (document.querySelector('#xkcdOne')) {
 setInterval(function() {
-  $.post('xkcd', function(data, status) {
-    // $('.xkcd-heading').html('XKCD: ' + data.num + '<br>' + data.safe_title);
-    // $('.xkcd-comic').attr('src', data.img);
-  });
+$.ajax({
+  type: "POST",
+  url: 'data-calls',
+  data: {call: 'xkcd'},
+  success: function(data, status) {
+    $('.xkcd-heading').html('XKCD: ' + data.num + '<br>' + data.safe_title);
+    $('.xkcd-comic').attr('src', data.img);
+  }
+});
 }, parseInt(document.getElementById('xkcdOne').dataset.rate));
 };
 

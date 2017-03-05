@@ -1,16 +1,12 @@
 // Jquery UI functions for widgets on dashboard page
-// TODO - use plain js instead - addclass to all div children, addEventListener down/up
-// Gather all potitions, apply position absolute to moving div, use position relative to mouse pointer
+// TODO - use plain js instead - addclass to all div children,  addEventListener down/up
+// add placeholder for element to drop back to if not repositioned,
+// Gather all potitions, apply position relative to mouse pointer
 // Rearrange on mouse up
 $(function() {
   $(".sortable").sortable();
   $(".sortable").disableSelection();
 });
-
-// $(function() {
-//   $("#sortable2").sortable();
-//   $("#sortable2").disableSelection();
-// });
 
 document.querySelectorAll('input[type="checkbox"], input[type="radio"], button').forEach(function(input){
   input.addEventListener('focus', function() {
@@ -55,34 +51,60 @@ $('input[type=checkbox]').change(function() {
 var orderingObject = {};
 var sizeCounter = 0;
 $('.select-checkbox').click(function() {
+  // Clear the disabled buttons if any
+  document.querySelectorAll('.select-checkbox').forEach(function(checkbox) {
+    if (checkbox.parentNode.classList.contains('disabled')) {
+      checkbox.parentNode.classList.remove('disabled');
+      checkbox.disabled = false;
+    }
+  });
+
+  // Remove from preview if already selected
+    if($(this).parent().hasClass('selected')) {
+      var i = 1;
+      $('#' + $(this).data('target')).fadeOut('fast').addClass('hidden').removeClass('displayed');
+      sizeCounter -= parseInt($('#' + $(this).data('target')).data('width'));
+      // delete orderingObject[$('#' + $(this).data('target')).data('position')];
+      // console.log(orderingObject);
+      // Object.keys(orderingObject).forEach(function(key) {
+      //   console.log(key);
+      //   orderingObject[i] = orderingObject[key];
+      //   i++;
+      // });
+    } else {
+
+  // TODO clear selection when switching between pc and tv
   var display = document.getElementById('pc-select').checked ? 'pc' : 'tv';
   var maxsize = display === 'pc' ? 8 : 10;
+  // Change the preview wrapper based in display selection - TODO - move this
   document.querySelector('#' + this.dataset.target).classList.add('flex-widget-preview-' + display + '-' + document.querySelector('#' + this.dataset.target).dataset.width);
   document.querySelectorAll(['.flex-wrapper-preview', '.flex-wrapper-preview-two', '.flex-wrapper-preview-three', '.flex-wrapper-preview-four']).forEach(function(wrapper){
     if (!wrapper.classList.contains(display + '-wrapper')) {
       wrapper.classList.add(display + '-wrapper');
     }
   });
-  // TODO - Temp solution - make better when time
+  // TODO - Temp solution - make better when time - add max size var tied to preview wrappers displayed & display var
   var destination = $(".flex-wrapper-preview div:last");
   if (document.getElementById('previewPane').classList.contains('hidden')) {
     document.getElementById('previewPane').classList.remove('hidden');
+    document.querySelector('.flex-wrapper-preview').classList.remove('hidden');
+    document.querySelector('.flex-wrapper-preview').classList.add('displayed');
   }
   if ((display === 'tv' && sizeCounter >= 30) || (display === 'pc' && sizeCounter >= 24)) {
       destination = $(".flex-wrapper-preview-four div:last");
     if ($('.flex-wrapper-preview-four').hasClass('hidden')) {
-        $('.flex-wrapper-preview-four').removeClass('hidden');
+        $('.flex-wrapper-preview-four').removeClass('hidden').addClass('displayed');
         $('#preview-breaker-two').fadeIn('slow').removeClass('hidden');
     }
   } else if ((display === 'tv' && sizeCounter >= 20) || (display === 'pc' && sizeCounter >= 16)) {
       destination = $(".flex-wrapper-preview-three div:last");
     if ($('.flex-wrapper-preview-three').hasClass('hidden')) {
-      $('.flex-wrapper-preview-three').removeClass('hidden');
+      $('.flex-wrapper-preview-three').removeClass('hidden').addClass('displayed');
     }
   } else if ((display === 'tv' && sizeCounter >= 10) || (display === 'pc' && sizeCounter >= 8)) {
       destination = $(".flex-wrapper-preview-two div:last");
     if ($('.flex-wrapper-preview-two').hasClass('hidden')) {
-      $('.flex-wrapper-preview-two').removeClass('hidden');
+      $('.flex-wrapper-preview-two').removeClass('hidden').addClass('displayed');
       $('#preview-breaker').fadeIn('slow').removeClass('hidden');
     }
   }
@@ -90,7 +112,9 @@ $('.select-checkbox').click(function() {
   $('#' + $(this).data('target')).insertAfter(destination);
   // Change the dataset-position of the selected element
   var placedWidget = document.getElementById(this.dataset.target);
-  placedWidget.dataset.position = document.querySelectorAll('.flex-widget-preview-' + display + '-1.displayed').length + document.querySelectorAll('.flex-widget-preview-' + display + '-2.displayed').length + document.querySelectorAll('.flex-widget-preview-' + display + '-3.displayed').length + $('.flex-widget-preview-' + display + '-4.displayed').length;
+  var displayedLength = document.querySelectorAll('.flex-widget-preview-' + display + '-1.displayed').length + document.querySelectorAll('.flex-widget-preview-' + display + '-2.displayed').length + document.querySelectorAll('.flex-widget-preview-' + display + '-3.displayed').length + $('.flex-widget-preview-' + display + '-4.displayed').length;
+  var displayedPreviews = document.querySelectorAll('div[class^="flex-wrapper-preview"].displayed').length;
+  placedWidget.dataset.position = displayedLength;
   // and add to ordering orderingObject
   orderingObject[placedWidget.dataset.position] = {
   widget: $(this).val(),
@@ -104,10 +128,21 @@ $('.select-checkbox').click(function() {
   style: placedWidget.dataset.style
 };
 sizeCounter += parseInt(placedWidget.dataset.width) * parseInt(placedWidget.dataset.height);
-  if($(this).parent().hasClass('selected')) {
-    $('#' + $(this).data('target')).fadeOut('fast').addClass('hidden').removeClass('displayed');
-    sizeCounter -= parseInt(placedWidget.dataset.width) * 2;
+
+} // end of else statement for non disabled checkboxes
+
+// Disable selection of buttons for that won't fit
+document.querySelectorAll('.select-checkbox').forEach(function(checkbox) {
+  var widthOfOption = parseInt(document.getElementById(checkbox.dataset.target).dataset.width);
+  if (((widthOfOption + sizeCounter) - (maxsize * (displayedPreviews - 1)) > maxsize && (sizeCounter - (maxsize * (displayedPreviews - 1)) < maxsize)) ||
+     ((widthOfOption + sizeCounter) - (maxsize * (displayedPreviews - 1)) > maxsize / 2) && (sizeCounter - (maxsize * (displayedPreviews - 1)) < maxsize / 2)) {
+    if (!checkbox.checked) {
+    checkbox.parentNode.classList.add('disabled');
+    checkbox.disabled = true;
+    }
   }
+});
+
 });
 
 // To cover up longer loading times - Display a message
@@ -115,7 +150,7 @@ sizeCounter += parseInt(placedWidget.dataset.width) * parseInt(placedWidget.data
 $('#preview-submit').click(function() {
   $('#hiddenOrdering').val(JSON.stringify(orderingObject));
   var loadingMessages = ['Just getting your dashboards ready...', 'Parsing JSON...', 'Working on it...', 'Loading...'];
-  $('#dashboard-settings, #settingsButton').addClass('hidden');
+  $('#dashboard-settings, #settingsButton, #favouritesButton').addClass('hidden');
   $('#loadingMessages').fadeIn('slow').removeClass('hidden');
   $('#loadingMessage').text(loadingMessages[(Math.floor(Math.random() * (loadingMessages.length)))]);
 });
@@ -341,30 +376,3 @@ $('#getFave').click(function() {
       $('#retrievedData').text(data[1].widget);
     });
 });
-
-// ajax calls for repeated requests
-if (document.querySelector('#weatherOne')) {
-setInterval(function() {
-  $.post('weather', function(data, status) {
-    $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
-    $('.weather-city').text(data.name + ' Weather');
-    $('.weather-type').text(data.weather[0].main);
-    $('.weather-temp').text(data.main.temp + '°C');
-  });
-}, parseInt(document.getElementById('weatherOne').dataset.rate));
-}
-
-if (document.querySelector('.widget-calendar')) {
-setInterval(function() {
-  $.post('calendar', function(data, status) {
-    $('#events').html('');
-    if (data.length < 1) {
-      $('#events').append('<i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>No events today</p>');
-    } else {
-      for (var i = 0; i < data.length; i++) {
-        $('#events').append('<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>' + data[i].start + ' <br>' + data[i].summary + '</p>');
-      }
-    }
-  });
-}, parseInt(document.querySelector('.widget-calendar').dataset.rate));
-}

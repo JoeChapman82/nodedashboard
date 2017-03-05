@@ -3,9 +3,9 @@
 
 
 module.exports = function(req, res, next) {
-  if (typeof res.locals.data === 'undefined') {
-    res.locals.data = {};
-  }
+
+  let randomNumber = Math.floor(Math.random() * 100) + 1;
+
   let dummyData = [];
   for (let i = 0; i <= (Math.floor(Math.random() * 20) + 5); i++) {
     let randomNum = Math.floor(Math.random() * 100);
@@ -26,14 +26,18 @@ module.exports = function(req, res, next) {
   }
 
   let doughnutData = [];
-  for (let i = 0; i <= 8; i++) {
+  for (let i = 0; i <= 7; i++) {
     let randomNum = Math.floor(Math.random() * 100);
     doughnutData.push([`Item ${i + 1}`, randomNum]);
   }
 
-  res.locals.data.barChart = dummyData;
-  res.locals.data.scatterChart = dummyDataScatter;
-  res.locals.data.pieChart = pieData;
-  res.locals.data.doughnutChart = doughnutData;
+  res.locals.data['example-data-generator'] = {
+    randomNumber  : randomNumber,
+    barChart      : dummyData,
+    pieChart      : pieData,
+    doughnutChart : doughnutData,
+    scatterChart  : dummyDataScatter
+  };
+
   next();
 };

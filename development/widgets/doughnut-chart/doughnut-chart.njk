@@ -1,13 +1,13 @@
 {% macro doughnutChart(dataset, data) %}
 <table id="dataChartDoughnut" class="data-table">
-    {% for item in data.doughnutChart %}
+    {% for item in data['example-data-generator'].doughnutChart %}
     <tr>
     <td>{{ item[0] }}</td>
     <td>{{ item[1] }}</td>
     </tr>
     {% endfor %}
 </table>
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-doughnutChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}"  data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-doughnutChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}"  data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   <div id="doughnutChartData" data-x="x" data-y="y" data-title="Doughnut Chart"></div>
   <canvas id="doughnutChartDisplay" class="doughnut-chart-display" width="275" height="370"></canvas>
 </div>

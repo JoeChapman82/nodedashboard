@@ -4,6 +4,9 @@ $font-small: calc(12px + .1vw);
 $font-regular: calc(14px + .1vw);
 $font-large: calc(17px + .1vw);
 $font-xlarge: calc(20px + .1vw);
-$font-xxlarge: 2.3vw;
-$font-xxxlarge: 3vw;
-$font-super: 4vw;
+$font-xxlarge: calc(25px + .1vw);
+$font-xxxlarge: calc(40px + .2vw);
+$font-super: calc(50px + .5vw);
+
+$icon-large: calc(250px + 2vw);
+$icon-medium: calc(210px + 2vw);

@@ -1,5 +1,5 @@
 {% macro jenkins(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   {% if data.jenkins.jobs %}
   <div class="icon-background-alt">
     {% if data.jenkins.successfulJobs === data.jenkins.totalJobs or data.jenkins.successfulJobs > data.jenkins.totalJobs / 2 %}

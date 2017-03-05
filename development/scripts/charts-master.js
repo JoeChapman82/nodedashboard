@@ -3,6 +3,8 @@
 // data - The id of the data <table>
 // pass js objects - no jquery
 
+// TODO - Need setters and getters for updating charts - same for meters
+
 "use strict";
 
 function Chart(canvas, labels, data) {

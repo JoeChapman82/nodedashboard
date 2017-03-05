@@ -5,6 +5,8 @@ const requireDir = require('require-dir');
 
 const dataDirectory = requireDir(__dirname + '/app/data-calls');
 
+const dataCaller = require(__dirname + '/app/services/data-caller');
+
 const toCallTemp = [dataDirectory.jenkins, dataDirectory.calendar, dataDirectory.weather, dataDirectory.xkcd, dataDirectory['example-data-generator']];
 
 const dataCallFinder = require(__dirname + '/app/services/data-call-finder');
@@ -14,9 +16,8 @@ const favMan = require(__dirname + '/app/services/favourites-manager');
 const getDefaults = require(__dirname + '/app/services/default-gather');
 
 module.exports = function(app) {
-// app.use('/', dataGatherer());
 
-// GET ROUTES
+// GET ROUTE
 app.get('/', [
   function(req, res) {
   res.render('index');
@@ -33,12 +34,11 @@ app.post('/dashboards/dashboard-select', [
 app.post('/dashboards/dashboard', [
   dataCallFinder,
   dashboardOrder,
+  dataCallFinder,
+  // dataCaller.initialCall,
   ...toCallTemp,
-  // ...app.locals.toCall,
   function(req, res) {
-  res.render('dashboards/dashboard', {
-    hello: 'why hello theere'
-   });
+  res.render('dashboards/dashboard');
 }]);
 
   // Routes for saving and recovering favourites
@@ -50,35 +50,21 @@ app.post('/dashboards/dashboard', [
     favMan.readFile,
     dashboardOrder,
     dataCallFinder,
+  //  dataCaller.initialCall,
     ...toCallTemp,
     function(req, res) {
       res.render('dashboards/dashboard');
     }
   ]);
 
-// Routes for ajax calls - TODO - Make one route that gets the appropriate data
-app.post('/dashboards/xkcd',[
-  dataDirectory.xkcd,
-  function(req, res) {
-    console.log(res.locals.data.xkcd);
-
-  // res.json(res.locals.data.xkcd);
-  res.render('index', {
-    hello: 'hello',
-    xkcd: res.locals.data.xkcd
-  });
-}]);
-
-app.post('/dashboards/weather',[dataDirectory.weather, function(req, res) {
-  res.send(res.locals.data.weather);
-}]);
-
-app.post('/dashboards/calendar',[dataDirectory.calendar, function(req, res) {
-  res.send(res.locals.data.calendar);
+// Route for ajax calls
+app.post('/dashboards/data-calls', [dataCaller.reCall, function(req, res, next) {
+  res.json(res.locals.data[req.body.call]);
 }]);
 
 
-//Route any other requests to index;
+
+//Route any other requests to index; // Change this to app.all?
 app.get('*', function(req, res) {
   res.redirect('../');
 });

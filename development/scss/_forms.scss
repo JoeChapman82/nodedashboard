@@ -6,13 +6,13 @@ fieldset {
 
 input {
   border: 2px solid $form-field-border-colour;
-  display: block;
   border-radius: 2px;
+  box-shadow: 2px 2px 2px 0 $shadow-colour;
+  display: block;
   font-size: $font-large;
   margin: 5px auto 20px;
-  padding: 8px;
   outline: none;
-  box-shadow: 2px 2px 2px 0px $shadow-colour;
+  padding: 8px;
 }
 
 label {
@@ -23,8 +23,8 @@ label {
 
 input[type="submit"] {
   font-size: $font-large;
-  padding: 10px 50px;
   margin-top: 30px;
+  padding: 10px 50px;
 }
 
 input:focus,
@@ -51,8 +51,8 @@ input[type=submit]:focus {
 }
 
 #settingsMenu {
-  text-align: center;
   margin: 2rem;
+  text-align: center;
 }
 
 .settings-form {
@@ -62,22 +62,22 @@ input[type=submit]:focus {
   box-sizing: border-box;
   display: inline-block;
   margin: 5vh auto;
-  padding: 0;
   max-width: 100%;
+  padding: 0;
 }
 
 .fave-form {
-  position: absolute;
-  top: 3vh;
-  left: 1.5vw;
-  text-align: center;
   background-color: $white-softer;
   border: 3px solid $grey-border;
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-block;
+  left: 1.5vw;
   max-width: 25vw;
+  position: absolute;
   padding: 1.25rem 2.5rem;
+  text-align: center;
+  top: 3vh;
 }
 
 .fave-form.hidden {
@@ -93,7 +93,7 @@ input[type=submit]:focus {
 .settings-fieldset {
   box-sizing: border-box;
   margin: 0;
-  padding: 1.25rem 2rem 1.25rem 2rem;
+  padding: 1.25rem 2rem;
 }
 
 .settings-fieldset:first-of-type {
@@ -109,8 +109,8 @@ input[type=submit]:focus {
 }
 
 .settings-inputs {
-  float: right;
   border-left: 1px solid $main-background-colour;
+  float: right;
   padding-left: 1.5rem;
 }
 
@@ -125,13 +125,12 @@ input[type=submit]:focus {
 
 .settings-label {
   display: inline;
-  margin-right: .5rem;
   font-weight: bold;
+  margin-right: .5rem;
 }
 
 .settings-fieldset-top-wrapper {
   border: 2px groove $white-fieldset;
-  // margin-bottom: .1rem;
 }
 
 .settings-fieldset-top-wrapper:first-of-type {
@@ -139,10 +138,10 @@ input[type=submit]:focus {
 }
 
 .settings-fieldset-top {
+  border: 0;
   box-sizing: border-box;
   margin: 0;
-  padding: 1.25rem 2rem 1.25rem 2rem;
-  border: 0;
+  padding: 1.25rem 2rem;
 }
 
 .settings-legend-top {
@@ -154,14 +153,14 @@ input[type=submit]:focus {
 .settings-label-radio {
   background-color: $white-soft;
   border: 3px solid $grey-border;
-  box-shadow: 2px 2px 1px #000000;
-  width: 10rem;
-  font-weight: bold;
-  text-align: center;
   border-radius: 5px;
+  box-shadow: 2px 2px 1px $black;
   display: inline-block;
+  font-weight: bold;
   margin: 10px;
   padding: 1rem 2rem 1rem 1rem;
+  text-align: center;
+  width: 10rem;
 }
 
 .settings-label-radio:hover {
@@ -181,8 +180,12 @@ input[type=submit]:focus {
 }
 
 .settings-input-radio {
-  margin: 0;
-  padding: 0;
-  opacity: 0;
   float: left;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+.disabled {
+  opacity: 0.2;
 }

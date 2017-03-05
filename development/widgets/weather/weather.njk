@@ -1,7 +1,7 @@
 {% macro weather(dataset, data) %}
  <h1>{{ data.weather[0] | dump }}</h1>
 <h1>{{ data.weather[0].icon }}</h1>
-<div id="weatherOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-weather" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
+<div id="weatherOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-weather" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   <div class="icon-background-weather">
     {% if data.weather.weather[0].icon %}
     <i class="wi wi-{{ data.weather.weather[0].icon }}"></i>

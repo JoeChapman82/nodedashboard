@@ -1,8 +1,8 @@
 {% macro xkcd(dataset, data) %}
-<div id="xkcdOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-xkcd" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}">
-  <p class="xkcd-heading">XKCD: {{ xkcd.num or data.xkcd.num }}<br>
-  {{ xkcd.title or data.xkcd.title }}</p>
+<div id="xkcdOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-xkcd" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  <p class="xkcd-heading">XKCD: {{ data.xkcd.num }}<br>
+  {{ data.xkcd.title }}</p>
   <br>
-  <img class="xkcd-comic" src="{{ xkcd.img or data.xkcd.img }}" alt="Todays XKCD">
+  <img class="xkcd-comic" src="{{ data.xkcd.img }}" alt="Todays XKCD">
 </div>
 {% endmacro %}

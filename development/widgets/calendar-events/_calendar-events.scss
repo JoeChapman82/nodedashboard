@@ -4,8 +4,8 @@
 }
 
 .center-wrapper {
-  margin-top: auto;
   margin-bottom: auto;
+  margin-top: auto;
 }
 
 .calender-heading {
@@ -14,8 +14,8 @@
 }
 
 .calendar-icon {
-  margin-right: 10px;
   color: $white-soft;
+  margin-right: 10px;
 }
 
 .calendar-event {
@@ -25,10 +25,10 @@
 
 .icon-background-calendar {
   color: $white;
-  width: 100%;
+  font-size: $icon-medium;
+  margin-top: 0;
+  opacity: .1;
   position: absolute;
-  opacity: 0.1;
-  font-size: 17vw;
   text-align: center;
-  margin-top: 0px;
+  width: 100%;
 }

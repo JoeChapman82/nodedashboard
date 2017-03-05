@@ -4,9 +4,7 @@ const ApiCaller = require('../services/api-caller');
 const jenkinsCall = new ApiCaller();
 
 module.exports = function(req, res, next) {
-  if (typeof res.locals.data === 'undefined') {
-    res.locals.data = {};
-  }
+  console.log(res.locals.data);
   jenkinsCall.options = {
     url: process.env.JENKINS_URL,
     rejectUnauthorized: false,
