@@ -11,7 +11,8 @@
 }
 
 .widget-barChart {
-  background-color: $white-soft;
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
 }
 
 .bar-chart-display {
@@ -102,7 +103,8 @@
 }
 
 .widget-doughnutChart {
-  background-color: $white-soft;
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
 }
 
 .doughnut-chart-display {
@@ -112,15 +114,6 @@
   max-width: 99%;
   padding: 0;
  }
-
-.widget-image {
-  background-color: $widget-orange;
-}
-
-.image-widget-image {
-  height: 48vh;
-  width: 100%;
-}
 
 .widget-iframe {
   background-color: $widget-purple;
@@ -136,6 +129,15 @@
   height: 47vh;
   position: absolute;
   width: 98.8%;
+}
+
+.widget-image {
+  background-color: $widget-orange;
+}
+
+.image-widget-image {
+  height: 48vh;
+  width: 100%;
 }
 
 .widget-map {
@@ -159,7 +161,9 @@
 }
 
 .widget-pieChart {
-  background-color: $white-soft;
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
+
 }
 
 .pie-chart-display {
@@ -190,7 +194,9 @@
 }
 
 .widget-scatterChart {
-  background-color: $white-soft;
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
+
 }
 
 .scatter-chart-display {

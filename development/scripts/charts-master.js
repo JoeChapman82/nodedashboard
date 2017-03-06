@@ -128,8 +128,8 @@ Chart.prototype.drawBarChart = function() {
   var colourPicker = 0;
   for (var i = 0; i < this.columnNumber; i++) {
     this.ctx.beginPath();
-    this.ctx.lineWidth = "2";
-    this.ctx.strokeStyle = "grey";
+    this.ctx.lineWidth = "0.5";
+    this.ctx.strokeStyle = "dark-grey";
     var grd = this.ctx.createLinearGradient(0, this.canvas.height, 0, this.canvas.height * 0.25);
     grd.addColorStop(0,"white");
     grd.addColorStop(1, this.colours[colourPicker]);
@@ -327,7 +327,7 @@ Chart.prototype.drawBarChart = function() {
     this.ctx.beginPath();
     this.ctx.arc(this.canvas.width / 2, this.canvas.height / 2 - (2 * this.canvas.marginSmall), (this.canvas.width - (2 * this.canvas.marginSmall)) / 4, 0, 2 * Math.PI);
     this.ctx.stroke();
-    this.ctx.fillStyle = "white";
+    this.ctx.fillStyle = "#808080";
     this.ctx.fill();
     this.ctx.closePath();
   };

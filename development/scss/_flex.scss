@@ -35,7 +35,7 @@
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   height: 220px;
   margin: 5px auto;
 }
@@ -46,8 +46,8 @@
 }
 
 .pc-wrapper {
-  max-width: 40%;
-  width: 40%;
+  max-width: 35rem;
+  width: 35rem;
 }
 
 .tv-wrapper {
@@ -72,7 +72,7 @@
   background-color: $dark-grey;
   box-sizing: border-box;
   height: 100px;
-  margin: 5px;
+  margin: 4px;
   max-height: 100%;
   position: relative;
   text-align: center;

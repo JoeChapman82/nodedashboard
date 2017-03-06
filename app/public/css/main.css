@@ -265,11 +265,11 @@ input[type=submit]:focus {
 .flex-wrapper-preview-two,
 .flex-wrapper-preview-three,
 .flex-wrapper-preview-four {
-  background-color: #808080;
+  background-color: rgba(93, 93, 93, 0.9);
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   height: 220px;
   margin: 5px auto; }
 
@@ -278,8 +278,8 @@ input[type=submit]:focus {
   width: 10%; }
 
 .pc-wrapper {
-  max-width: 40%;
-  width: 40%; }
+  max-width: 35rem;
+  width: 35rem; }
 
 .tv-wrapper {
   max-width: 49%;
@@ -301,7 +301,7 @@ input[type=submit]:focus {
   background-color: #305f5c;
   box-sizing: border-box;
   height: 100px;
-  margin: 5px;
+  margin: 4px;
   max-height: 100%;
   position: relative;
   text-align: center; }
@@ -546,7 +546,7 @@ input[type=radio]:hover {
   padding: 0;
   opacity: 0; }
 
-.select-label:hover {
+.select-label:not(.disabled):hover {
   background-color: #7f7f00;
   border-color: darkorange; }
 
@@ -563,9 +563,7 @@ input[type=radio]:hover {
   .select-label {
     width: 90vw;
     display: block;
-    padding: 10px 0; } }
-
-@media only screen and (max-width: 600px) {
+    padding: 10px 0; }
   .select-checkbox,
   .select-radio {
     padding: 10px 0;
@@ -601,7 +599,8 @@ input[type=radio]:hover {
   padding: 7vh 0 2vh; }
 
 .widget-barChart {
-  background-color: rgba(255, 255, 255, 0.8); }
+  background-color: #808080;
+  border: 1px solid #305f5c; }
 
 .bar-chart-display {
   display: block;
@@ -676,7 +675,8 @@ input[type=radio]:hover {
   margin: 0; }
 
 .widget-doughnutChart {
-  background-color: rgba(255, 255, 255, 0.8); }
+  background-color: #808080;
+  border: 1px solid #305f5c; }
 
 .doughnut-chart-display {
   display: block;
@@ -684,13 +684,6 @@ input[type=radio]:hover {
   max-height: 98%;
   max-width: 99%;
   padding: 0; }
-
-.widget-image {
-  background-color: #ec663c; }
-
-.image-widget-image {
-  height: 48vh;
-  width: 100%; }
 
 .widget-iframe {
   background-color: #9c4274; }
@@ -704,6 +697,13 @@ input[type=radio]:hover {
   height: 47vh;
   position: absolute;
   width: 98.8%; }
+
+.widget-image {
+  background-color: #ec663c; }
+
+.image-widget-image {
+  height: 48vh;
+  width: 100%; }
 
 .widget-map {
   background-color: #96bf48; }
@@ -722,7 +722,8 @@ input[type=radio]:hover {
   background-color: #47bbb3; }
 
 .widget-pieChart {
-  background-color: rgba(255, 255, 255, 0.8); }
+  background-color: #808080;
+  border: 1px solid #305f5c; }
 
 .pie-chart-display {
   display: block;
@@ -748,7 +749,8 @@ input[type=radio]:hover {
   margin-bottom: 10px; }
 
 .widget-scatterChart {
-  background-color: rgba(255, 255, 255, 0.8); }
+  background-color: #808080;
+  border: 1px solid #305f5c; }
 
 .scatter-chart-display {
   display: block;

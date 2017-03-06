@@ -221,7 +221,7 @@
       "width": 1,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 10000,
+      "dataRate": 60000,
       "dataCallTo": "example-data-generator",
       "style": "dashing",
       "available": true
@@ -241,7 +241,7 @@
       "width": 1,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 10000,
+      "dataRate": 60000,
       "dataCallTo": "weather",
       "style": "dashing",
       "available": true
@@ -252,7 +252,7 @@
       "width": 2,
       "height": 1,
       "dataCaller": true,
-      "dataRate": 10000,
+      "dataRate": 60000,
       "dataCallTo": "xkcd",
       "style": "dashing",
       "available": true
