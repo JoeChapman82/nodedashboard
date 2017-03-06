@@ -1,0 +1,56 @@
+{% extends "nunjucks/templates/layout.njk" %}
+{% block page_title %}PYI - Dashboard{% endblock %}
+{% import "nunjucks/widgets/master-widgets.njk" as widget %}
+{% import "nunjucks/partials/forms.njk" as forms %}
+
+{% if widgets[0].style !== 'dashing' %}
+{% block additionalStyleSheets %}
+<link rel="stylesheet" type="text/css" href="../css/{{ widgets[0].style }}.css">
+{% endblock %}
+{% endif %}
+
+
+{% block body %}
+
+{{ forms.save() }}
+{# Used in main.js to not display save message - loaded created by favMan.js #}
+{% if loaded %}
+<input id="loadedDashboard" type="hidden" name="" value="">
+{% endif %}
+
+
+{# TODO  Change this - should this be include/extend or macro.include/macro #}
+<div id="firstBoard">
+<div  class="flex-wrapper-regular switcher sortable">
+    {% for item in widgets %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+</div>
+</div>
+<div id="secondBoard" class="hidden">
+  <div class="flex-wrapper-regular sortable">
+    {% for item in widgetsTwo %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+  </div>
+</div>
+<div id="thirdBoard" class="hidden">
+  <div class="flex-wrapper-regular sortable">
+    {% for item in widgetsThree %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+  </div>
+</div>
+<div id="fourthBoard" class="hidden">
+  <div class="flex-wrapper-regular sortable">
+    {% for item in widgetsFour %}
+      {{ widget[item.widget](item, data) }}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block widgetScripts %}
+    <script type="text/javascript" src="../../scripts/master-widget-scripts.js"></script>
+{% endblock %}

@@ -685,6 +685,13 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
+.widget-image {
+  background-color: #ec663c; }
+
+.image-widget-image {
+  height: 48vh;
+  width: 100%; }
+
 .widget-iframe {
   background-color: #9c4274; }
 
@@ -697,13 +704,6 @@ input[type=radio]:hover {
   height: 47vh;
   position: absolute;
   width: 98.8%; }
-
-.widget-image {
-  background-color: #ec663c; }
-
-.image-widget-image {
-  height: 48vh;
-  width: 100%; }
 
 .widget-map {
   background-color: #96bf48; }
@@ -757,18 +757,6 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-xkcd {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.xkcd-comic {
-  max-width: 100%;
-  max-height: 87%; }
-
-.xkcd-heading {
-  font-size: calc(17px + .1vw);
-  color: #222222;
-  margin: 0 auto -20px; }
-
 .widget-weather {
   background-color: steelblue; }
 
@@ -797,7 +785,19 @@ input[type=radio]:hover {
   text-align: center;
   margin-top: 13vh; }
 
-.widget-jenkins-all {
+.widget-xkcd {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.xkcd-comic {
+  max-width: 100%;
+  max-height: 87%; }
+
+.xkcd-heading {
+  font-size: calc(17px + .1vw);
+  color: #222222;
+  margin: 0 auto -20px; }
+
+.widget-jenkinsAll {
   background-color: rgba(71, 187, 179, 0.4);
   overflow: scroll; }
 
@@ -813,7 +813,16 @@ input[type=radio]:hover {
   font-size: calc(25px + .1vw);
   margin-top: 30px; }
 
-.widget-jenkinsSingle {
+.widget-jenkinsSingle,
+.widget-jenkinsSingle1,
+.widget-jenkinsSingle2,
+.widget-jenkinsSingle3,
+.widget-jenkinsSingle4,
+.widget-jenkinsSingle5,
+.widget-jenkinsSingle6,
+.widget-jenkinsSingle7,
+.widget-jenkinsSingle8,
+.widget-jenkinsSingle9 {
   background-color: rgba(71, 187, 179, 0.4);
   overflow: scroll; }
 

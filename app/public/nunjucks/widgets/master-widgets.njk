@@ -6,6 +6,22 @@
 </div>
 {% endmacro %}
 
+{% macro barChart(dataset, data) %}
+
+<table id="barTable" class="data-table">
+    {% for item in data['example-data-generator'].barChart %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-barChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  <div id="barDataDiv" data-x="The X axis" data-y="The Y axis" data-title="Bar Chart - Random data"></div>
+  <canvas id="barCanvas" class="bar-chart-display" width="{{ dataset.size | int * 305}}" height="370"></canvas>
+</div>
+{% endmacro %}
+
 {% macro calendar(dataset, data) %}
 <div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-calendar" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   <div class="center-wrapper">
@@ -25,22 +41,6 @@
 {% endif %}
 </div>
   </div>
-</div>
-{% endmacro %}
-
-{% macro barChart(dataset, data) %}
-
-<table id="barTable" class="data-table">
-    {% for item in data['example-data-generator'].barChart %}
-    <tr>
-    <td>{{ item[0] }}</td>
-    <td>{{ item[1] }}</td>
-    </tr>
-    {% endfor %}
-</table>
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-barChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
-  <div id="barDataDiv" data-x="The X axis" data-y="The Y axis" data-title="Bar Chart - Random data"></div>
-  <canvas id="barCanvas" class="bar-chart-display" width="{{ dataset.size | int * 305}}" height="370"></canvas>
 </div>
 {% endmacro %}
 
@@ -109,17 +109,6 @@
 </div>
 {% endmacro %}
 
-{% macro progress(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-progress" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
-  <p class="progress-meter-heading">Sprint Progress</p>
-<div id="progressMeterData" data-percent="86"></div>
-<canvas id="progressMeterDisplay" class="progress-meter-canvas" width="200" height="200"></canvas>
-<span>Some text here</span>
-<br>
-<span id="progressTime">Awaiting update...</span>
-</div>
-{% endmacro %}
-
 {% macro pieChart(dataset, data) %}
 <table id="dataChartPie" class="data-table">
     {% for item in data['example-data-generator'].pieChart %}
@@ -132,6 +121,17 @@
 <div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-pieChart" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   <div id="pieChartData" data-x="The X Axis" data-y="The Y Axis" data-title="Pie Chart"></div>
   <canvas id="pieChartDisplay" class="pie-chart-display" width="275" height="370"></canvas>
+</div>
+{% endmacro %}
+
+{% macro progress(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-progress" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  <p class="progress-meter-heading">Sprint Progress</p>
+<div id="progressMeterData" data-percent="86"></div>
+<canvas id="progressMeterDisplay" class="progress-meter-canvas" width="200" height="200"></canvas>
+<span>Some text here</span>
+<br>
+<span id="progressTime">Awaiting update...</span>
 </div>
 {% endmacro %}
 
@@ -151,8 +151,8 @@
 {% endmacro %}
 
 {% macro weather(dataset, data) %}
- <h1>{{ data.weather[0] | dump }}</h1>
-<h1>{{ data.weather[0].icon }}</h1>
+ {# <h1>{{ data.weather[0] | dump }}</h1>
+<h1>{{ data.weather[0].icon }}</h1> #}
 <div id="weatherOne" class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-weather" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
   <div class="icon-background-weather">
     {% if data.weather.weather[0].icon %}
@@ -173,15 +173,6 @@
   {{ data.xkcd.title }}</p>
   <br>
   <img class="xkcd-comic" src="{{ data.xkcd.img }}" alt="Todays XKCD">
-</div>
-{% endmacro %}
-
-{% macro jenkinsAll(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins-all" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
-  <p id="jenkinsJobsHeading" class="jenkins-all-heading">{{ data.jenkins.jobs | length }} Jenkins jobs found</p>
-  {% for item in data.jenkins.jobs %}
-  <p>{{ loop.index }}.{{ item.name }}: {{ item.color }}: {{ item.healthReport | dump }}: {{ item.lastCompletedBuild | dump }}</p>
-  {% endfor %}
 </div>
 {% endmacro %}
 
@@ -215,61 +206,12 @@
 
 <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
 
-{% macro jenkinsSingle1(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle
-{% if job.lastCompletedBuild.result === SUCCESS %}jenkins-success{% elif job.lastCompletedBuild.result === 'FAILED' %}jenkins-failure{% endif %}"
- data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
-  {% if data.jenkins.jobs %}
-    {% for job in data.jenkins.jobs %}
-      {% if job.name === "dsl-build-crypto-service" %}
-      <p class="jenkins-single-heading">{{ job.name }}</p>
-      {# <h4>{{ job.color }}</h4> #}
-      {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}
-      {% if job.healthReport[1] %}
-      <h4 class="jenkins-subheading">{{ job.healthReport[1].description }}</h4>
-      {% else %}
-      <h4 class="jenkins-subheading">{{ job.healthReport[0].description }}</h4>
-      {% endif %}
-      <p><img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/{{job.healthReport[0].iconUrl}}" aria-hidden="true"></p>
-      <p>Score: {{ job.healthReport[0].score }}</p>
-      <h4 class="jenkins-subheading">Last completed build</h4>
-      <p class="timestamp">{{ job.lastCompletedBuild.timestamp }}</p>
-      <p>Build status: {{ job.lastCompletedBuild.result }}</p>
-      {% endif %}
-    {% endfor %}
-  {% else %}
-  <p class="jenkins-single-heading">No data received</p>
-  <h4>No data from jenkins</h4>
-  <p>Check VPN connection</p>
-  {% endif %}
-</div>
-{% endmacro %}
-
-{% macro jenkinsSingle(dataset, data) %}
-<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
-  {% if data.jenkins.jobs %}
-    {% for job in data.jenkins.jobs %}
-      {% if job.name === "dsl-build-pyi-controller" %}
-      <p class="jenkins-single-heading">{{ job.name }}</p>
-      {# <h4>{{ job.color }}</h4> #}
-      {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}
-      {% if job.healthReport[1] %}
-      <h4 class="jenkins-subheading">{{ job.healthReport[1].description }}</h4>
-      {% else %}
-      <h4 class="jenkins-subheading">{{ job.healthReport[0].description }}</h4>
-      {% endif %}
-      <p><img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/{{job.healthReport[0].iconUrl}}" aria-hidden="true"></p>
-      <p>Score: {{ job.healthReport[0].score }}</p>
-      <h4 class="jenkins-subheading">Last completed build</h4>
-      <p class="timestamp">{{ job.lastCompletedBuild.timestamp }}</p>
-      <p>Build status: {{ job.lastCompletedBuild.result }}</p>
-      {% endif %}
-    {% endfor %}
-  {% else %}
-  <p class="jenkins-single-heading">No data received</p>
-  <h4>No data from jenkins</h4>
-  <p>Check VPN connection</p>
-  {% endif %}
+{% macro jenkinsAll(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkins-all" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  <p id="jenkinsJobsHeading" class="jenkins-all-heading">{{ data.jenkins.jobs | length }} Jenkins jobs found</p>
+  {% for item in data.jenkins.jobs %}
+  <p>{{ loop.index }}.{{ item.name }}: {{ item.color }}: {{ item.healthReport | dump }}: {{ item.lastCompletedBuild | dump }}</p>
+  {% endfor %}
 </div>
 {% endmacro %}
 
@@ -310,6 +252,34 @@
    {% if data.jenkins.jobs %}
     {% for job in data.jenkins.jobs %}
       {% if job.name === "dsl-build-pyi-persistence-service" %}
+      <p class="jenkins-single-heading">{{ job.name }}</p>
+      {# <h4>{{ job.color }}</h4> #}
+      {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}
+      {% if job.healthReport[1] %}
+      <h4 class="jenkins-subheading">{{ job.healthReport[1].description }}</h4>
+      {% else %}
+      <h4 class="jenkins-subheading">{{ job.healthReport[0].description }}</h4>
+      {% endif %}
+      <p><img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/{{job.healthReport[0].iconUrl}}" aria-hidden="true"></p>
+      <p>Score: {{ job.healthReport[0].score }}</p>
+      <h4 class="jenkins-subheading">Last completed build</h4>
+      <p class="timestamp">{{ job.lastCompletedBuild.timestamp }}</p>
+      <p>Build status: {{ job.lastCompletedBuild.result }}</p>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+  <p class="jenkins-single-heading">No data received</p>
+  <h4>No data from jenkins</h4>
+  <p>Check VPN connection</p>
+  {% endif %}
+</div>
+{% endmacro %}
+
+{% macro jenkinsSingle(dataset, data) %}
+<div class="flex-widget-{{ dataset.display }}-{{ dataset.size }} widget-jenkinsSingle" data-position="{{ dataset.position }}" data-widget="{{ dataset.widget }}" data-display="{{ dataset.display }}" data-size="{{ dataset.size }}" data-rate="{{ dataset.dataRate }}" data-style="{{ dataset.style }}" data-call="{{ dataset.dataCallTo }}">
+  {% if data.jenkins.jobs %}
+    {% for job in data.jenkins.jobs %}
+      {% if job.name === "dsl-build-pyi-controller" %}
       <p class="jenkins-single-heading">{{ job.name }}</p>
       {# <h4>{{ job.color }}</h4> #}
       {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}

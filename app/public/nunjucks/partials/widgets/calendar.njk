@@ -1,0 +1,17 @@
+  <div class="center-wrapper">
+    <div class="icon-background-calendar">
+      <i class="fa fa-calendar"></i>
+    </div>
+  <p class="calender-heading">Todays Events</p>
+  <div id="events">
+  {% if data.calendar.length < 1 %}
+  <p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>
+    No events today</p>
+ {% else %}
+{% for event in data.calendar %}
+<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>{{ event.start }}
+<br>{{ event.summary }}</p>
+{% endfor %}
+{% endif %}
+</div>
+  </div>

@@ -5,12 +5,17 @@
 <div class="align-wrapper">
 <div class="login-form">
 <h1 class="login-heading">Dashboard login</h1>
+{% if error %}
+<div class="error-wrapper">
+  <p>{{ error }}</p>
+</div>
+{% endif %}
 <form class="" action="/dashboards/dashboard-select" method="post">
 <label for="username">Username
   <input id="username" type="text" name="username" value="">
 </label>
 <label for="password">Password
-  <input id="password" type="text" name="password" value="">
+  <input id="password" type="password" name="password" value="">
 </label>
 
   <input type="submit" name="" value="Login">

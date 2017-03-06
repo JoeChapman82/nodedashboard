@@ -3,7 +3,11 @@ setInterval(function() {
 $.ajax({
   type: "POST",
   url: 'data-calls',
-  data: {call: 'calendar'},
+  data: {
+    call: 'calendar',
+    reply: false,
+    type: 'json'
+  },
   success: function(data, status) {
     $('#events').html('');
     if (data.length < 1) {

@@ -1,0 +1,7 @@
+{% macro open(item) %}
+<div class="flex-widget-{{ item.display }}-{{ item.size }} widget-{{ item.widget }}" data-position="{{ item.position }}" data-widget="{{ item.widget }}" data-display="{{ item.display }}" data-size="{{ item.size }}" data-rate="{{ item.dataRate }}" data-style="{{ item.style }}" data-call="{{ item.dataCallTo }}">
+{% endmacro %}
+
+{% macro close() %}
+</div>
+{% endmacro %}

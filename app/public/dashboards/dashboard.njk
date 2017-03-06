@@ -1,13 +1,16 @@
 {% extends "nunjucks/templates/layout.njk" %}
 {% block page_title %}PYI - Dashboard{% endblock %}
-{% import "nunjucks/widgets/master-widgets.njk" as widget %}
+{# {% import "nunjucks/widgets/master-widgets.njk" as widget %} #}
 {% import "nunjucks/partials/forms.njk" as forms %}
+
+{% import "nunjucks/macros/widget.njk" as widgetWrapper %}
 
 {% if widgets[0].style !== 'dashing' %}
 {% block additionalStyleSheets %}
 <link rel="stylesheet" type="text/css" href="../css/{{ widgets[0].style }}.css">
 {% endblock %}
 {% endif %}
+
 
 {% block body %}
 
@@ -20,28 +23,39 @@
 <div id="firstBoard">
 <div  class="flex-wrapper-regular switcher sortable">
     {% for item in widgets %}
-      {{ widget[item.widget](item, data) }}
+      {{ widgetWrapper.open(item) }}
+      {% include 'nunjucks/partials/widgets/' + item.widget + '.njk' %}
+      {{ widgetWrapper.close() }}
     {% endfor %}
 </div>
 </div>
+
 <div id="secondBoard" class="hidden">
   <div class="flex-wrapper-regular sortable">
     {% for item in widgetsTwo %}
-      {{ widget[item.widget](item, data) }}
+      {{ widgetWrapper.open(item) }}
+      {% include 'nunjucks/partials/widgets/' + item.widget + '.njk' %}
+      {{ widgetWrapper.close() }}
     {% endfor %}
   </div>
 </div>
+
 <div id="thirdBoard" class="hidden">
   <div class="flex-wrapper-regular sortable">
     {% for item in widgetsThree %}
-      {{ widget[item.widget](item, data) }}
+      {{ widgetWrapper.open(item) }}
+      {% include 'nunjucks/partials/widgets/' + item.widget + '.njk' %}
+      {{ widgetWrapper.close() }}
     {% endfor %}
   </div>
 </div>
+
 <div id="fourthBoard" class="hidden">
   <div class="flex-wrapper-regular sortable">
     {% for item in widgetsFour %}
-      {{ widget[item.widget](item, data) }}
+      {{ widgetWrapper.open(item) }}
+      {% include 'nunjucks/partials/widgets/' + item.widget + '.njk' %}
+      {{ widgetWrapper.close() }}
     {% endfor %}
   </div>
 </div>

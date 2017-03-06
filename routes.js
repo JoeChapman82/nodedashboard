@@ -14,6 +14,7 @@ const dataCallFinder = require(__dirname + '/app/services/data-call-finder');
 const dashboardOrder = require(__dirname + '/app/services/dashboard-order');
 const favMan = require(__dirname + '/app/services/favourites-manager');
 const getDefaults = require(__dirname + '/app/services/default-gather');
+const ajaxResponse = require(__dirname + '/app/services/ajax-responder');
 
 module.exports = function(app) {
 
@@ -57,11 +58,9 @@ app.post('/dashboards/dashboard', [
     }
   ]);
 
-// Route for ajax calls
-app.post('/dashboards/data-calls', [dataCaller.reCall, function(req, res, next) {
-  res.json(res.locals.data[req.body.call]);
-}]);
 
+// Route for ajax calls
+app.post('/dashboards/data-calls', [dataCaller.reCall, ajaxResponse]);
 
 
 //Route any other requests to index; // Change this to app.all?

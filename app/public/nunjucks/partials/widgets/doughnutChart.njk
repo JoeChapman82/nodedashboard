@@ -1,0 +1,10 @@
+<table id="dataChartDoughnut" class="data-table">
+    {% for item in data['example-data-generator'].doughnutChart %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+  <div id="doughnutChartData" data-x="x" data-y="y" data-title="Doughnut Chart"></div>
+  <canvas id="doughnutChartDisplay" class="doughnut-chart-display" width="275" height="370"></canvas>

@@ -1,5 +1,5 @@
 function countdown() {
-var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
+var myDate = new Date($('#countdownDueDate').text()); // Format '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
 var difDate = new Date(myDate - todaysDate);
 var daysLeft = Math.floor(difDate/86400000);

@@ -11,9 +11,12 @@ if (document.getElementById('progressMeterDisplay')) {
       $.ajax({
         type: "POST",
         url: 'data-calls',
-        data: {call: 'example-data-generator'},
+        data: {
+          call: 'example-data-generator',
+          reply: false,
+          type: 'json'
+        },
         success: function(data, status) {
-          document.getElementById('progressMeterData').dataset.percent = data.randomNumber;
           progressExample.progMetPercent = data.randomNumber;
           progressExample.interval(50);
           document.getElementById('progressTime').innerText = "Last updated at " + d.getHours() + ":"  + m + ":" + s;

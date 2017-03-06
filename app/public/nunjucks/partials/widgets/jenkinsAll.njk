@@ -1,0 +1,4 @@
+  <p id="jenkinsJobsHeading" class="jenkins-all-heading">{{ data.jenkins.jobs | length }} Jenkins jobs found</p>
+  {% for item in data.jenkins.jobs %}
+  <p>{{ loop.index }}.{{ item.name }}: {{ item.color }}: {{ item.healthReport | dump }}: {{ item.lastCompletedBuild | dump }}</p>
+  {% endfor %}

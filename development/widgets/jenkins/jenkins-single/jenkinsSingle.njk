@@ -1,0 +1,23 @@
+  {% if data.jenkins.jobs %}
+    {% for job in data.jenkins.jobs %}
+      {% if job.name === "dsl-build-pyi-controller" %}
+      <p class="jenkins-single-heading">{{ job.name }}</p>
+      {# <h4>{{ job.color }}</h4> #}
+      {# <img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/blue.png" alt=""> #}
+      {% if job.healthReport[1] %}
+      <h4 class="jenkins-subheading">{{ job.healthReport[1].description }}</h4>
+      {% else %}
+      <h4 class="jenkins-subheading">{{ job.healthReport[0].description }}</h4>
+      {% endif %}
+      <p><img src="https://jenkins.pyidigital.org/static/057ee22c/images/32x32/{{job.healthReport[0].iconUrl}}" aria-hidden="true"></p>
+      <p>Score: {{ job.healthReport[0].score }}</p>
+      <h4 class="jenkins-subheading">Last completed build</h4>
+      <p class="timestamp">{{ job.lastCompletedBuild.timestamp }}</p>
+      <p>Build status: {{ job.lastCompletedBuild.result }}</p>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+  <p class="jenkins-single-heading">No data received</p>
+  <h4>No data from jenkins</h4>
+  <p>Check VPN connection</p>
+  {% endif %}

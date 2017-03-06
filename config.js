@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const chokidar = require('chokidar');
 const path = require('path');  // TODO set use path
 const createDataObject = require(__dirname + '/app/middleware/create-data-object');
+const loginChecker = require(__dirname + '/app/middleware/login-checker');
 
 module.exports = function(app) {
   app.use(helmet());
@@ -14,6 +15,7 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
+  app.use('/dashboards/dashboard-select', loginChecker);
   app.use(['/dashboards/dashboard', '/dashboards/load-fave', '/dashboards/data-calls'], createDataObject);
 
 

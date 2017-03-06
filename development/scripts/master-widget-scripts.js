@@ -89,7 +89,11 @@ setInterval(function() {
 $.ajax({
   type: "POST",
   url: 'data-calls',
-  data: {call: 'calendar'},
+  data: {
+    call: 'calendar',
+    reply: false,
+    type: 'json'
+  },
   success: function(data, status) {
     $('#events').html('');
     if (data.length < 1) {
@@ -105,7 +109,7 @@ $.ajax({
 };
 
 function countdown() {
-var myDate = new Date($('#countdownDueDate').text()); // '25-Feb-2017 00:00:00'
+var myDate = new Date($('#countdownDueDate').text()); // Format '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
 var difDate = new Date(myDate - todaysDate);
 var daysLeft = Math.floor(difDate/86400000);
@@ -154,6 +158,13 @@ if (document.getElementById('doughnutChartDisplay')) {
   }());
 }
 
+if (document.getElementById('pieChartDisplay')) {
+  (function() {
+    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
+    pieChart.pieChart();
+  }());
+}
+
 if (document.getElementById('progressMeterDisplay')) {
     var progressExample = new Progress('progressMeterDisplay', 'progressMeterData');
     progressExample.interval(50);
@@ -167,9 +178,12 @@ if (document.getElementById('progressMeterDisplay')) {
       $.ajax({
         type: "POST",
         url: 'data-calls',
-        data: {call: 'example-data-generator'},
+        data: {
+          call: 'example-data-generator',
+          reply: false,
+          type: 'json'
+        },
         success: function(data, status) {
-          document.getElementById('progressMeterData').dataset.percent = data.randomNumber;
           progressExample.progMetPercent = data.randomNumber;
           progressExample.interval(50);
           document.getElementById('progressTime').innerText = "Last updated at " + d.getHours() + ":"  + m + ":" + s;
@@ -179,13 +193,6 @@ if (document.getElementById('progressMeterDisplay')) {
   }, parseInt(document.querySelector('.widget-progress').dataset.rate));
 }
 
-if (document.getElementById('pieChartDisplay')) {
-  (function() {
-    var pieChart = new Chart('pieChartDisplay', 'pieChartData', 'dataChartPie');
-    pieChart.pieChart();
-  }());
-}
-
 if (document.getElementById('scatterChartDisplay')) {
   (function() {
     var scatterChart = new Chart('scatterChartDisplay', 'scatterChartData', 'dataChartScatter');
@@ -193,34 +200,47 @@ if (document.getElementById('scatterChartDisplay')) {
   }());
 }
 
-if (document.querySelector('#weatherOne')) {
+if (document.querySelector('.widget-weather')) {
+  console.log('widget')
 setInterval(function() {
 $.ajax({
   type: "POST",
   url: 'data-calls',
-  data: {call: 'weather'},
+  data: {
+    call: 'weather',
+    reply: 'widgets/weather',
+    type: 'html'
+      },
   success: function(data, status) {
-    $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
-    $('.weather-city').text(data.name + ' Weather');
-    $('.weather-type').text(data.weather[0].main);
-    $('.weather-temp').text(data.main.temp + '°C');
+    $('.widget-weather').html(data);
+    console.log(data);
+    // $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
+    // $('.weather-city').text(data.name + ' Weather');
+    // $('.weather-type').text(data.weather[0].main);
+    // $('.weather-temp').text(data.main.temp + '°C');
   }
 });
-}, parseInt(document.getElementById('weatherOne').dataset.rate));
+}, parseInt(document.querySelector('.widget-weather').dataset.rate));
 };
 
-if (document.querySelector('#xkcdOne')) {
+if (document.querySelector('.widget-xkcd')) {
 setInterval(function() {
 $.ajax({
   type: "POST",
   url: 'data-calls',
-  data: {call: 'xkcd'},
+  data:  {
+      call: 'xkcd',
+      reply: false,
+      type: 'json'
+        },
   success: function(data, status) {
+    console.log(data);
+  //  $('.widget-xkcd').html(data);
     $('.xkcd-heading').html('XKCD: ' + data.num + '<br>' + data.safe_title);
     $('.xkcd-comic').attr('src', data.img);
   }
 });
-}, parseInt(document.getElementById('xkcdOne').dataset.rate));
+}, parseInt(document.querySelector('.widget-xkcd').dataset.rate));
 };
 
 window.onload = function() {
