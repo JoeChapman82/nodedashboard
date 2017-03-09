@@ -17,7 +17,6 @@ const dataCaller = {
     res.locals.toCall.forEach(function(call) {
       call(req, res, next);
     });
-    next();
   }
 };
 

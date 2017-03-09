@@ -6,7 +6,7 @@ const weatherCall = new ApiCaller(url);
 
 module.exports = function (req, res, next) {
   weatherCall.call().then(function(response) {
-    res.locals.data.weather = response;
-    next();
+   res.locals.data.weather = response;
+   next();
   });
 };

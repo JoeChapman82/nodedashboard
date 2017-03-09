@@ -31,6 +31,8 @@ $black-trans: rgba(0, 0, 0, .7);
 // Widget backgrounds
 $widget-light-blue: rgba(70, 130, 180, 1);
 $widget-medium-blue: rgba(6, 111, 154, 1);
+$widget-blue: rgba(52, 104, 177, 1);
+$widget-dark-blue: rgba(26, 78, 151, 1);
 $widget-turqouise: rgba(71, 187, 179, 1);
 
 $widget-purple: rgba(156, 66, 116, 1);
@@ -46,6 +48,11 @@ $widget-light-orange: rgba(255, 150, 24, 1);
 $widget-red: rgba(220, 89, 69, 1);
 
 $chart-grey: #808080;
+
+// Weather
+$weather-cold: rgba(70, 130, 180, .8);
+$weather-warm: rgba(255, 150, 24, .8);
+$weather-hot: rgba(241, 42, 0, .7);
 
 
 // preview background

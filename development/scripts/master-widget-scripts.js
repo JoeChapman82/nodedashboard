@@ -84,46 +84,22 @@ if (document.getElementById('barCanvas')) {
   }());
 }
 
-if (document.querySelector('.widget-calendar')) {
-setInterval(function() {
-$.ajax({
-  type: "POST",
-  url: 'data-calls',
-  data: {
-    call: 'calendar',
-    reply: false,
-    type: 'json'
-  },
-  success: function(data, status) {
-    $('#events').html('');
-    if (data.length < 1) {
-      $('#events').append('<i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>No events today</p>');
-    } else {
-      for (var i = 0; i < data.length; i++) {
-        $('#events').append('<p class="calendar-event"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i>' + data[i].start + ' <br>' + data[i].summary + '</p>');
-      }
-    }
-  }
-});
-}, parseInt(document.querySelector('.widget-calendar').dataset.rate));
-};
-
 function countdown() {
-var myDate = new Date($('#countdownDueDate').text()); // Format '25-Feb-2017 00:00:00'
+var d = new Date($('#countdownDueDate').text()); // Format '25-Feb-2017 00:00:00'
 var todaysDate = new Date();
-var difDate = new Date(myDate - todaysDate);
+var difDate = new Date(d - todaysDate);
 var daysLeft = Math.floor(difDate/86400000);
 var hoursLeft = difDate.getHours();
-var minutesLeft = difDate.getMinutes();
-var secondsLeft = difDate.getSeconds();
-if (secondsLeft < 10) {
-  secondsLeft = '0' + secondsLeft;
-}
-if (minutesLeft < 10) {
-  minutesLeft = '0' + minutesLeft;
-}
+var minutesLeft = difDate.getMinutes() < 10 ? '0' + difDate.getMinutes() : difDate.getMinutes();
+var secondsLeft = difDate.getSeconds() < 10 ? '0' + difDate.getSeconds() : difDate.getSeconds();
+// if (secondsLeft < 10) {
+//   secondsLeft = '0' + secondsLeft;
+// }
+// if (minutesLeft < 10) {
+//   minutesLeft = '0' + minutesLeft;
+// }
 
-if (daysLeft !== 0) {
+if (daysLeft >= 0) {
 $('#countdownTimerDays').text(daysLeft + ' days');
 }
 $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft);
@@ -131,6 +107,30 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 }
 
 setInterval(countdown, 1000);
+
+if (document.querySelector('.widget-calendar')) {
+
+  var calendarCall = new Scheduler('.widget-calendar', function(data, status) {
+    $('.widget-calendar').html(data);
+  }, 'widgets/calendar');
+
+  calendarCall.start();
+};
+
+
+if (document.querySelector('#dCalendar')) {
+  (function() {
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemnber"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var d = new Date();
+    var day = d.getDay();
+    var date = d.getDate();
+    var m = d.getMonth();
+    document.querySelector('.dCalendar-weekday').innerText = days[day];
+    document.querySelector('.dCalendar-date').innerText = date;
+    document.querySelector('.dCalendar-month').innerText = months[m];
+  }());
+};
 
 function digitalClock() {
 var today = new Date();
@@ -169,28 +169,14 @@ if (document.getElementById('progressMeterDisplay')) {
     var progressExample = new Progress('progressMeterDisplay', 'progressMeterData');
     progressExample.interval(50);
 
-  var progInterval = setInterval(function() {
-    // Don't make another request if window not active - It makes the other intervals stack
-    if (document.hasFocus()) {
-      var d = new Date();
-      var m = d.getMinutes() < 10 ? '0' + d.getMinutes(): d.getMinutes();
-      var s = d.getSeconds() < 10 ? '0' + d.getSeconds(): d.getSeconds();
-      $.ajax({
-        type: "POST",
-        url: 'data-calls',
-        data: {
-          call: 'example-data-generator',
-          reply: false,
-          type: 'json'
-        },
-        success: function(data, status) {
-          progressExample.progMetPercent = data.randomNumber;
-          progressExample.interval(50);
-          document.getElementById('progressTime').innerText = "Last updated at " + d.getHours() + ":"  + m + ":" + s;
-        }
-      });
-    }
-  }, parseInt(document.querySelector('.widget-progress').dataset.rate));
+var progressCall = new Scheduler('.widget-progress', function(data, status) {
+  progressExample.progMetPercent = data.randomNumber;
+  progressExample.interval(50);
+  document.getElementById('progressTime').innerText = getUpdatedTime();
+});
+
+progressCall.start();
+
 }
 
 if (document.getElementById('scatterChartDisplay')) {
@@ -200,47 +186,25 @@ if (document.getElementById('scatterChartDisplay')) {
   }());
 }
 
-if (document.querySelector('.widget-weather')) {
-  console.log('widget')
-setInterval(function() {
-$.ajax({
-  type: "POST",
-  url: 'data-calls',
-  data: {
-    call: 'weather',
-    reply: 'widgets/weather',
-    type: 'html'
-      },
-  success: function(data, status) {
-    $('.widget-weather').html(data);
-    console.log(data);
-    // $('.icon-background-weather i').attr('class', 'wi wi-' + data.weather[0].icon);
-    // $('.weather-city').text(data.name + ' Weather');
-    // $('.weather-type').text(data.weather[0].main);
-    // $('.weather-temp').text(data.main.temp + '°C');
-  }
+if (document.querySelector('.widget-xkcd')) {
+
+var xkcdCall = new Scheduler('.widget-xkcd', function(data, status) {
+  $('.xkcd-heading').html('XKCD: ' + data.num + '<br>' + data.safe_title);
+  $('.xkcd-comic').attr('src', data.img);
 });
-}, parseInt(document.querySelector('.widget-weather').dataset.rate));
+
+xkcdCall.start();
+
 };
 
-if (document.querySelector('.widget-xkcd')) {
-setInterval(function() {
-$.ajax({
-  type: "POST",
-  url: 'data-calls',
-  data:  {
-      call: 'xkcd',
-      reply: false,
-      type: 'json'
-        },
-  success: function(data, status) {
-    console.log(data);
-  //  $('.widget-xkcd').html(data);
-    $('.xkcd-heading').html('XKCD: ' + data.num + '<br>' + data.safe_title);
-    $('.xkcd-comic').attr('src', data.img);
-  }
-});
-}, parseInt(document.querySelector('.widget-xkcd').dataset.rate));
+if (document.querySelector('.widget-weather')) {
+
+var weatherCall = new Scheduler('.widget-weather', function(data, status) {
+  $('.widget-weather').html(data);
+}, 'widgets/weather');
+
+weatherCall.start();
+
 };
 
 window.onload = function() {

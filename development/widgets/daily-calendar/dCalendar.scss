@@ -1,0 +1,26 @@
+.widget-dCalendar {
+  background-color: $widget-blue;
+  color: $white-soft;
+  font-weight: bold;
+  text-align: center;
+  overflow-y: hidden;
+}
+
+.dCalendar-weekday {
+  background-color: $widget-dark-blue;
+  font-size: $font-xxlarge;
+  padding: 1.25rem 0;
+  margin: 0;
+}
+
+.dCalendar-date {
+  font-size: $font-huge;
+  padding: 1rem 0 0;
+  margin: 0;
+}
+
+.dCalendar-month {
+  font-size: $font-xxlarge;
+  margin: 0;
+  padding: 1.25rem 0;
+}

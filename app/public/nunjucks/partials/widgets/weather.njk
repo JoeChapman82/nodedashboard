@@ -9,7 +9,17 @@
   <p>{{ data.weather.message }}</p>
   <p>{{ data.weather.cod }}</p>
   {% else %}
+  {% if data.weather.main.temp | round(2) < 13 %}
+  <div class="widget-weather-cold">
+  {% elif data.weather.main.temp | round(2) > 13 %}
+  <div class="widget-weather-warm">
+  {% elif data.weather.main.temp | round(2) > 26 %}
+  <div class="widget-weather-hot">
+  {% endif %}
 <p class="weather-city">{{ data.weather.name }} Weather</p>
 <p class="weather-type">{{ data.weather.weather[0].main }}</p>
 <p class="weather-temp">{{ data.weather.main.temp | round(1) }}°C</p>
+{% if data.weather.main.temp %}
+</div>
+{% endif %}
 {% endif %}

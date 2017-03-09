@@ -16,12 +16,33 @@ const favMan = require(__dirname + '/app/services/favourites-manager');
 const getDefaults = require(__dirname + '/app/services/default-gather');
 const ajaxResponse = require(__dirname + '/app/services/ajax-responder');
 
+const qs = require('querystring');
+
 module.exports = function(app) {
 
 // GET ROUTE
 app.get('/', [
   function(req, res) {
   res.render('index');
+}]);
+
+app.post('/oauth', [
+  dataDirectory.twitter.initialCall,
+  function(req, res) {
+  res.render('oauth');
+}]);
+
+app.get('/oauth-return', [
+  function(req, res) {
+    res.locals.oauth_token = req.query.oauth_token;
+    res.locals.oauth_verifier = req.query.oauth_verifier;
+  res.render('oauth');
+}]);
+
+app.post('/oauth-return', [
+  dataDirectory.twitter.returnCall,
+  function(req, res) {
+  res.render('oauth');
 }]);
 
 // POST ROUTES
@@ -33,10 +54,9 @@ app.post('/dashboards/dashboard-select', [
 }]);
 
 app.post('/dashboards/dashboard', [
-  dataCallFinder,
   dashboardOrder,
   dataCallFinder,
-  // dataCaller.initialCall,
+//  dataCaller.initialCall,
   ...toCallTemp,
   function(req, res) {
   res.render('dashboards/dashboard');
@@ -51,7 +71,7 @@ app.post('/dashboards/dashboard', [
     favMan.readFile,
     dashboardOrder,
     dataCallFinder,
-  //  dataCaller.initialCall,
+    // dataCaller.initialCall,
     ...toCallTemp,
     function(req, res) {
       res.render('dashboards/dashboard');

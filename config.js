@@ -18,7 +18,6 @@ module.exports = function(app) {
   app.use('/dashboards/dashboard-select', loginChecker);
   app.use(['/dashboards/dashboard', '/dashboards/load-fave', '/dashboards/data-calls'], createDataObject);
 
-
   app.set('views', [__dirname + '/app/public']);
   app.set('view engine', 'njk');
 

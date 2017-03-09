@@ -8,6 +8,9 @@ const uglify = require('gulp-uglify');
 const pump = require('pump');
 const concat = require('gulp-concat');
 const flatten = require('gulp-flatten');
+const rename = require('gulp-rename');
+
+const scriptsToConcat = [__dirname + '/development/scripts/charts-master.js', __dirname + '/development/scripts/progress-meters.js', __dirname + '/development/scripts/scheduler.js', __dirname + '/development/scripts/main.js', __dirname + '/development/scripts/master-widget-scripts.js'];
 
 
 gulp.task('sass', function(){
@@ -22,12 +25,12 @@ gulp.task('sass', function(){
 gulp.task('watch', ['sass'], function(){
   gulp.watch([__dirname + '/development/scss/**/*.scss', __dirname + '/development/widgets/**/*.scss'], ['concat-widgets-sass', 'sass'], browserSync.reload());
   gulp.watch(__dirname + '/development/widgets/**/*.njk', ['copy-widgets-nunjucks'], browserSync.reload());
-  gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'uglyjs'], browserSync.reload());
+  gulp.watch([__dirname + '/development/scripts/**/*.js', __dirname + '/development/widgets/**/*.js'], ['concat-widgets-scripts', 'concat-all-scripts', 'uglyjs'], browserSync.reload());
 });
 
 gulp.task('uglyjs', function (cb) {
   pump([
-    gulp.src(__dirname + '/development/scripts/**/*.js'),
+    gulp.src(__dirname + '/development/scripts/all-scripts.js'),
     uglify(),
     gulp.dest(__dirname + '/app/public/scripts')
   ],
@@ -47,6 +50,12 @@ gulp.task('copy-widgets-nunjucks', function() {
 gulp.task('concat-widgets-scripts', function() {
   return gulp.src(__dirname + '/development/widgets/**/*.js')
     .pipe(concat('master-widget-scripts.js'))
+    .pipe(gulp.dest(__dirname + '/development/scripts'));
+});
+
+gulp.task('concat-all-scripts', function() {
+  return gulp.src(scriptsToConcat)
+    .pipe(concat('all-scripts.js'))
     .pipe(gulp.dest(__dirname + '/development/scripts'));
 });
 
@@ -80,11 +89,11 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', function (done) {
-  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'copy-widgets-nunjucks', 'watch', 'sass', 'uglyjs', 'server', 'browserSync', done);
+  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-all-scripts', 'copy-widgets-nunjucks', 'watch', 'sass', 'uglyjs', 'server', 'browserSync', done);
 });
 
 
 // TODO add linting tasks etc
 gulp.task('build', function (done) {
-  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'copy-widgets-nunjucks', 'sass', 'uglyjs', done);
+  runSequence('concat-widgets-sass', 'concat-widgets-scripts', 'concat-all-scripts', 'copy-widgets-nunjucks', 'sass', 'uglyjs', 'rename-master-script', done);
 });

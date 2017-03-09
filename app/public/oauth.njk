@@ -1,0 +1,18 @@
+{% extends "nunjucks/templates/layout.njk" %}
+
+{% block body %}
+<h1>Oauth setup</h1>
+<form class="" action="/dashboards/dashboard-select" method="post">
+  <a href="{{ uri }}">Authorise twitter usage</a>
+  <input type="submit" name="" value="Submit">
+</form>
+
+{{ twitter | dump }}
+
+<form class="" action="/oauth-return" method="post">
+  <input type="hidden" name="oauth_token" value="{{ oauth_token }}">
+  <input type="hidden" name="oauth_verifier" value="{{ oauth_verifier }}">
+  <input type="submit" name="" value="Submit">
+</form>
+
+{% endblock %}

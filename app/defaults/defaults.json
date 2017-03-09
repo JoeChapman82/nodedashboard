@@ -51,6 +51,15 @@
       "style": "dashing",
       "available": true
     },
+    "dCalendar" : {
+      "name": "dCalendar",
+      "displayName": "Daily Calendar",
+      "width": 1,
+      "height": 1,
+      "dataCaller": false,
+      "style": "dashing",
+      "available": true
+    },
     "doughnutChart": {
       "name": "doughnutChart",
       "displayName": "Doughnut Chart",
