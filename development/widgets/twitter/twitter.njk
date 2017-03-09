@@ -1,0 +1,11 @@
+<div class="icon-background-twitter">
+  <i class="fa fa-twitter" aria-hidden="true"></i>
+</div>
+{% for item in data.twitter.statuses %}
+<div class="widget-twitter-tweet-div twitter-carousel {% if loop.index !== 1 %}hidden{% endif %}">
+  <img class="widget-twitter-image" src="{{ item.user.profile_image_url }}" alt="" width="50" height="50">
+  <h3 class="widget-twitter-tweeter">{{ item.user.screen_name }}</h3>
+  <p class="widget-twitter-tweet">{{ item.text }}</p>
+</div>
+{% endfor %}
+<p class="widget-twitter-type">Tweets mentioning {{ data.twitter.mentioning }}</p>

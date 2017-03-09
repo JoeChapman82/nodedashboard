@@ -52,7 +52,8 @@
         {% for key, value in defaults.widgets %}
         {% if value.available %}
         <fieldset class="settings-fieldset">
-          <legend class="settings-legend">{{ value.displayName }}</legend>
+          <legend class="hidden">{{ value.displayName }}</legend>
+          <div class="settings-legend" aria-hidden="true">{{ value.displayName }}</div>
           <div class="settings-inputs">
           <label class="settings-label" for="">Width</label>
           <input class="settings-input width-input" type="number" min="1" max="4" maxlength="1" name="width" value="{{ value.width }}" data-target="{{ key }}-preview">
@@ -76,7 +77,8 @@
         {% for key, value in defaults.widgets %}
         {% if value.dataCaller and value.available %}
         <fieldset class="settings-fieldset">
-          <legend class="settings-legend">{{ value.displayName }}</legend>
+          <div class="settings-legend" aria-hidden="true">{{ value.displayName }}</div>
+          <legend class="hidden">{{ value.displayName }}</legend>
           <div class="settings-inputs">
           <label class="settings-label" for="">Call frequency (mins)</label>
           <input class="settings-input call-rate-input" type="number" max="300" min="1" maxlength="2" name="" value="{{ value.dataRate/60000 }}" data-target="{{ key }}-preview">

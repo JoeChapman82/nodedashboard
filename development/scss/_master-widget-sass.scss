@@ -112,6 +112,19 @@
   padding: 1.25rem 0;
 }
 
+.widget-doughnutChart {
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
+}
+
+.doughnut-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
 .widget-dClock {
   background-color: $widget-red;
 }
@@ -128,19 +141,6 @@
   font-weight: bold;
   margin: 0;
 }
-
-.widget-doughnutChart {
-  background-color: $chart-grey;
-  border: 1px solid $dark-grey;
-}
-
-.doughnut-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0;
- }
 
 .widget-iframe {
   background-color: $widget-purple;
@@ -218,6 +218,51 @@
   font-size: $font-xxlarge;
   margin-top: 5vh;
   margin-bottom: 10px;
+}
+
+.widget-twitter {
+  background-color: $widget-light-orange;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.widget-twitter-tweet-div {
+  margin: 15vh 0;
+}
+
+.icon-background-twitter {
+  color: $white;
+  font-size: $icon-large;
+  margin-top: 40px;
+  opacity: .1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.widget-twitter-image {
+  display: inline;
+  vertical-align: middle;
+}
+
+.widget-twitter-tweeter {
+  display: inline;
+  vertical-align: sub;
+  color: $white-soft;
+  padding-left: .75rem;
+}
+
+.widget-twitter-tweet {
+  font-size: $font-large;
+  color: $white;
+}
+
+.widget-twitter-type {
+  color: $white-soft;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .widget-scatterChart {
@@ -304,6 +349,26 @@
   margin: 0 auto -20px;
 }
 
+.widget-jenkinsAll {
+  background-color: $widget-green-dark;
+  overflow: scroll;
+}
+
+.jenkins-all-heading {
+  color: $white-soft;
+  font-size: $font-xlarge;
+}
+
+.widget-jenkins {
+  background-color: $widget-orange;
+}
+
+.jenkins-jobs-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
+}
+
 .widget-jenkinsSingle,
  .widget-jenkinsSingle1,
  .widget-jenkinsSingle2,
@@ -325,24 +390,4 @@
 
 .jenkins-subheading {
   font-size: $font-large;
-}
-
-.widget-jenkinsAll {
-  background-color: $widget-green-dark;
-  overflow: scroll;
-}
-
-.jenkins-all-heading {
-  color: $white-soft;
-  font-size: $font-xlarge;
-}
-
-.widget-jenkins {
-  background-color: $widget-orange;
-}
-
-.jenkins-jobs-heading {
-  color: $white-soft;
-  font-size: $font-xxlarge;
-  margin-top: 30px;
 }

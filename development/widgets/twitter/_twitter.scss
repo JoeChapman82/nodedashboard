@@ -1,0 +1,44 @@
+.widget-twitter {
+  background-color: $widget-light-orange;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.widget-twitter-tweet-div {
+  margin: 15vh 0;
+}
+
+.icon-background-twitter {
+  color: $white;
+  font-size: $icon-large;
+  margin-top: 40px;
+  opacity: .1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.widget-twitter-image {
+  display: inline;
+  vertical-align: middle;
+}
+
+.widget-twitter-tweeter {
+  display: inline;
+  vertical-align: sub;
+  color: $white-soft;
+  padding-left: .75rem;
+}
+
+.widget-twitter-tweet {
+  font-size: $font-large;
+  color: $white;
+}
+
+.widget-twitter-type {
+  color: $white-soft;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

@@ -10,7 +10,7 @@ const concat = require('gulp-concat');
 const flatten = require('gulp-flatten');
 const rename = require('gulp-rename');
 
-const scriptsToConcat = [__dirname + '/development/scripts/charts-master.js', __dirname + '/development/scripts/progress-meters.js', __dirname + '/development/scripts/scheduler.js', __dirname + '/development/scripts/main.js', __dirname + '/development/scripts/master-widget-scripts.js'];
+const scriptsToConcat = [__dirname + '/development/scripts/charts-master.js', __dirname + '/development/scripts/progress-meters.js', __dirname + '/development/scripts/scheduler.js', __dirname + '/development/scripts/carousel.js', __dirname + '/development/scripts/main.js', __dirname + '/development/scripts/master-widget-scripts.js'];
 
 
 gulp.task('sass', function(){

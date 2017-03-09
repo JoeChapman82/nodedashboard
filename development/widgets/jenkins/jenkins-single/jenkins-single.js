@@ -7,5 +7,3 @@ if (document.querySelectorAll('.timestamp')) {
 }
 
 };
-
-console.log('hello');

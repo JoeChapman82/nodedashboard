@@ -454,6 +454,48 @@ function Scheduler(widgetClassSelector, onSuccess, returnedTemplate) {
     return "Last updated at " + d.getHours() + ":"  + m + ":" + s;
   };
 
+
+function Carousel(ClassToRotate) {
+  var self = this;
+  this.rotating = [];
+  document.querySelectorAll(ClassToRotate).forEach(function(one) {
+    self.rotating.push(one);
+  });
+  this.intervalLoop = false;
+}
+
+  Carousel.prototype.rotate = function() {
+    var self = this;
+
+    this.rotating.every(function(rotator, index) {
+      if(!rotator.classList.contains('hidden')) {
+        $(rotator).fadeOut('1000', function() {
+          rotator.classList.add('hidden');
+        });
+        if (index === self.rotating.length - 1) {
+          $(self.rotating[0]).fadeIn('1000', function() {
+            self.rotating[0].classList.remove('hidden');
+        });
+          return false;
+        } else {
+          $(self.rotating[index + 1]).fadeIn('2000', function() {
+           self.rotating[index + 1].classList.remove('hidden');
+        });
+          return false;
+        }
+      } else {
+        return true;
+      }
+    });
+  };
+
+  Carousel.prototype.interval = function(interval) {
+    var self = this;
+    this.intervalLoop = setInterval(function() {
+      self.rotate();
+    }, interval);
+  };
+
 // Jquery UI functions for widgets on dashboard page
 // TODO - use plain js instead - addclass to all div children,  addEventListener down/up
 // add placeholder for element to drop back to if not repositioned,
@@ -897,6 +939,28 @@ setInterval(setTime, 1000);
 
 }());
 
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
+
+    // TODO set up all charts to accept arrays and objects as data
+
+    //   var barInterval = setInterval(function() {
+    //     if (document.hasFocus()) {
+    //     $.ajax({
+    //       type: "POST",
+    //       url: 'data-calls',
+    //       data: {call: 'example-data-generator'},
+    //       success: function(data, status) {
+    //       }
+    //     });
+    //   }
+    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
+
+  }());
+}
+
 if (document.querySelector('.widget-calendar')) {
 
   var calendarCall = new Scheduler('.widget-calendar', function(data, status) {
@@ -930,43 +994,6 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 
 setInterval(countdown, 1000);
 
-if (document.getElementById('barCanvas')) {
-  (function() {
-    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-    myChart.interval(50);
-
-    // TODO set up all charts to accept arrays and objects as data
-
-    //   var barInterval = setInterval(function() {
-    //     if (document.hasFocus()) {
-    //     $.ajax({
-    //       type: "POST",
-    //       url: 'data-calls',
-    //       data: {call: 'example-data-generator'},
-    //       success: function(data, status) {
-    //       }
-    //     });
-    //   }
-    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
-
-  }());
-}
-
-
-if (document.querySelector('#dCalendar')) {
-  (function() {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemnber"];
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var d = new Date();
-    var day = d.getDay();
-    var date = d.getDate();
-    var m = d.getMonth();
-    document.querySelector('.dCalendar-weekday').innerText = days[day];
-    document.querySelector('.dCalendar-date').innerText = date;
-    document.querySelector('.dCalendar-month').innerText = months[m];
-  }());
-};
-
 function digitalClock() {
 var today = new Date();
 var h = today.getHours();
@@ -985,6 +1012,21 @@ $('#digitalTime').text(time);
 }
 
 setInterval(digitalClock, 1000);
+
+
+if (document.querySelector('#dCalendar')) {
+  (function() {
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemnber"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var d = new Date();
+    var day = d.getDay();
+    var date = d.getDate();
+    var m = d.getMonth();
+    document.querySelector('.dCalendar-weekday').innerText = days[day];
+    document.querySelector('.dCalendar-date').innerText = date;
+    document.querySelector('.dCalendar-month').innerText = months[m];
+  }());
+};
 
 if (document.getElementById('doughnutChartDisplay')) {
   (function() {
@@ -1021,6 +1063,25 @@ if (document.getElementById('scatterChartDisplay')) {
   }());
 }
 
+if (document.querySelector('.widget-twitter')) {
+  var twitterRotator = new Carousel('.twitter-carousel');
+  twitterRotator.interval(5000);
+
+  var twitterCall = new Scheduler('.widget-twitter', function(data, status) {
+    $('.widget-twitter').html(data);
+    // Set up the array to rotate through again as the divs have changed
+      twitterRotator.rotating = [];
+      document.querySelectorAll('.twitter-carousel').forEach(function(one) {
+        twitterRotator.rotating.push(one);
+      });
+      // Restart the carousel
+    twitterRotator.interval(5000);
+  }, 'widgets/twitter');
+
+  twitterCall.start();
+
+};
+
 if (document.querySelector('.widget-weather')) {
 
 var weatherCall = new Scheduler('.widget-weather', function(data, status) {
@@ -1051,5 +1112,3 @@ if (document.querySelectorAll('.timestamp')) {
 }
 
 };
-
-console.log('hello');

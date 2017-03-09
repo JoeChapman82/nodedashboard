@@ -244,6 +244,17 @@
       "style": "dashing",
       "available": true
     },
+    "twitter": {
+      "name": "twitter",
+      "displayName": "Twitter",
+      "width": 2,
+      "height": 1,
+      "dataCaller": true,
+      "dataRate": 60000,
+      "dataCallTo": "twitter",
+      "style": "dashing",
+      "available": true
+    },
     "weather": {
       "name": "weather",
       "displayName": "Weather",

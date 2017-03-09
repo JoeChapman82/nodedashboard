@@ -7,7 +7,9 @@ const dataDirectory = requireDir(__dirname + '/app/data-calls');
 
 const dataCaller = require(__dirname + '/app/services/data-caller');
 
-const toCallTemp = [dataDirectory.jenkins, dataDirectory.calendar, dataDirectory.weather, dataDirectory.xkcd, dataDirectory['example-data-generator']];
+const toCall = Object.keys(dataDirectory).map(function(currentVal) {
+  return dataDirectory[currentVal];
+});
 
 const dataCallFinder = require(__dirname + '/app/services/data-call-finder');
 
@@ -16,7 +18,6 @@ const favMan = require(__dirname + '/app/services/favourites-manager');
 const getDefaults = require(__dirname + '/app/services/default-gather');
 const ajaxResponse = require(__dirname + '/app/services/ajax-responder');
 
-const qs = require('querystring');
 
 module.exports = function(app) {
 
@@ -57,7 +58,8 @@ app.post('/dashboards/dashboard', [
   dashboardOrder,
   dataCallFinder,
 //  dataCaller.initialCall,
-  ...toCallTemp,
+  //...toCallTemp,
+  ...toCall,
   function(req, res) {
   res.render('dashboards/dashboard');
 }]);
@@ -72,7 +74,7 @@ app.post('/dashboards/dashboard', [
     dashboardOrder,
     dataCallFinder,
     // dataCaller.initialCall,
-    ...toCallTemp,
+    ...toCall,
     function(req, res) {
       res.render('dashboards/dashboard');
     }

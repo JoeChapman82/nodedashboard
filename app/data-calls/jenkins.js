@@ -3,17 +3,17 @@ const ApiCaller = require('../services/api-caller');
 
 const jenkinsCall = new ApiCaller();
 
+jenkinsCall.options = {
+  url: process.env.JENKINS_URL,
+  rejectUnauthorized: false,
+  json: true,
+  timeout: 10000,
+  headers: {
+    "Jenkins-Crumb": process.env.CRUMB
+  },
+};
+
 module.exports = function(req, res, next) {
-  console.log(res.locals.data);
-  jenkinsCall.options = {
-    url: process.env.JENKINS_URL,
-    rejectUnauthorized: false,
-    json: true,
-    timeout: 10000,
-    headers: {
-      "Jenkins-Crumb": process.env.CRUMB
-    },
-  };
   jenkinsCall.call().then(function(response) {
     if (typeof response !== 'undefined') {
     res.locals.data.jenkins = response;
