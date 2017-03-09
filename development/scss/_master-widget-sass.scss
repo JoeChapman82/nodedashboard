@@ -23,6 +23,33 @@
   padding: 0;
  }
 
+.widget-countdown {
+  background-color: rgba(220, 89, 69, 1);
+  padding: 0 .5rem;
+}
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $font-xxlarge;
+  font-weight: bold;
+  margin-top: 9vh;
+}
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: $font-xxxlarge;
+}
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px;
+}
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .widget-calendar {
   background-color: $widget-green-medium;
   overflow: scroll;
@@ -56,33 +83,6 @@
   position: absolute;
   text-align: center;
   width: 100%;
-}
-
-.widget-countdown {
-  background-color: rgba(220, 89, 69, 1);
-  padding: 0 .5rem;
-}
-
-.countdown-event {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: $font-xxlarge;
-  font-weight: bold;
-  margin-top: 9vh;
-}
-
-.countdown-timer-days,
-.countdown-timer-time {
-  color: rgba(255, 215, 0, 0.8);
-  font-size: $font-xxxlarge;
-}
-
-.countdown-timer-days {
-  margin-top: 0;
-  margin-bottom: -40px;
-}
-
-.countdown-due-date {
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .widget-dCalendar {
@@ -220,51 +220,6 @@
   margin-bottom: 10px;
 }
 
-.widget-twitter {
-  background-color: $widget-light-orange;
-  overflow: hidden;
-  padding: 0 2rem;
-}
-
-.widget-twitter-tweet-div {
-  margin: 15vh 0;
-}
-
-.icon-background-twitter {
-  color: $white;
-  font-size: $icon-large;
-  margin-top: 40px;
-  opacity: .1;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.widget-twitter-image {
-  display: inline;
-  vertical-align: middle;
-}
-
-.widget-twitter-tweeter {
-  display: inline;
-  vertical-align: sub;
-  color: $white-soft;
-  padding-left: .75rem;
-}
-
-.widget-twitter-tweet {
-  font-size: $font-large;
-  color: $white;
-}
-
-.widget-twitter-type {
-  color: $white-soft;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
 .widget-scatterChart {
   background-color: $chart-grey;
   border: 1px solid $dark-grey;
@@ -332,6 +287,51 @@
   margin-top: 13vh;
 }
 
+.widget-twitter {
+  background-color: $widget-light-orange;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.widget-twitter-tweet-div {
+  margin: 15vh 0;
+}
+
+.icon-background-twitter {
+  color: $white;
+  font-size: $icon-large;
+  margin-top: 40px;
+  opacity: .1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.widget-twitter-image {
+  display: inline;
+  vertical-align: middle;
+}
+
+.widget-twitter-tweeter {
+  display: inline;
+  vertical-align: sub;
+  color: $white-soft;
+  padding-left: .75rem;
+}
+
+.widget-twitter-tweet {
+  font-size: $font-large;
+  color: $white;
+}
+
+.widget-twitter-type {
+  color: $white-soft;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .widget-xkcd {
   background-color: $white-soft;
 }
@@ -359,16 +359,6 @@
   font-size: $font-xlarge;
 }
 
-.widget-jenkins {
-  background-color: $widget-orange;
-}
-
-.jenkins-jobs-heading {
-  color: $white-soft;
-  font-size: $font-xxlarge;
-  margin-top: 30px;
-}
-
 .widget-jenkinsSingle,
  .widget-jenkinsSingle1,
  .widget-jenkinsSingle2,
@@ -390,4 +380,14 @@
 
 .jenkins-subheading {
   font-size: $font-large;
+}
+
+.widget-jenkins {
+  background-color: $widget-orange;
+}
+
+.jenkins-jobs-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
 }

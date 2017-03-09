@@ -10,7 +10,7 @@ function Carousel(ClassToRotate) {
 
   Carousel.prototype.rotate = function() {
     var self = this;
-
+    if (document.hasFocus()) {
     this.rotating.every(function(rotator, index) {
       if(!rotator.classList.contains('hidden')) {
         $(rotator).fadeOut('1000', function() {
@@ -31,6 +31,7 @@ function Carousel(ClassToRotate) {
         return true;
       }
     });
+  }
   };
 
   Carousel.prototype.interval = function(interval) {

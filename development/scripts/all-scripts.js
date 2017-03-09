@@ -466,7 +466,7 @@ function Carousel(ClassToRotate) {
 
   Carousel.prototype.rotate = function() {
     var self = this;
-
+    if (document.hasFocus()) {
     this.rotating.every(function(rotator, index) {
       if(!rotator.classList.contains('hidden')) {
         $(rotator).fadeOut('1000', function() {
@@ -487,6 +487,7 @@ function Carousel(ClassToRotate) {
         return true;
       }
     });
+  }
   };
 
   Carousel.prototype.interval = function(interval) {
@@ -994,6 +995,21 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 
 setInterval(countdown, 1000);
 
+
+if (document.querySelector('#dCalendar')) {
+  (function() {
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemnber"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var d = new Date();
+    var day = d.getDay();
+    var date = d.getDate();
+    var m = d.getMonth();
+    document.querySelector('.dCalendar-weekday').innerText = days[day];
+    document.querySelector('.dCalendar-date').innerText = date;
+    document.querySelector('.dCalendar-month').innerText = months[m];
+  }());
+};
+
 function digitalClock() {
 var today = new Date();
 var h = today.getHours();
@@ -1012,21 +1028,6 @@ $('#digitalTime').text(time);
 }
 
 setInterval(digitalClock, 1000);
-
-
-if (document.querySelector('#dCalendar')) {
-  (function() {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemnber"];
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var d = new Date();
-    var day = d.getDay();
-    var date = d.getDate();
-    var m = d.getMonth();
-    document.querySelector('.dCalendar-weekday').innerText = days[day];
-    document.querySelector('.dCalendar-date').innerText = date;
-    document.querySelector('.dCalendar-month').innerText = months[m];
-  }());
-};
 
 if (document.getElementById('doughnutChartDisplay')) {
   (function() {
@@ -1071,11 +1072,14 @@ if (document.querySelector('.widget-twitter')) {
     $('.widget-twitter').html(data);
     // Set up the array to rotate through again as the divs have changed
       twitterRotator.rotating = [];
+      console.log(twitterRotator.rotating);
+    //  twitterRotator.intervalLoop = false;
       document.querySelectorAll('.twitter-carousel').forEach(function(one) {
         twitterRotator.rotating.push(one);
       });
+      console.log(twitterRotator.rotating);
       // Restart the carousel
-    twitterRotator.interval(5000);
+    //  twitterRotator.interval(5000);
   }, 'widgets/twitter');
 
   twitterCall.start();
