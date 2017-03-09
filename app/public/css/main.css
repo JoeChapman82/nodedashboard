@@ -841,22 +841,6 @@ input[type=radio]:hover {
   color: #222222;
   margin: 0 auto -20px; }
 
-.widget-jenkinsAll {
-  background-color: rgba(71, 187, 179, 0.4);
-  overflow: scroll; }
-
-.jenkins-all-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: calc(20px + .1vw); }
-
-.widget-jenkins {
-  background-color: #ec663c; }
-
-.jenkins-jobs-heading {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: calc(25px + .1vw);
-  margin-top: 30px; }
-
 .widget-jenkinsSingle,
 .widget-jenkinsSingle1,
 .widget-jenkinsSingle2,
@@ -876,3 +860,19 @@ input[type=radio]:hover {
 
 .jenkins-subheading {
   font-size: calc(17px + .1vw); }
+
+.widget-jenkinsAll {
+  background-color: rgba(71, 187, 179, 0.4);
+  overflow: scroll; }
+
+.jenkins-all-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: calc(20px + .1vw); }
+
+.widget-jenkins {
+  background-color: #ec663c; }
+
+.jenkins-jobs-heading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: calc(25px + .1vw);
+  margin-top: 30px; }

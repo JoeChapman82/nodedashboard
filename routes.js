@@ -26,24 +26,24 @@ app.get('/', [
   res.render('index');
 }]);
 
-app.post('/oauth', [
-  dataDirectory.twitter.initialCall,
-  function(req, res) {
-  res.render('oauth');
-}]);
-
-app.get('/oauth-return', [
-  function(req, res) {
-    res.locals.oauth_token = req.query.oauth_token;
-    res.locals.oauth_verifier = req.query.oauth_verifier;
-  res.render('oauth');
-}]);
-
-app.post('/oauth-return', [
-  dataDirectory.twitter.returnCall,
-  function(req, res) {
-  res.render('oauth');
-}]);
+// app.post('/oauth', [
+//   dataDirectory.twitter.initialCall,
+//   function(req, res) {
+//   res.render('oauth');
+// }]);
+//
+// app.get('/oauth-return', [
+//   function(req, res) {
+//     res.locals.oauth_token = req.query.oauth_token;
+//     res.locals.oauth_verifier = req.query.oauth_verifier;
+//   res.render('oauth');
+// }]);
+//
+// app.post('/oauth-return', [
+//   dataDirectory.twitter.returnCall,
+//   function(req, res) {
+//   res.render('oauth');
+// }]);
 
 // POST ROUTES
 app.post('/dashboards/dashboard-select', [

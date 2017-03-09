@@ -62,27 +62,14 @@ setInterval(setTime, 1000);
 
 }());
 
-if (document.getElementById('barCanvas')) {
-  (function() {
-    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-    myChart.interval(50);
+if (document.querySelector('.widget-calendar')) {
 
-    // TODO set up all charts to accept arrays and objects as data
+  var calendarCall = new Scheduler('.widget-calendar', function(data, status) {
+    $('.widget-calendar').html(data);
+  }, 'widgets/calendar');
 
-    //   var barInterval = setInterval(function() {
-    //     if (document.hasFocus()) {
-    //     $.ajax({
-    //       type: "POST",
-    //       url: 'data-calls',
-    //       data: {call: 'example-data-generator'},
-    //       success: function(data, status) {
-    //       }
-    //     });
-    //   }
-    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
-
-  }());
-}
+  calendarCall.start();
+};
 
 function countdown() {
 var d = new Date($('#countdownDueDate').text()); // Format '25-Feb-2017 00:00:00'
@@ -108,14 +95,27 @@ $('#countdownTimerTime').text(hoursLeft + ':' + minutesLeft + ':' + secondsLeft)
 
 setInterval(countdown, 1000);
 
-if (document.querySelector('.widget-calendar')) {
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
 
-  var calendarCall = new Scheduler('.widget-calendar', function(data, status) {
-    $('.widget-calendar').html(data);
-  }, 'widgets/calendar');
+    // TODO set up all charts to accept arrays and objects as data
 
-  calendarCall.start();
-};
+    //   var barInterval = setInterval(function() {
+    //     if (document.hasFocus()) {
+    //     $.ajax({
+    //       type: "POST",
+    //       url: 'data-calls',
+    //       data: {call: 'example-data-generator'},
+    //       success: function(data, status) {
+    //       }
+    //     });
+    //   }
+    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
+
+  }());
+}
 
 
 if (document.querySelector('#dCalendar')) {
@@ -186,6 +186,16 @@ if (document.getElementById('scatterChartDisplay')) {
   }());
 }
 
+if (document.querySelector('.widget-weather')) {
+
+var weatherCall = new Scheduler('.widget-weather', function(data, status) {
+  $('.widget-weather').html(data);
+}, 'widgets/weather');
+
+weatherCall.start();
+
+};
+
 if (document.querySelector('.widget-xkcd')) {
 
 var xkcdCall = new Scheduler('.widget-xkcd', function(data, status) {
@@ -194,16 +204,6 @@ var xkcdCall = new Scheduler('.widget-xkcd', function(data, status) {
 });
 
 xkcdCall.start();
-
-};
-
-if (document.querySelector('.widget-weather')) {
-
-var weatherCall = new Scheduler('.widget-weather', function(data, status) {
-  $('.widget-weather').html(data);
-}, 'widgets/weather');
-
-weatherCall.start();
 
 };
 

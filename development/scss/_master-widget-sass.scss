@@ -304,26 +304,6 @@
   margin: 0 auto -20px;
 }
 
-.widget-jenkinsAll {
-  background-color: $widget-green-dark;
-  overflow: scroll;
-}
-
-.jenkins-all-heading {
-  color: $white-soft;
-  font-size: $font-xlarge;
-}
-
-.widget-jenkins {
-  background-color: $widget-orange;
-}
-
-.jenkins-jobs-heading {
-  color: $white-soft;
-  font-size: $font-xxlarge;
-  margin-top: 30px;
-}
-
 .widget-jenkinsSingle,
  .widget-jenkinsSingle1,
  .widget-jenkinsSingle2,
@@ -345,4 +325,24 @@
 
 .jenkins-subheading {
   font-size: $font-large;
+}
+
+.widget-jenkinsAll {
+  background-color: $widget-green-dark;
+  overflow: scroll;
+}
+
+.jenkins-all-heading {
+  color: $white-soft;
+  font-size: $font-xlarge;
+}
+
+.widget-jenkins {
+  background-color: $widget-orange;
+}
+
+.jenkins-jobs-heading {
+  color: $white-soft;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
 }
