@@ -62,28 +62,6 @@ setInterval(setTime, 1000);
 
 }());
 
-if (document.getElementById('barCanvas')) {
-  (function() {
-    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
-    myChart.interval(50);
-
-    // TODO set up all charts to accept arrays and objects as data
-
-    //   var barInterval = setInterval(function() {
-    //     if (document.hasFocus()) {
-    //     $.ajax({
-    //       type: "POST",
-    //       url: 'data-calls',
-    //       data: {call: 'example-data-generator'},
-    //       success: function(data, status) {
-    //       }
-    //     });
-    //   }
-    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
-
-  }());
-}
-
 if (document.querySelector('.widget-calendar')) {
 
   var calendarCall = new Scheduler('.widget-calendar', function(data, status) {
@@ -132,6 +110,35 @@ if (document.querySelector('#dCalendar')) {
   }());
 };
 
+if (document.getElementById('doughnutChartDisplay')) {
+  (function() {
+    var doughnutChart = new Chart('doughnutChartDisplay', 'doughnutChartData', 'dataChartDoughnut');
+    doughnutChart.doughnutChart();
+  }());
+}
+
+if (document.getElementById('barCanvas')) {
+  (function() {
+    var myChart = new Chart('barCanvas', 'barDataDiv', 'barTable');
+    myChart.interval(50);
+
+    // TODO set up all charts to accept arrays and objects as data
+
+    //   var barInterval = setInterval(function() {
+    //     if (document.hasFocus()) {
+    //     $.ajax({
+    //       type: "POST",
+    //       url: 'data-calls',
+    //       data: {call: 'example-data-generator'},
+    //       success: function(data, status) {
+    //       }
+    //     });
+    //   }
+    // }, parseInt(document.querySelector('.widget-barChart').dataset.rate));
+
+  }());
+}
+
 function digitalClock() {
 var today = new Date();
 var h = today.getHours();
@@ -150,13 +157,6 @@ $('#digitalTime').text(time);
 }
 
 setInterval(digitalClock, 1000);
-
-if (document.getElementById('doughnutChartDisplay')) {
-  (function() {
-    var doughnutChart = new Chart('doughnutChartDisplay', 'doughnutChartData', 'dataChartDoughnut');
-    doughnutChart.doughnutChart();
-  }());
-}
 
 if (document.getElementById('pieChartDisplay')) {
   (function() {

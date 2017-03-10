@@ -614,28 +614,6 @@ input[type=radio]:hover {
   max-width: 99%;
   padding: 0; }
 
-.widget-countdown {
-  background-color: #dc5945;
-  padding: 0 .5rem; }
-
-.countdown-event {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: calc(25px + .1vw);
-  font-weight: bold;
-  margin-top: 9vh; }
-
-.countdown-timer-days,
-.countdown-timer-time {
-  color: rgba(255, 215, 0, 0.8);
-  font-size: calc(40px + .2vw); }
-
-.countdown-timer-days {
-  margin-top: 0;
-  margin-bottom: -40px; }
-
-.countdown-due-date {
-  color: rgba(255, 255, 255, 0.9); }
-
 .widget-calendar {
   background-color: teal;
   overflow: scroll; }
@@ -665,6 +643,53 @@ input[type=radio]:hover {
   text-align: center;
   width: 100%; }
 
+.widget-countdown {
+  background-color: #dc5945;
+  padding: 0 .5rem; }
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: calc(25px + .1vw);
+  font-weight: bold;
+  margin-top: 9vh; }
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: calc(40px + .2vw); }
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px; }
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9); }
+
+.widget-dClock {
+  background-color: #dc5945; }
+
+.digital-date {
+  font-size: calc(25px + .1vw);
+  color: #fff;
+  margin-top: 5vw; }
+
+.digital-time {
+  font-size: calc(50px + .5vw);
+  color: #fff;
+  font-weight: bold;
+  margin: 0; }
+
+.widget-doughnutChart {
+  background-color: #808080;
+  border: 1px solid #305f5c; }
+
+.doughnut-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
+
 .widget-dCalendar {
   background-color: #3468b1;
   color: rgba(255, 255, 255, 0.8);
@@ -688,30 +713,48 @@ input[type=radio]:hover {
   margin: 0;
   padding: 1.25rem 0; }
 
-.widget-doughnutChart {
+.widget-map {
+  background-color: #96bf48; }
+
+#mapWidgetFrame {
+  height: 47vh;
+  margin-top: .02rem;
+  width: 99%; }
+
+#widgetMapPreventInteration {
+  height: 47vh;
+  position: absolute;
+  width: 98.8%; }
+
+.widget-notices {
+  background-color: #47bbb3; }
+
+.widget-progress {
+  background-color: #3c6f9a; }
+
+#progressMeterDisplay {
+  display: block;
+  margin: 0 auto 1rem;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0; }
+
+.progress-meter-heading {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: calc(25px + .1vw);
+  margin-top: 5vh;
+  margin-bottom: 10px; }
+
+.widget-pieChart {
   background-color: #808080;
   border: 1px solid #305f5c; }
 
-.doughnut-chart-display {
+.pie-chart-display {
   display: block;
   margin: 0 auto;
   max-height: 98%;
   max-width: 99%;
   padding: 0; }
-
-.widget-dClock {
-  background-color: #dc5945; }
-
-.digital-date {
-  font-size: calc(25px + .1vw);
-  color: #fff;
-  margin-top: 5vw; }
-
-.digital-time {
-  font-size: calc(50px + .5vw);
-  color: #fff;
-  font-weight: bold;
-  margin: 0; }
 
 .widget-iframe {
   background-color: #9c4274; }
@@ -733,48 +776,43 @@ input[type=radio]:hover {
   height: 48vh;
   width: 100%; }
 
-.widget-map {
-  background-color: #96bf48; }
+.widget-twitter {
+  background-color: #ff9618;
+  overflow: hidden;
+  padding: 0 2rem; }
 
-#mapWidgetFrame {
-  height: 47vh;
-  margin-top: .02rem;
-  width: 99%; }
+.widget-twitter-tweet-div {
+  margin: 15vh 0 20vh; }
 
-#widgetMapPreventInteration {
-  height: 47vh;
+.icon-background-twitter {
+  color: #fff;
+  font-size: calc(250px + 2vw);
+  margin-top: 40px;
+  opacity: .1;
   position: absolute;
-  width: 98.8%; }
+  text-align: center;
+  width: 100%; }
 
-.widget-notices {
-  background-color: #47bbb3; }
+.widget-twitter-image {
+  display: inline;
+  vertical-align: middle; }
 
-.widget-pieChart {
-  background-color: #808080;
-  border: 1px solid #305f5c; }
+.widget-twitter-tweeter {
+  display: inline;
+  vertical-align: sub;
+  color: rgba(255, 255, 255, 0.8);
+  padding-left: .75rem; }
 
-.pie-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
+.widget-twitter-tweet {
+  font-size: calc(17px + .1vw);
+  color: #fff; }
 
-.widget-progress {
-  background-color: #3c6f9a; }
-
-#progressMeterDisplay {
-  display: block;
-  margin: 0 auto 1rem;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0; }
-
-.progress-meter-heading {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: calc(25px + .1vw);
-  margin-top: 5vh;
-  margin-bottom: 10px; }
+.widget-twitter-type {
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0); }
 
 .widget-scatterChart {
   background-color: #808080;
@@ -829,44 +867,6 @@ input[type=radio]:hover {
   text-align: center;
   margin-top: 13vh; }
 
-.widget-twitter {
-  background-color: #ff9618;
-  overflow: hidden;
-  padding: 0 2rem; }
-
-.widget-twitter-tweet-div {
-  margin: 15vh 0; }
-
-.icon-background-twitter {
-  color: #fff;
-  font-size: calc(250px + 2vw);
-  margin-top: 40px;
-  opacity: .1;
-  position: absolute;
-  text-align: center;
-  width: 100%; }
-
-.widget-twitter-image {
-  display: inline;
-  vertical-align: middle; }
-
-.widget-twitter-tweeter {
-  display: inline;
-  vertical-align: sub;
-  color: rgba(255, 255, 255, 0.8);
-  padding-left: .75rem; }
-
-.widget-twitter-tweet {
-  font-size: calc(17px + .1vw);
-  color: #fff; }
-
-.widget-twitter-type {
-  color: rgba(255, 255, 255, 0.8);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0); }
-
 .widget-xkcd {
   background-color: rgba(255, 255, 255, 0.8); }
 
@@ -879,13 +879,13 @@ input[type=radio]:hover {
   color: #222222;
   margin: 0 auto -20px; }
 
-.widget-jenkinsAll {
-  background-color: rgba(71, 187, 179, 0.4);
-  overflow: scroll; }
+.widget-jenkins {
+  background-color: #ec663c; }
 
-.jenkins-all-heading {
+.jenkins-jobs-heading {
   color: rgba(255, 255, 255, 0.8);
-  font-size: calc(20px + .1vw); }
+  font-size: calc(25px + .1vw);
+  margin-top: 30px; }
 
 .widget-jenkinsSingle,
 .widget-jenkinsSingle1,
@@ -907,10 +907,10 @@ input[type=radio]:hover {
 .jenkins-subheading {
   font-size: calc(17px + .1vw); }
 
-.widget-jenkins {
-  background-color: #ec663c; }
+.widget-jenkinsAll {
+  background-color: rgba(71, 187, 179, 0.4);
+  overflow: scroll; }
 
-.jenkins-jobs-heading {
+.jenkins-all-heading {
   color: rgba(255, 255, 255, 0.8);
-  font-size: calc(25px + .1vw);
-  margin-top: 30px; }
+  font-size: calc(20px + .1vw); }

@@ -23,33 +23,6 @@
   padding: 0;
  }
 
-.widget-countdown {
-  background-color: rgba(220, 89, 69, 1);
-  padding: 0 .5rem;
-}
-
-.countdown-event {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: $font-xxlarge;
-  font-weight: bold;
-  margin-top: 9vh;
-}
-
-.countdown-timer-days,
-.countdown-timer-time {
-  color: rgba(255, 215, 0, 0.8);
-  font-size: $font-xxxlarge;
-}
-
-.countdown-timer-days {
-  margin-top: 0;
-  margin-bottom: -40px;
-}
-
-.countdown-due-date {
-  color: rgba(255, 255, 255, 0.9);
-}
-
 .widget-calendar {
   background-color: $widget-green-medium;
   overflow: scroll;
@@ -85,6 +58,63 @@
   width: 100%;
 }
 
+.widget-countdown {
+  background-color: rgba(220, 89, 69, 1);
+  padding: 0 .5rem;
+}
+
+.countdown-event {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $font-xxlarge;
+  font-weight: bold;
+  margin-top: 9vh;
+}
+
+.countdown-timer-days,
+.countdown-timer-time {
+  color: rgba(255, 215, 0, 0.8);
+  font-size: $font-xxxlarge;
+}
+
+.countdown-timer-days {
+  margin-top: 0;
+  margin-bottom: -40px;
+}
+
+.countdown-due-date {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.widget-dClock {
+  background-color: $widget-red;
+}
+
+.digital-date {
+  font-size: $font-xxlarge;
+  color: $white;
+  margin-top: 5vw;
+}
+
+.digital-time {
+  font-size: $font-super;
+  color: $white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.widget-doughnutChart {
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
+}
+
+.doughnut-chart-display {
+  display: block;
+  margin: 0 auto;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+ }
+
 .widget-dCalendar {
   background-color: $widget-blue;
   color: $white-soft;
@@ -112,35 +142,58 @@
   padding: 1.25rem 0;
 }
 
-.widget-doughnutChart {
-  background-color: $chart-grey;
-  border: 1px solid $dark-grey;
+.widget-map {
+  background-color: $widget-lime;
 }
 
-.doughnut-chart-display {
+#mapWidgetFrame {
+  height: 47vh;
+  margin-top: .02rem;
+  width: 99%;
+}
+
+#widgetMapPreventInteration {
+  height: 47vh;
+  position: absolute;
+  width: 98.8%;
+}
+
+.widget-notices {
+  background-color: $widget-green-light;
+}
+
+.widget-progress {
+  background-color: darken($widget-light-blue, 7%);
+}
+
+#progressMeterDisplay {
+  display: block;
+  margin: 0 auto 1rem;
+  max-height: 98%;
+  max-width: 99%;
+  padding: 0;
+}
+
+.progress-meter-heading {
+  color: $white-softer;
+  font-size: $font-xxlarge;
+  margin-top: 5vh;
+  margin-bottom: 10px;
+}
+
+.widget-pieChart {
+  background-color: $chart-grey;
+  border: 1px solid $dark-grey;
+
+}
+
+.pie-chart-display {
   display: block;
   margin: 0 auto;
   max-height: 98%;
   max-width: 99%;
   padding: 0;
  }
-
-.widget-dClock {
-  background-color: $widget-red;
-}
-
-.digital-date {
-  font-size: $font-xxlarge;
-  color: $white;
-  margin-top: 5vw;
-}
-
-.digital-time {
-  font-size: $font-super;
-  color: $white;
-  font-weight: bold;
-  margin: 0;
-}
 
 .widget-iframe {
   background-color: $widget-purple;
@@ -167,57 +220,49 @@
   width: 100%;
 }
 
-.widget-map {
-  background-color: $widget-lime;
+.widget-twitter {
+  background-color: $widget-light-orange;
+  overflow: hidden;
+  padding: 0 2rem;
 }
 
-#mapWidgetFrame {
-  height: 47vh;
-  margin-top: .02rem;
-  width: 99%;
+.widget-twitter-tweet-div {
+  margin: 15vh 0 20vh;
 }
 
-#widgetMapPreventInteration {
-  height: 47vh;
+.icon-background-twitter {
+  color: $white;
+  font-size: $icon-large;
+  margin-top: 40px;
+  opacity: .1;
   position: absolute;
-  width: 98.8%;
+  text-align: center;
+  width: 100%;
 }
 
-.widget-notices {
-  background-color: $widget-green-light;
+.widget-twitter-image {
+  display: inline;
+  vertical-align: middle;
 }
 
-.widget-pieChart {
-  background-color: $chart-grey;
-  border: 1px solid $dark-grey;
-
+.widget-twitter-tweeter {
+  display: inline;
+  vertical-align: sub;
+  color: $white-soft;
+  padding-left: .75rem;
 }
 
-.pie-chart-display {
-  display: block;
-  margin: 0 auto;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0;
- }
-
-.widget-progress {
-  background-color: darken($widget-light-blue, 7%);
+.widget-twitter-tweet {
+  font-size: $font-large;
+  color: $white;
 }
 
-#progressMeterDisplay {
-  display: block;
-  margin: 0 auto 1rem;
-  max-height: 98%;
-  max-width: 99%;
-  padding: 0;
-}
-
-.progress-meter-heading {
-  color: $white-softer;
-  font-size: $font-xxlarge;
-  margin-top: 5vh;
-  margin-bottom: 10px;
+.widget-twitter-type {
+  color: $white-soft;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .widget-scatterChart {
@@ -287,51 +332,6 @@
   margin-top: 13vh;
 }
 
-.widget-twitter {
-  background-color: $widget-light-orange;
-  overflow: hidden;
-  padding: 0 2rem;
-}
-
-.widget-twitter-tweet-div {
-  margin: 15vh 0;
-}
-
-.icon-background-twitter {
-  color: $white;
-  font-size: $icon-large;
-  margin-top: 40px;
-  opacity: .1;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.widget-twitter-image {
-  display: inline;
-  vertical-align: middle;
-}
-
-.widget-twitter-tweeter {
-  display: inline;
-  vertical-align: sub;
-  color: $white-soft;
-  padding-left: .75rem;
-}
-
-.widget-twitter-tweet {
-  font-size: $font-large;
-  color: $white;
-}
-
-.widget-twitter-type {
-  color: $white-soft;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
 .widget-xkcd {
   background-color: $white-soft;
 }
@@ -349,14 +349,14 @@
   margin: 0 auto -20px;
 }
 
-.widget-jenkinsAll {
-  background-color: $widget-green-dark;
-  overflow: scroll;
+.widget-jenkins {
+  background-color: $widget-orange;
 }
 
-.jenkins-all-heading {
+.jenkins-jobs-heading {
   color: $white-soft;
-  font-size: $font-xlarge;
+  font-size: $font-xxlarge;
+  margin-top: 30px;
 }
 
 .widget-jenkinsSingle,
@@ -382,12 +382,12 @@
   font-size: $font-large;
 }
 
-.widget-jenkins {
-  background-color: $widget-orange;
+.widget-jenkinsAll {
+  background-color: $widget-green-dark;
+  overflow: scroll;
 }
 
-.jenkins-jobs-heading {
+.jenkins-all-heading {
   color: $white-soft;
-  font-size: $font-xxlarge;
-  margin-top: 30px;
+  font-size: $font-xlarge;
 }
