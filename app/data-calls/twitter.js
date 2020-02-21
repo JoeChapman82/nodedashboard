@@ -5,7 +5,7 @@ const twitterCall = new ApiCaller();
 
 twitterCall.options = {
   method: 'GET',
-  url: 'https://api.twitter.com/1.1/search/tweets.json?q=DWP%20Digital&count=5',
+  url: 'https://api.twitter.com/1.1/search/tweets.json?q=Universal%20Credit&count=5',
   json: true,
   oauth: {
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -18,7 +18,7 @@ twitterCall.options = {
 module.exports = function(req, res, next) {
   twitterCall.call().then(function(response) {
     res.locals.data.twitter = response;
-    res.locals.data.twitter.mentioning = "DWP Digital";
+    res.locals.data.twitter.mentioning = "Universal Credit";
     next();
   });
 };
