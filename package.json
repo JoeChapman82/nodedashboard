@@ -12,7 +12,7 @@
   "author": "Joe Chapman",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.1.4",
+    "async": "^3.2.2",
     "body-parser": "^1.16.1",
     "browser-sync": "^2.17.5",
     "chokidar": "^1.6.1",
